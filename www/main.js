@@ -57,72 +57,66 @@ requirejs.config({
 });
 
 requirejs(["jquery-lib", "jquery-plugins-lib", "hammer-lib", "jquery-ui-lib", "jquery-ui-plugins-lib", "angular-lib", "angular-modules-lib", "underscore-lib", "classie-lib", "modernizr-lib", "string-lib", "editormd-lib"], function () {
-    if (isBrowser) {
-        window.appModule = angular.module(APP_MODULE_NAME, APP_MODULE_DEPS);
-        window.appModule.value("angularEventTypes", {
-            boundPropertiesEvent: "boundPropertiesEvent",
-            beforeWidgetCreationEvent: "beforeWidgetCreationEvent",
-            switchProjectEvent: "switchProjectEvent",
-            widgetContentIncludedEvent: "widgetContentIncluded"
-        });
-        window.appModule.value("angularConstants", {
-            precision: 1000,
-            percentPrecision: 1000,
-            treeNodeIdPrefix: "tree-node-",
-            repoTypes: [
-                {name: "widget", value: "widget"},
-                {name: "effect", value: "effect"},
-                {name: "icon", value: "icon"}
-            ],
-            VERBOSE: true,
-            widgetClasses: {
-                containerClass: "sketchHolder",
-                deviceHolderClass: "deviceHolder",
-                holderClass: "pageHolder",
-                widgetClass: "sketchWidget",
-                hoverClass: "widgetHover",
-                activeClass: "pickedWidget",
-                widgetContainerClass: "widgetContainer",
-                widgetIncludeAnchorClass: "widgetIncludeAnchor"
+    window.appModule = angular.module(APP_MODULE_NAME, APP_MODULE_DEPS);
+    window.appModule.value("angularEventTypes", {
+        boundPropertiesEvent: "boundPropertiesEvent",
+        beforeWidgetCreationEvent: "beforeWidgetCreationEvent",
+        switchProjectEvent: "switchProjectEvent",
+        widgetContentIncludedEvent: "widgetContentIncluded"
+    });
+    window.appModule.value("angularConstants", {
+        precision: 1000,
+        percentPrecision: 1000,
+        treeNodeIdPrefix: "tree-node-",
+        repoTypes: [
+            {name: "widget", value: "widget"},
+            {name: "effect", value: "effect"},
+            {name: "icon", value: "icon"}
+        ],
+        VERBOSE: true,
+        widgetClasses: {
+            containerClass: "sketchHolder",
+            deviceHolderClass: "deviceHolder",
+            holderClass: "pageHolder",
+            widgetClass: "sketchWidget",
+            hoverClass: "widgetHover",
+            activeClass: "pickedWidget",
+            widgetContainerClass: "widgetContainer",
+            widgetIncludeAnchorClass: "widgetIncludeAnchor"
+        },
+        anchorAttr: "widget-anchor",
+        repoWidgetClass: "ui-widget",
+        stateGroupEventPattern: "State Change Event of State Group {0}",
+        widgetEventPattern: "Event {0} of widget {1}",
+        draggingShapeZIndex: 101,
+        actionDelay: 100,
+        checkInterval: 20,
+        loadCheckInterval: 40,
+        unresponsiveInterval: 40,
+        eventThrottleInterval: 300,
+        renderTimeout: 3000,
+        loadRenderTimeout: 6000,
+        loadTimeout: 10000
+    });
+    //For upload file angular module 'ng-flow'
+    window.appModule.config(['flowFactoryProvider', function (flowFactoryProvider) {
+        flowFactoryProvider.defaults = {
+            target: function (fileObj) {
+                return 'api/public/file';
             },
-            anchorAttr: "widget-anchor",
-            repoWidgetClass: "ui-widget",
-            stateGroupEventPattern: "State Change Event of State Group {0}",
-            widgetEventPattern: "Event {0} of widget {1}",
-            draggingShapeZIndex: 101,
-            actionDelay: 100,
-            checkInterval: 20,
-            loadCheckInterval: 40,
-            unresponsiveInterval: 40,
-            eventThrottleInterval: 300,
-            renderTimeout: 3000,
-            loadRenderTimeout: 6000,
-            loadTimeout: 10000
+            permanentErrors: [404, 500, 501],
+            maxChunkRetries: 1,
+            chunkRetryInterval: 5000,
+            simultaneousUploads: 4
+        };
+        flowFactoryProvider.on('catchAll', function (event) {
         });
-        //For upload file angular module 'ng-flow'
-        window.appModule.config(['flowFactoryProvider', function (flowFactoryProvider) {
-            flowFactoryProvider.defaults = {
-                target: function (fileObj) {
-                    return 'api/public/file';
-                },
-                permanentErrors: [404, 500, 501],
-                maxChunkRetries: 1,
-                chunkRetryInterval: 5000,
-                simultaneousUploads: 4
-            };
-            flowFactoryProvider.on('catchAll', function (event) {
-            });
-        }]);
+    }]);
 
-        //Angular Modules Config
-        arguments[6](window.appModule);
-    }
-
-    window.modouleLogger && window.modouleLogger.debug(["angular-plugins-lib", "directive-lib", "app-lib"].join(",") + " Loading");
+    //Angular Modules Config
+    arguments[6](window.appModule);
 
     requirejs(["angular-plugins-lib", "directive-lib", "app-lib"], function () {
-        window.modouleLogger && window.modouleLogger.debug(["angular-plugins-lib", "directive-lib", "app-lib"].join(",") + " Load Complete.");
-
         if (isBrowser) {
             var configs = Array.prototype.slice.call(arguments, 0, arguments.length - 1),
                 appConfig = arguments[arguments.length - 1];
