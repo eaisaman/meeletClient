@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  MeeletClient
+
+  Created by jill on 15/5/25.
+
+*/
+
+"Error" = "出错";
+"ServerUrlEmptyError" = "服务器地址不能为空.";
+"Exit" = "退出";

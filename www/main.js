@@ -53,6 +53,9 @@ requirejs.config({
         "editormd-lib": EDITORMD_LIB_PATH + "main",
         "app-lib": APP_LIB_PATH + "main",
         "directive-lib": DIRECTIVE_LIB_PATH + "main"
+    },
+    shim: {
+        "app-lib": {deps: ["directive-lib"]}
     }
 });
 
@@ -116,21 +119,29 @@ requirejs(["jquery-lib", "jquery-plugins-lib", "hammer-lib", "jquery-ui-lib", "j
     //Angular Modules Config
     arguments[6](window.appModule);
 
-    requirejs(["angular-plugins-lib", "directive-lib", "app-lib"], function () {
-        if (isBrowser) {
-            var configs = Array.prototype.slice.call(arguments, 0, arguments.length - 1),
-                appConfig = arguments[arguments.length - 1];
+    document.addEventListener('deviceready', function () {
+        requirejs(["angular-plugins-lib", "directive-lib", "app-lib"], function () {
+            if (isBrowser) {
+                var configs = Array.prototype.slice.call(arguments, 0, arguments.length - 1),
+                    appConfig = arguments[arguments.length - 1];
 
-            configs.forEach(function (config) {
-                config(window.appModule);
-            });
+                configs.forEach(function (config) {
+                    config(window.appModule);
+                });
 
-            appConfig(window.appModule, function () {
-                angular.bootstrap(document, [APP_MODULE_NAME]);
-            });
-        }
+                appConfig(window.appModule, function () {
+                    angular.bootstrap(document, [APP_MODULE_NAME]);
+                });
+            }
 
-        //On load function will be bound to window object if post processing needed.
-        window.onModulesLoaded && window.onModulesLoaded();
-    });
+            //On load function will be bound to window object if post processing needed.
+            window.onModulesLoaded && window.onModulesLoaded();
+        });
+    }, false);
+
+    if (!window.cordova) {
+        var evt = document.createEvent('Events');
+        evt.initEvent('deviceready', false, false)
+        document.dispatchEvent(evt);
+    }
 });

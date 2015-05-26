@@ -4,7 +4,7 @@ requirejs.config(
             "ng-flow": ANGULAR_MODULES_LIB_PATH + "ng-flow/2.5.1/ng-flow-standalone.min"
         },
         shim: {
-            "ng-flow": {deps: ["angular"]}
+            "ng-flow": {deps: ["angular-lib"]}
         },
         waitSeconds: 0
     }

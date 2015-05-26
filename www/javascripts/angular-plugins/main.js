@@ -3,6 +3,9 @@ requirejs.config(
         paths: {
             "angular-ui-tree": ANGULAR_PLUGINS_LIB_PATH + "angular-ui-tree"
         },
+        shim: {
+            "angular-ui-tree": {deps: ["angular-lib"]}
+        },
         waitSeconds: 0
     }
 );

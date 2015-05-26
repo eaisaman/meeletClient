@@ -4,10 +4,13 @@ requirejs.config(
             "app-route": APP_LIB_PATH + "route",
             "app-util": APP_LIB_PATH + "util",
             "app-filter": APP_LIB_PATH + "filter",
-            "app-service": APP_LIB_PATH + "embedded/service",
+            "app-service": APP_LIB_PATH + (window.cordova && "embedded/service" || "browser/service"),
             "app-controller": APP_LIB_PATH + "controller",
             "text": APP_LIB_PATH + "requirejs-plugins/text",
             "json": APP_LIB_PATH + "requirejs-plugins/json"
+        },
+        shim: {
+            "app-service": {deps: ["app-util"]}
         }
     }
 );

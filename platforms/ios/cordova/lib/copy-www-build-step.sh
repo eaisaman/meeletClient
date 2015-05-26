@@ -23,7 +23,7 @@
 #   This script should not be called directly.
 #   It is called as a build step from Xcode.
 
-SRC_DIR="www/"
+SRC_DIR="$SRCROOT/../../www/"
 PLUGINS_DIR="$SRCROOT/../../plugins/"
 DST_DIR="$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/www"
 COPY_HIDDEN=
@@ -85,13 +85,13 @@ done
 # Plugins
 for p in $(do_find_plugins -type d -print|grep www); do
   subpath="${p#$PLUGINS_DIR}"
-  mkdir -p "${DST_DIR}/mobile/plugins${subpath}" || exit 1
+  mkdir -p "${DST_DIR}/plugins${subpath}" || exit 1
 done
 
 for p in $(do_find_plugins -type f -print|grep www); do
   subpath="${p#$PLUGINS_DIR}"
-  if ! ln "$PLUGINS_DIR$subpath" "${DST_DIR}/mobile/plugins${subpath}" 2>/dev/null; then
-    rsync -a "$PLUGINS_DIR$subpath" "${DST_DIR}/mobile/plugins${subpath}" || exit 4
+  if ! ln "$PLUGINS_DIR$subpath" "${DST_DIR}/plugins${subpath}" 2>/dev/null; then
+    rsync -a "$PLUGINS_DIR$subpath" "${DST_DIR}/plugins${subpath}" || exit 4
   fi
 done
 
@@ -99,8 +99,8 @@ done
 cp -f "${PROJECT_FILE_PATH%.xcodeproj}/config.xml" "$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME"
 
 # Copy cordova.js, cordova_plugins.js files.
-cp -f "${PROJECT_FILE_PATH%.xcodeproj}/../www/cordova.js" "$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/www/mobile"
-cp -f "${PROJECT_FILE_PATH%.xcodeproj}/../www/cordova_plugins.js" "$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/www/mobile"
+cp -f "${PROJECT_FILE_PATH%.xcodeproj}/../www/cordova.js" "$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/www"
+cp -f "${PROJECT_FILE_PATH%.xcodeproj}/../www/cordova_plugins.js" "$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/www"
 
 )
 IFS=$ORIG_IFS

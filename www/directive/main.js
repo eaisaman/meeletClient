@@ -6,7 +6,10 @@ requirejs.config(
             "ng.ui.extension": DIRECTIVE_LIB_PATH + "ng.ui.extension",
             "ng.ui.hammer-gestures": DIRECTIVE_LIB_PATH + "ng.ui.hammer-gestures",
             "ng.ui.draggable": DIRECTIVE_LIB_PATH + "ng.ui.draggable",
-            "widget.anchor": DIRECTIVE_LIB_PATH + "widget.anchor"
+            "widget.anchor": DIRECTIVE_LIB_PATH + "widget.anchor",
+            "ng.ui.multi-transclude": DIRECTIVE_LIB_PATH + "ng.ui.multi-transclude",
+            "ng.ui.modal-window": DIRECTIVE_LIB_PATH + "ng.ui.modal-window",
+            "ng.ui.mobile-topbar": DIRECTIVE_LIB_PATH + "ng.ui.mobile-topbar"
         }
     }
 );
@@ -18,7 +21,10 @@ define([
         "ng.ui.extension",
         "ng.ui.hammer-gestures",
         "ng.ui.draggable",
-        "widget.anchor"
+        "widget.anchor",
+        "ng.ui.multi-transclude",
+        "ng.ui.modal-window",
+        "ng.ui.mobile-topbar"
     ],
     function () {
         var utilConfig = arguments[0],
@@ -39,6 +45,15 @@ define([
 
             //widget-anchor directive
             directiveConfigs[2](appModule);
+
+            //Multitransclude
+            directiveConfigs[3](appModule, extension);
+
+            //Modal window
+            directiveConfigs[4](appModule, extension);
+
+            //Toolbar
+            directiveConfigs[5](appModule, extension);
         }
     }
 );
