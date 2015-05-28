@@ -130,7 +130,7 @@
                                                      params:@{@"userFilter":[@{@"loginName":loginName} JSONStringWithOptions:JKSerializeOptionNone error:NULL]}
                                                  httpMethod:@"GET"];
     op.isCacheable = YES;
-    [op setBasicAuthUsername:[SecurityContext getObject].details.userName password:[SecurityContext getObject].details.plainPassword];
+    [op setBasicAuthUsername:[SecurityContext getObject].details.loginName password:[SecurityContext getObject].details.plainPassword];
     [op addHeaders:@{@"Accept":@"text/plain;charset=utf-8"}];
     [op addCompletionHandler:^(CommonNetworkOperation *operation) {
         codeBlock([operation responseString]);
@@ -148,7 +148,7 @@
                                                      params:@{@"userFilter":userFilter}
                                                  httpMethod:@"GET"];
     op.isCacheable = YES;
-    [op setBasicAuthUsername:[SecurityContext getObject].details.userName password:[SecurityContext getObject].details.plainPassword];
+    [op setBasicAuthUsername:[SecurityContext getObject].details.loginName password:[SecurityContext getObject].details.plainPassword];
     [op addHeaders:@{@"Accept":@"text/plain;charset=utf-8"}];
     [op addCompletionHandler:^(CommonNetworkOperation *operation) {
         codeBlock([operation responseString]);
@@ -159,5 +159,40 @@
     
     return op;
 }
+
+-(CommonNetworkOperation*) getProject:(NSString*)projectFilter codeBlock:(StringResponseBlock) codeBlock onError:(NKErrorBlock) errorBlock
+{
+    CommonNetworkOperation *op = [self.engine operationWithPath:@"api/public/project"
+                                                         params:@{@"projectFilter":projectFilter}
+                                                     httpMethod:@"GET"];
+    op.isCacheable = YES;
+    [op addHeaders:@{@"Accept":@"text/plain;charset=utf-8"}];
+    [op addCompletionHandler:^(CommonNetworkOperation *operation) {
+        codeBlock([operation responseString]);
+    } errorHandler:^(CommonNetworkOperation *errorOp, NSString* prevResponsePath, NSError *error) {
+        errorBlock(errorOp, prevResponsePath, error);
+    }];
+    [self.engine enqueueOperation:op forceReload:NO];
+    
+    return op;
+}
+
+-(CommonNetworkOperation*) downloadProject:(NSString*)projectId codeBlock:(NKResponseBlock) codeBlock onError:(NKErrorBlock) errorBlock progressBlock:(DownloadProgressBlock)progressBlock
+{
+    CommonNetworkOperation *op = [self.engine operationWithPath:@"api/public/projectFile"
+                                                         params:@{@"projectId":projectId}
+                                                     httpMethod:@"GET"];
+    op.isPersistable = YES;
+    op.downloadSizePerRequest = 1024000;
+    [op addHeaders:@{@"Accept-Encoding":@"application/octet-stream"}];
+    [op setFileToBeSaved:[NSURL fileURLWithPath:[Global projectPath:[projectId stringByAppendingPathExtension:@"zip"]]]];
+    [op addCompletionHandler:codeBlock errorHandler:errorBlock];
+    [op onDownloadProgressChanged:progressBlock];
+
+    [self.engine enqueueOperation:op forceReload:NO];
+    
+    return op;
+}
+
 
 @end

@@ -193,7 +193,7 @@ static NSURL* downloadTempDirectory;
     OperationRecord* record = [[OperationRecord alloc] init];
     
     record.identifier = self.uniqueIdentifier;
-    record.owner = [SecurityContext getObject].details.userName;
+    record.owner = [SecurityContext getObject].details.loginName;
     record.status = self.state;
     record.unitCompleted = self.unitCompleted;
     record.unitTotal = self.unitTotal;

@@ -8,7 +8,6 @@
 
 #import "NativeBridge.h"
 #import "Global.h"
-#import "LogMacro.h"
 #import <Pods/JSONKit/JSONKit.h>
 
 @implementation NativeBridge
@@ -37,19 +36,24 @@
 {
     if (command.arguments && command.arguments.count == 1) {
         NSString *userFilter = command.arguments[0];
-        [[Global engine] getUserDetails:userFilter codeBlock:^(NSString *record) {
-            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:@{@"data":[record objectFromJSONString]}];
-            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-        } onError:^(CommonNetworkOperation *completedOperation, NSString *prevResponsePath, NSError *error) {
-            if ([error.domain isEqualToString:NSURLErrorDomain] && error.code == kCFURLErrorCannotConnectToHost) {
-                CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[self prevResponse:prevResponsePath]];
+        if ([userFilter objectFromJSONString]) {
+            [[Global engine] getUserDetails:userFilter codeBlock:^(NSString *record) {
+                CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:@{@"data":[record objectFromJSONString]}];
                 [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-                return;
-            }
-            
-            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[error localizedDescription]];
+            } onError:^(CommonNetworkOperation *completedOperation, NSString *prevResponsePath, NSError *error) {
+                if ([error.domain isEqualToString:NSURLErrorDomain] && error.code == kCFURLErrorCannotConnectToHost) {
+                    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[self prevResponse:prevResponsePath]];
+                    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+                    return;
+                }
+                
+                CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[error localizedDescription]];
+                [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+            }];
+        } else {
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Empty query condition."];
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-        }];
+        }
     } else {
         CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Incorrect argument number."];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
@@ -58,7 +62,10 @@
 
 -(void) scanProjectCode:(CDVInvokedUrlCommand *)command
 {
-    
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+
+    [Global scanProjectCode];
 }
 
 -(void) checkProjectExist:(CDVInvokedUrlCommand *)command
@@ -84,7 +91,7 @@
                 NSDictionary *userObj = arr[0];
                 [Global setLoginUser:loginName plainPassword:plainPassword userObj:userObj];
                 
-                CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:userObj];
+                CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:@{@"data":@{@"result":@"OK", @"resultValue":userObj}}];
                 [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
             } else {
                 CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"User object not returned."];
@@ -134,7 +141,7 @@
                 NSDictionary *userObj = arr[0];
                 [Global setLoginUser:userObj];
                 
-                CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:userObj];
+                CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:@{@"data":@{@"result":@"OK", @"resultValue":userObj}}];
                 [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
             } else {
                 CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"User object not returned."];
@@ -154,6 +161,59 @@
 -(void) restoreUserFromStorage:(CDVInvokedUrlCommand*)command
 {
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:@{@"data":@{@"result":@"OK", @"resultValue":[Global getLoginUser]}}];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+-(void) getProject:(CDVInvokedUrlCommand*)command
+{
+    if (command.arguments && command.arguments.count == 1) {
+        NSString *projectFilter = command.arguments[0];
+        
+        if ([projectFilter objectFromJSONString]) {
+            [[Global engine] getProject:projectFilter codeBlock:^(NSString *record) {
+                NSMutableDictionary *recordDict = [@{} mutableCopy];
+                [recordDict addEntriesFromDictionary:[record objectFromJSONString]];
+                NSArray *arr = [recordDict objectForKey:@"resultValue"];
+                
+                if(arr.count) {
+                    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:@{@"data":@{@"result":@"OK", @"resultValue":arr}}];
+                    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+                } else {
+                    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Project object not returned."];
+                    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+                }
+                
+            } onError:^(CommonNetworkOperation *completedOperation, NSString *prevResponsePath, NSError *error) {
+                CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[error localizedDescription]];
+                [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+            }];
+        } else {
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Empty query condition."];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        }
+    } else {
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Incorrect argument number."];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }
+}
+
+-(void) downloadProject:(CDVInvokedUrlCommand*)command
+{
+    if (command.arguments && command.arguments.count == 1) {
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        
+        NSString *projectId = command.arguments[0];
+        [Global downloadProject:projectId];
+    } else {
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Incorrect argument number."];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }
+}
+
+-(void) getLocalProject:(CDVInvokedUrlCommand*)command
+{
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:@{@"data":@{@"result":@"OK", @"resultValue":[Global getLocalProject]}}];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 

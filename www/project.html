@@ -51,8 +51,29 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="projectModalContent" name="modalContent">
+        <div class="projectModalContent" name="modalContent">
+            <div class="projectInfoContainer">
+                <div class="projectInfo fs-x-small">
+                    <div class="infoLabel">Name</div>
+                    <div class="infoContent"><span>{{pickedProject.name}}</span>
+                    </div>
+                </div>
+                <div class="projectInfo fs-x-small">
+                    <div class="infoLabel">Description</div>
+                    <div class="infoContent"><span>{{pickedProject.desc}}</span>
+                </div>
+            </div>
+            <div class="projectModalBar fs-x-medium">
+                <div class="projectModalButton"
+                     ng-click="downloadProject(pickedProject, $event)">
+                    <span class="icon-mobile-client-before icon-mobile-client-confirm-before">Download</span>
+                </div>
+                <div class="projectModalButton"
+                     ng-click="hideProjectModal($event)">
+                    <span class="icon-mobile-client-before icon-mobile-client-cancel-before">Cancel</span>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

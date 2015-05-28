@@ -10,7 +10,7 @@
 
 @implementation UserDetails
 
-@synthesize userName, plainPassword, detailsObject;
+@synthesize loginName, plainPassword, detailsObject;
 
 + (UserDetails*) getDefault
 {
@@ -19,7 +19,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         defaultUserDetails = [[UserDetails alloc] init];
-        defaultUserDetails.userName = @"DEFAULT";
+        defaultUserDetails.loginName = @"DEFAULT";
         defaultUserDetails.detailsObject = nil;
     });
     

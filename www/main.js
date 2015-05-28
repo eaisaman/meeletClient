@@ -65,7 +65,10 @@ requirejs(["jquery-lib", "jquery-plugins-lib", "hammer-lib", "jquery-ui-lib", "j
         boundPropertiesEvent: "boundPropertiesEvent",
         beforeWidgetCreationEvent: "beforeWidgetCreationEvent",
         switchProjectEvent: "switchProjectEvent",
-        widgetContentIncludedEvent: "widgetContentIncluded"
+        widgetContentIncludedEvent: "widgetContentIncluded",
+
+        //Used by Mobile App
+        projectScanEvent: "projectScan"
     });
     window.appModule.value("angularConstants", {
         precision: 1000,

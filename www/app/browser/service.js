@@ -75,7 +75,7 @@ define(
 
                         _.extend(self.$rootScope.loginUser, userObj);
 
-                        defer.resolve(userObj);
+                        defer.resolve(result);
                     } else {
                         defer.reject("User object not returned.");
                     }
@@ -146,13 +146,26 @@ define(
             return this.$http({
                 method: 'GET',
                 url: this.angularConstants.serverUrl + '/api/private/userDetail',
-                params: {userFilter: JSON.stringify(userFilter || {})}
+                params: {userFilter: JSON.stringify(userFilter)}
             });
         }
+
+        appService.prototype.getLocalProject = appService.prototype.NOOP;
 
         appService.prototype.checkProjectExist = appService.prototype.NOOP;
 
         appService.prototype.scanProjectCode = appService.prototype.NOOP;
+
+        appService.prototype.getProject = function (projectFilter) {
+            return this.$http({
+                method: 'GET',
+                url: this.angularConstants.serverUrl + '/api/public/project',
+                params: {projectFilter: JSON.stringify(projectFilter)}
+            });
+
+        }
+
+        appService.prototype.downloadProject = appService.prototype.NOOP;
 
         return function (appModule) {
             appModule.

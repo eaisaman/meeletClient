@@ -17,6 +17,7 @@
 
         > .md-modal {
             height: 50%;
+            width: 80%;
         }
 
         > .modalOverlay {
@@ -228,7 +229,100 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: #999966;
+            background: #669933;
+
+            .projectInfoContainer {
+                position: absolute;
+                top: 0;
+                bottom: 3em;
+                width: calc(100% - 1em);
+                margin: 0 0.5em;
+
+                .projectInfo {
+                    position: relative;
+                    float: left;
+                    width: 100%;
+                    height: 1.5em;
+                    margin-bottom: 1em;
+
+                    &:first-child {
+                        margin-top: 1em;
+                    }
+
+                    .infoLabel {
+                        position: relative;
+                        float: left;
+                        height: 100%;
+                        width: 33%;
+                        line-height: 1.5;
+                    }
+
+                    .infoContent {
+                        position: relative;
+                        float: left;
+                        height: 100%;
+                        width: 66%;
+
+                        span {
+                            position: relative;
+                            float: left;
+                            width: 100%;
+                            height: 100%;
+                            line-height: 1.5;
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -webkit-line-clamp: 1;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            text-align: left;
+                        }
+                    }
+                }
+            }
+
+            .projectModalBar {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 3em;
+
+                .projectModalButton {
+                    position: relative;
+                    float: left;
+                    height: 2em;
+                    width: 50%;
+                    margin: 0.5em 0;
+
+                    span {
+                        position: relative;
+                        float: left;
+                        width: 8em;
+                        height: 100%;
+                        line-height: 2;
+                        left: calc(50% - 4em);
+                        display: inline-block;
+                        background-color: #ddd;
+                        box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .135);
+                        border-radius: 0.2em;
+                        text-align: center;
+
+                        &:before {
+                            position: absolute;
+                            left: 0px;
+                            width: 2em;
+                            height: 2em;
+                            line-height: 2;
+                            text-align: center;
+                        }
+
+                        &:active {
+                            background-color: #555;
+                            color: $activeColor;
+                            box-shadow: none;
+                        }
+                    }
+                }
+            }
         }
     }
 }

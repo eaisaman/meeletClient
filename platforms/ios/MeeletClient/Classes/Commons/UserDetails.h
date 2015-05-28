@@ -10,7 +10,7 @@
 
 @interface UserDetails : NSObject
 
-@property(nonatomic, retain) NSString* userName;
+@property(nonatomic, retain) NSString* loginName;
 @property(nonatomic, retain) NSString* plainPassword;
 @property(nonatomic, retain) id detailsObject;
 

@@ -2,9 +2,13 @@ define(
     ["angular", "jquery", "jquery-ui", "app-route", "app-service"],
     function () {
         return function (appModule, extension) {
-            function RootController($scope, $rootScope, $q, angularConstants, appService, urlService, uiUtilService) {
+            function RootController($scope, $rootScope, $q, angularConstants, angularEventTypes, appService, urlService, uiUtilService) {
 
                 function initMaster() {
+                    window.onProjectScan = function (projectId) {
+                        $rootScope.$broadcast(angularEventTypes.projectScanEvent, {projectId: projectId});
+                    }
+
                     $rootScope.userDetail = {projectList: []};
 
                     return appService.getServerUrl().then(function (serverUrl) {
@@ -18,8 +22,11 @@ define(
                                     arr.push(
                                         function () {
                                             return appService.doLogin("xujingkai27", "*").then(
-                                                function (userObj) {
-                                                    userObj && _.extend($rootScope.loginUser, userObj);
+                                                function (result) {
+                                                    if (result && result.data.result == "OK") {
+                                                        var userObj = result.data.resultValue[0];
+                                                        userObj && _.extend($rootScope.loginUser, userObj);
+                                                    }
 
                                                     return uiUtilService.getResolveDefer();
                                                 },
@@ -42,6 +49,18 @@ define(
                                             return uiUtilService.getRejectDefer(err);
                                         }
                                     );
+                                });
+
+                                arr.push(function () {
+                                    return appService.getLocalProject().then(function (result) {
+                                            result && result.data.result == "OK" && Array.prototype.splice.apply($rootScope.userDetail.projectList, Array.prototype.concat.apply(Array.prototype, [0, 0, result.data.resultValue]));
+                                            ;
+
+                                            return uiUtilService.getResolveDefer();
+                                        },
+                                        function (err) {
+                                            return uiUtilService.getRejectDefer(err);
+                                        });
                                 });
 
                                 return uiUtilService.chain(arr).then(
@@ -68,7 +87,7 @@ define(
                 );
             }
 
-            function ProjectController($scope, $rootScope, $timeout, $q, angularConstants, appService, uiService, urlService, uiUtilService) {
+            function ProjectController($scope, $rootScope, $timeout, $q, angularConstants, angularEventTypes, appService, uiService, urlService, uiUtilService) {
                 extension && extension.attach && extension.attach($scope, {
                     "$timeout": $timeout,
                     "$q": $q,
@@ -77,6 +96,22 @@ define(
                     "element": $(".projectContainer"),
                     "scope": $scope
                 });
+
+                $scope.displayProjectModal = function (event) {
+                    event && event.stopPropagation && event.stopPropagation();
+
+                    var scope = angular.element($("#projectContainer > .modalWindowContainer > .md-modal")).scope();
+                    scope.toggleModalWindow();
+
+                    return true;
+                }
+
+                $scope.hideProjectModal = function (event) {
+                    event && event.stopPropagation && event.stopPropagation();
+
+                    var scope = angular.element($("#projectContainer > .modalWindowContainer .md-modal")).scope();
+                    scope.toggleModalWindow();
+                }
 
                 $scope.scanProjectCode = function (event) {
                     event && event.stopPropagation && event.stopPropagation();
@@ -112,7 +147,40 @@ define(
                     event && event.stopPropagation && event.stopPropagation();
                 }
 
+                $scope.downloadProject = function (projectItem, event) {
+                    event && event.stopPropagation && event.stopPropagation();
+
+                    appService.downloadProject(projectItem._id);
+                }
+
                 function initMaster() {
+                    $scope.$on(angularEventTypes.projectScanEvent, function (event, data) {
+                        $timeout(function () {
+                            $scope.displayProjectModal();
+
+                            if ($scope.userDetail.projectList.every(function (projectItem) {
+                                    if (projectItem._id === data.projectId) {
+                                        $scope.pickedProject = projectItem;
+                                        return false;
+                                    }
+
+                                    return true;
+                                })) {
+                                appService.getProject({_id: data.projectId}).then(
+                                    function (result) {
+                                        if (result && result.data.result == "OK" && result.data.resultValue.length) {
+                                            $scope.pickedProject = result.data.resultValue[0];
+                                        }
+                                    },
+                                    function (err) {
+                                    }
+                                );
+                            }
+                        });
+
+                        $scope.$apply();
+                    });
+
                     return $q.all([appService.checkProjectExist(_.pluck($scope.userDetail.projectList, "_id"))]).then(
                         function (result) {
                             if (result[0] && result[0].data.result == "OK") {
@@ -133,8 +201,8 @@ define(
             }
 
             appModule.
-                controller('RootController', ["$scope", "$rootScope", "$q", "angularConstants", "appService", "urlService", "uiUtilService", RootController]).
-                controller('ProjectController', ["$scope", "$rootScope", "$timeout", "$q", "angularConstants", "appService", "uiService", "urlService", "uiUtilService", ProjectController]);
+                controller('RootController', ["$scope", "$rootScope", "$q", "angularConstants", "angularEventTypes", "appService", "urlService", "uiUtilService", RootController]).
+                controller('ProjectController', ["$scope", "$rootScope", "$timeout", "$q", "angularConstants", "angularEventTypes", "appService", "uiService", "urlService", "uiUtilService", ProjectController]);
         }
     }
 );

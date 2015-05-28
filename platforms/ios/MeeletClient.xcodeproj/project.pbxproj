@@ -28,6 +28,7 @@
 		30B4F30219D5E07200D9F7D8 /* Default-Landscape-736h.png in Resources */ = {isa = PBXBuildFile; fileRef = 30B4F2FF19D5E07200D9F7D8 /* Default-Landscape-736h.png */; };
 		30C1856619D5FC0A00212699 /* icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C1856519D5FC0A00212699 /* icon-60@3x.png */; };
 		30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FC414816E50CA1004E6F35 /* icon-72@2x.png */; };
+		3F630A9DE3E4E5D82AA412A3 /* libPods-MeeletClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6CD1E9DE9DED86688A8CF0 /* libPods-MeeletClient.a */; };
 		5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
 		7E7966DE1810823500FA85AD /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966D41810823500FA85AD /* icon-40.png */; };
 		7E7966DF1810823500FA85AD /* icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966D51810823500FA85AD /* icon-40@2x.png */; };
@@ -39,6 +40,8 @@
 		7E7966E51810823500FA85AD /* icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DB1810823500FA85AD /* icon-76@2x.png */; };
 		7E7966E61810823500FA85AD /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DC1810823500FA85AD /* icon-small.png */; };
 		7E7966E71810823500FA85AD /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DD1810823500FA85AD /* icon-small@2x.png */; };
+		A151C13A1B15616200F52806 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A151C1381B15616200F52806 /* QRCodeViewController.m */; };
+		A151C13B1B15616200F52806 /* QRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A151C1391B15616200F52806 /* QRCodeViewController.xib */; };
 		A1762F311B11AD3000E5B61F /* NetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = A1762F301B11AD3000E5B61F /* NetworkEngine.m */; };
 		A1762F351B11AFD100E5B61F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A1762F341B11AFD100E5B61F /* Settings.bundle */; };
 		A17682C41B13152C008B4D18 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A17682C21B13152C008B4D18 /* Localizable.strings */; };
@@ -118,6 +121,9 @@
 		7E7966DC1810823500FA85AD /* icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small.png"; sourceTree = "<group>"; };
 		7E7966DD1810823500FA85AD /* icon-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small@2x.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* MeeletClient-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "MeeletClient-Info.plist"; path = "../MeeletClient-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A151C1371B15616200F52806 /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
+		A151C1381B15616200F52806 /* QRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
+		A151C1391B15616200F52806 /* QRCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeViewController.xib; sourceTree = "<group>"; };
 		A1762F301B11AD3000E5B61F /* NetworkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkEngine.m; sourceTree = "<group>"; };
 		A1762F321B11AD3F00E5B61F /* NetworkEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkEngine.h; sourceTree = "<group>"; };
 		A1762F331B11ADAD00E5B61F /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
@@ -154,6 +160,7 @@
 		A1BB4BDB1B130DF100018AE9 /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = Pods/build/Framework/Pods.framework; sourceTree = "<group>"; };
 		A1BB4BDD1B130DFE00018AE9 /* libCordova.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCordova.a; path = "../../../../../Library/Developer/Xcode/DerivedData/MeeletClient-ekataqskrnuoeaanmfmhnvsrxyyx/Build/Products/Debug-iphoneos/libCordova.a"; sourceTree = "<group>"; };
 		A1BB4BE31B13136D00018AE9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BC6CD1E9DE9DED86688A8CF0 /* libPods-MeeletClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeeletClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C80BB30EF01D83EDF826D44B /* Pods-MeeletClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeeletClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeeletClient/Pods-MeeletClient.release.xcconfig"; sourceTree = "<group>"; };
 		CD6D95740BA30966095B2ECF /* Pods-MeeletClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeeletClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeeletClient/Pods-MeeletClient.debug.xcconfig"; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
@@ -175,6 +182,7 @@
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
+				3F630A9DE3E4E5D82AA412A3 /* libPods-MeeletClient.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +204,9 @@
 				A1BB4BC51B12F6BA00018AE9 /* Global.m */,
 				A17682C61B1316A5008B4D18 /* NativeBridge.h */,
 				A17682C71B1316A5008B4D18 /* NativeBridge.m */,
+				A151C1371B15616200F52806 /* QRCodeViewController.h */,
+				A151C1381B15616200F52806 /* QRCodeViewController.m */,
+				A151C1391B15616200F52806 /* QRCodeViewController.xib */,
 			);
 			name = Classes;
 			path = MeeletClient/Classes;
@@ -262,6 +273,7 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
 				A1BB4BDD1B130DFE00018AE9 /* libCordova.a */,
+				BC6CD1E9DE9DED86688A8CF0 /* libPods-MeeletClient.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -490,6 +502,7 @@
 				D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */,
 				30B4F30219D5E07200D9F7D8 /* Default-Landscape-736h.png in Resources */,
 				30C1856619D5FC0A00212699 /* icon-60@3x.png in Resources */,
+				A151C13B1B15616200F52806 /* QRCodeViewController.xib in Resources */,
 				7E7966E11810823500FA85AD /* icon-50@2x.png in Resources */,
 				7E7966E51810823500FA85AD /* icon-76@2x.png in Resources */,
 				A1762F351B11AFD100E5B61F /* Settings.bundle in Resources */,
@@ -567,6 +580,7 @@
 				A1BB4BB01B12EE1000018AE9 /* UIDevice+IdentifierAddition.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				A1BB4BA11B12ECEB00018AE9 /* CommonNetworkOperation.m in Sources */,
+				A151C13A1B15616200F52806 /* QRCodeViewController.m in Sources */,
 				A1BB4BAD1B12EE1000018AE9 /* NSDate+RFC1123.m in Sources */,
 				A1BB4BB31B12EF5600018AE9 /* NSString+MD5Addition.m in Sources */,
 				A1BB4BAF1B12EE1000018AE9 /* NSString+NetworkKitAdditions.m in Sources */,
@@ -642,7 +656,10 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/MeeletClient-ekataqskrnuoeaanmfmhnvsrxyyx/Build/Products/Debug-iphoneos",
 				);
-				OTHER_CFLAGS = "$(inherited)";
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-fdiagnostics-show-option",
+				);
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					CoreFoundation,
@@ -693,7 +710,10 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/MeeletClient-ekataqskrnuoeaanmfmhnvsrxyyx/Build/Products/Debug-iphoneos",
 				);
-				OTHER_CFLAGS = "$(inherited)";
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-fdiagnostics-show-option",
+				);
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					CoreFoundation,

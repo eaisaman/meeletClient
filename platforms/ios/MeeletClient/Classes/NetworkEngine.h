@@ -14,6 +14,7 @@
 #import "ResubmittableRecordStore.h"
 
 typedef void (^StringResponseBlock)(NSString* str);
+typedef void (^DownloadProgressBlock)(double progress);
 
 @interface NetworkEngine : NSObject
 
@@ -28,6 +29,8 @@ typedef void (^StringResponseBlock)(NSString* str);
 -(CommonNetworkOperation*) doLogin:(NSString*)loginName plainPassword:(NSString*)plainPassword codeBlock:(StringResponseBlock) codeBlock onError:(NKErrorBlock) errorBlock;
 -(CommonNetworkOperation*) getUser:(NSString*)loginName codeBlock:(StringResponseBlock) codeBlock onError:(NKErrorBlock) errorBlock;
 -(CommonNetworkOperation*) getUserDetails:(NSString*)userFilter codeBlock:(StringResponseBlock) codeBlock onError:(NKErrorBlock) errorBlock;
+-(CommonNetworkOperation*) getProject:(NSString*)userFilter codeBlock:(StringResponseBlock) codeBlock onError:(NKErrorBlock) errorBlock;
+-(CommonNetworkOperation*) downloadProject:(NSString*)projectId codeBlock:(NKResponseBlock) codeBlock onError:(NKErrorBlock) errorBlock progressBlock:(DownloadProgressBlock)progressBlock;
 
 @end
 

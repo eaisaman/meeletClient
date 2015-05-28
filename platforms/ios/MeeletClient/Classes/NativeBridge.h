@@ -19,5 +19,8 @@
 -(void) doLogout:(CDVInvokedUrlCommand*)command;
 -(void) refreshUser:(CDVInvokedUrlCommand*)command;
 -(void) restoreUserFromStorage:(CDVInvokedUrlCommand*)command;
+-(void) getProject:(CDVInvokedUrlCommand*)command;
+-(void) downloadProject:(CDVInvokedUrlCommand*)command;
+-(void) getLocalProject:(CDVInvokedUrlCommand*)command;
 
 @end
