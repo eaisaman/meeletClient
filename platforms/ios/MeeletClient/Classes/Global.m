@@ -13,6 +13,10 @@
 #import "SecurityContext.h"
 #import "QRCodeViewController.h"
 #import <Pods/JSONKit/JSONKit.h>
+#import <Pods/CocoaLumberjack/DDLog.h>
+#import <Pods/CocoaLumberjack/DDTTYLogger.h>
+#import <Pods/CocoaHTTPServer/HTTPServer.h>
+#import <Pods/CocoaHTTPServer/DAVConnection.h>
 
 #define PROJECT_PATH @"project"
 
@@ -30,12 +34,52 @@
     return networkEngine;
 }
 
++(HTTPServer*)httpServer
+{
+    static HTTPServer* server = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [DDLog addLogger:[DDTTYLogger sharedInstance]];
+        
+        server = [[HTTPServer alloc] init];
+        
+        // Tell the server to broadcast its presence via Bonjour.
+        // This allows browsers such as Safari to automatically discover our service.
+        [server setType:@"_http._tcp."];
+        
+        [server setPort:8080];
+        
+        [server setConnectionClass:[DAVConnection class]];
+        
+        // Serve files from our embedded Web folder
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *webPath = [paths objectAtIndex:0];
+        
+        [server setDocumentRoot:webPath];
+    });
+    
+    return server;
+}
+
 +(void)initApplication
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         [self restoreLoginUser];
         [[self engine] initEngine];
+
+#warning Launch HTTP server to browse application files for debug. Should disable this feature in the phase of release.
+        NSError *error;
+        HTTPServer* httpServer = [self httpServer];
+        if([httpServer start:&error])
+        {
+            ALog(@"Started HTTP Server on port %hu, document root %@", [httpServer listeningPort], [httpServer documentRoot]);
+        }
+        else
+        {
+            ALog(@"Error starting HTTP Server: %@", error);
+        }
     });
 }
 
@@ -140,6 +184,7 @@
 + (void)downloadProject:(NSString*)projectId
 {
     [[self engine] downloadProject:projectId codeBlock:^(CommonNetworkOperation *completedOperation) {
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             MainViewController *viewController = [[[UIApplication sharedApplication] delegate] performSelector:@selector(viewController)];
             [viewController.commandDelegate evalJs:[NSString stringWithFormat:@"onDownloadProjectDone && onDownloadProjectDone('%@')", projectId]];

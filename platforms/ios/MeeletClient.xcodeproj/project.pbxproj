@@ -28,7 +28,6 @@
 		30B4F30219D5E07200D9F7D8 /* Default-Landscape-736h.png in Resources */ = {isa = PBXBuildFile; fileRef = 30B4F2FF19D5E07200D9F7D8 /* Default-Landscape-736h.png */; };
 		30C1856619D5FC0A00212699 /* icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C1856519D5FC0A00212699 /* icon-60@3x.png */; };
 		30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FC414816E50CA1004E6F35 /* icon-72@2x.png */; };
-		3F630A9DE3E4E5D82AA412A3 /* libPods-MeeletClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6CD1E9DE9DED86688A8CF0 /* libPods-MeeletClient.a */; };
 		5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
 		7E7966DE1810823500FA85AD /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966D41810823500FA85AD /* icon-40.png */; };
 		7E7966DF1810823500FA85AD /* icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966D51810823500FA85AD /* icon-40@2x.png */; };
@@ -60,7 +59,6 @@
 		A1BB4BBF1B12F09C00018AE9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BB4BBE1B12F09C00018AE9 /* CoreData.framework */; };
 		A1BB4BC61B12F6BA00018AE9 /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BB4BC51B12F6BA00018AE9 /* Global.m */; };
 		A1BB4BDC1B130DF100018AE9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BB4BDB1B130DF100018AE9 /* Pods.framework */; };
-		A1BB4BDE1B130DFE00018AE9 /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BB4BDD1B130DFE00018AE9 /* libCordova.a */; };
 		A1BB4BE21B13136D00018AE9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1BB4BE41B13136D00018AE9 /* Localizable.strings */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 /* End PBXBuildFile section */
@@ -160,7 +158,6 @@
 		A1BB4BDB1B130DF100018AE9 /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = Pods/build/Framework/Pods.framework; sourceTree = "<group>"; };
 		A1BB4BDD1B130DFE00018AE9 /* libCordova.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCordova.a; path = "../../../../../Library/Developer/Xcode/DerivedData/MeeletClient-ekataqskrnuoeaanmfmhnvsrxyyx/Build/Products/Debug-iphoneos/libCordova.a"; sourceTree = "<group>"; };
 		A1BB4BE31B13136D00018AE9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		BC6CD1E9DE9DED86688A8CF0 /* libPods-MeeletClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeeletClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C80BB30EF01D83EDF826D44B /* Pods-MeeletClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeeletClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeeletClient/Pods-MeeletClient.release.xcconfig"; sourceTree = "<group>"; };
 		CD6D95740BA30966095B2ECF /* Pods-MeeletClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeeletClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeeletClient/Pods-MeeletClient.debug.xcconfig"; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
@@ -177,12 +174,10 @@
 			files = (
 				A1BB4BDC1B130DF100018AE9 /* Pods.framework in Frameworks */,
 				5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */,
-				A1BB4BDE1B130DFE00018AE9 /* libCordova.a in Frameworks */,
 				A1BB4BBF1B12F09C00018AE9 /* CoreData.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
-				3F630A9DE3E4E5D82AA412A3 /* libPods-MeeletClient.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +268,6 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
 				A1BB4BDD1B130DFE00018AE9 /* libCordova.a */,
-				BC6CD1E9DE9DED86688A8CF0 /* libPods-MeeletClient.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

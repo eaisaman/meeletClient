@@ -1,0 +1,1977 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00DD641914617A9634CF200D /* HTTPDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A107561D4AD1330C3FC5F673 /* HTTPDataResponse.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		01D9B4C84DB781A353906852 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F073E48684267950DC5D6296 /* CoreGraphics.framework */; };
+		0207D60F4340C30F61B1FF44 /* CocoaLumberjack.h in Headers */ = {isa = PBXBuildFile; fileRef = 37AC057FAA36735831121C74 /* CocoaLumberjack.h */; };
+		02E1E613923C36B783DDB138 /* ZBarReaderController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3852767A15DFD759D76BA7 /* ZBarReaderController.m */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		033DC3EE929053A4441360DF /* ZBarHelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C750041DF19B3B872A77F29 /* ZBarHelpController.m */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		034D01A0C7859AB21F081C3D /* HTTPLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = AA358D2E86C67BB7DE88A17F /* HTTPLogging.h */; };
+		0467BA7189EE5D8C4B5DAA23 /* win.h in Headers */ = {isa = PBXBuildFile; fileRef = CEA181721B1E2093ED915816 /* win.h */; };
+		0482F18AAF7B96FA8A3923F3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE78D1993263C4BA64697D8F /* CFNetwork.framework */; };
+		048F2758DE1E4E1024E7D4F3 /* event.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC3B50FDDBD65FC4DC5BBD5 /* event.h */; };
+		04EF71E150430EDE8F9ED2CB /* ZBarCVImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E8215781A3C1679C582EA148 /* ZBarCVImage.m */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		05E62FBC4104B062130C5082 /* img_scanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B41FCD530257EB4A22C8518 /* img_scanner.h */; };
+		073A09CF77253B2BECFA63B3 /* video.h in Headers */ = {isa = PBXBuildFile; fileRef = A9D09DF0FBEFBA02C2962913 /* video.h */; };
+		08D267F05A1FE7B2C5A3AF48 /* SSZipArchive.h in Headers */ = {isa = PBXBuildFile; fileRef = 82DA911DB4DDB04F7204D4DC /* SSZipArchive.h */; };
+		0B678EE759AE62DB8F53FD04 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C898CE6EBC633799049AC222 /* Reachability.m */; };
+		0C1B4623782D9A006C216D6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7B70637A25A6CC36E0A157 /* Foundation.framework */; };
+		0C9EB18C958F4EBAAC29BF03 /* Pods-MeeletClient-SSZipArchive-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1CE311C769F23BF1C48E9 /* Pods-MeeletClient-SSZipArchive-dummy.m */; };
+		0E53E30D1635CFD706F00D9C /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E90FEF5AE5F41B704CF8EC /* DDContextFilterLogFormatter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		0FD69317A00F784D36AFC98E /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7549E7977C25D2246ED53DC9 /* GCDAsyncUdpSocket.h */; };
+		122C989DA01675779E868DF7 /* HTTPDataResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4A7CC82F2EB84B52555014 /* HTTPDataResponse.h */; };
+		1276B065F7E45A60341F4DF2 /* symbol.h in Headers */ = {isa = PBXBuildFile; fileRef = 370A820E3D8C15ACAAFFE1AF /* symbol.h */; };
+		15B53C459DB09FEA48766B74 /* qrcode.h in Headers */ = {isa = PBXBuildFile; fileRef = 654AF6D0D0ED809CB24F3D25 /* qrcode.h */; };
+		19A5D0FB52A173C8040198F7 /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B3E074142901A1D49BB8060 /* error.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		1C657F38C34609766F8439B0 /* WebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = A4FC5406A83797B9F101F3B6 /* WebSocket.h */; };
+		1C969203FA0A9FA0DF142024 /* Pods-MeeletClient-JSONKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F936F54D0571B98F0119F139 /* Pods-MeeletClient-JSONKit-dummy.m */; };
+		1DCE6DE475FBEC2772FF3973 /* DDLegacyMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = F5B513ECAB05298B62BA7425 /* DDLegacyMacros.h */; };
+		1E334337A63540E816C12A05 /* ZBarCameraSimulator.h in Headers */ = {isa = PBXBuildFile; fileRef = A8BFFD69E73D4FB3CE8810CC /* ZBarCameraSimulator.h */; };
+		1EABFD82BAB45ADE15C4C9C0 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 161CE5765D8D5FE78A3AF6D7 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1EFC92F6B5F650F5FC717962 /* MultipartMessageHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 07ADA243D929471146810B0F /* MultipartMessageHeader.h */; };
+		200DB1C2CAAE2B483655BB34 /* zbar.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B15586BE6B51E3B643F963B /* zbar.h */; };
+		20FC35421488552602518E36 /* DDASLLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = DE199641E1CD76FE67417431 /* DDASLLogger.h */; };
+		2146674FE2B5F3A04C5992E0 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 18F8FBC2934D62C9F8B4AFAD /* ioapi.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		21DC80BE3CD37956006BD59D /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C432513AE874B6F9A7CB2334 /* DDAbstractDatabaseLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		21EBC9BA02AF917BE2EC5E6A /* image.c in Sources */ = {isa = PBXBuildFile; fileRef = 0827F9AFB092E7436C163D56 /* image.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		225995EFB62B7F65FFEFC14F /* rs.h in Headers */ = {isa = PBXBuildFile; fileRef = A4B61B25D86353A6C9A8F44F /* rs.h */; };
+		250C44838568A45BE681A441 /* HTTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FB62E58524BD6FFF2571A593 /* HTTPMessage.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2534D4D0A0645FEAF3A32394 /* bch15_5.c in Sources */ = {isa = PBXBuildFile; fileRef = C82502D6C2E6D266ECF046D4 /* bch15_5.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		2687770F7F3C7146D3F8DB8E /* PUTResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = EE199DE73D8881E84BF8549B /* PUTResponse.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		297C2C4E654EA8DA9C224D16 /* processor.h in Headers */ = {isa = PBXBuildFile; fileRef = 35BE478B3410D5CAF57C1D9B /* processor.h */; };
+		2A11D032373A5F8D21A5B970 /* HTTPFileResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = C6B7D33B2635603AEDCD9E09 /* HTTPFileResponse.h */; };
+		2B9525A2361F56C1997EB6EE /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A9977E4C7E12B2A57E397F /* DDDispatchQueueLogFormatter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2BFACFD48523341E68859680 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 679F1CA5966C38DAD68C6A27 /* ioapi.h */; };
+		2E06E38B51553CE648415015 /* code93.h in Headers */ = {isa = PBXBuildFile; fileRef = 776E218E2B2284CA59232404 /* code93.h */; };
+		2E16EE12894E6A82552C362B /* config.c in Sources */ = {isa = PBXBuildFile; fileRef = A0C1F7B58FE26C21A32C9129 /* config.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		2EB28908F3135A816380A0FB /* ZBarSymbol.h in Headers */ = {isa = PBXBuildFile; fileRef = F14FB3A4F15328CFD444D89A /* ZBarSymbol.h */; };
+		2F4DDD2C658C532340A00CA1 /* ZBarReaderViewImpl_Simulator.m in Sources */ = {isa = PBXBuildFile; fileRef = AEEB587AD07B4A01D55C9B9E /* ZBarReaderViewImpl_Simulator.m */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		3017381555E94BA43CA0AD0D /* MultipartFormDataParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 25BB93200D4A0D6C7C4B3B3C /* MultipartFormDataParser.h */; };
+		3153D3D9EFEA897C67ABCC74 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = DDDD0BCD40ED711F50297AE6 /* mztools.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		333698C0B71A1377270AC266 /* DAVConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 51018D782820BC3CE2823BFC /* DAVConnection.h */; };
+		33B09C719D516120ABFE80B7 /* DAVConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1CF1D3C718B3DB99D1E861 /* DAVConnection.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		33F1D0497840D24D9F337266 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7B70637A25A6CC36E0A157 /* Foundation.framework */; };
+		37289F987645E9F2D5BB10D2 /* decoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 762EF1C449A203CA66C23C0E /* decoder.h */; };
+		3C4984ED4E3C2AB2D5CC7E52 /* DDAssertMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = F97F1D00A67CC9FF0EBA6723 /* DDAssertMacros.h */; };
+		3C5B11971D965C4372D14E65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7B70637A25A6CC36E0A157 /* Foundation.framework */; };
+		3C97B08A8AF6FF864318D0F7 /* DDData.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2458E8B679B2E9ABC73E6B /* DDData.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		3DA8BBDAA868A81E5F699D57 /* HTTPAuthenticationRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = E63505D01948D18ED3B51903 /* HTTPAuthenticationRequest.h */; };
+		3E8A71FF1A5AD037A940AAB7 /* Pods-MeeletClient-CocoaHTTPServer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA80C1E9621536049F8FEB6 /* Pods-MeeletClient-CocoaHTTPServer-dummy.m */; };
+		41FEE2E42D1ADFECC301A25D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABC84E147D787248C39AE407 /* QuartzCore.framework */; };
+		4209C905D25B94E52DDB37A3 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1EFD47A4338A5B81788DE7 /* DDLog.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		424CE5087B494FB0377850C6 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA3E36D014AE70F7B7AC6E5 /* SSZipArchive.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		427EDB678BD208B6A59E3B4D /* DELETEResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = EC5EA7666731BEA4F0009BB1 /* DELETEResponse.h */; };
+		47B1086D3545502FC856CF88 /* DDContextFilterLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 68F507B7227E90A99BC42AD3 /* DDContextFilterLogFormatter.h */; };
+		47D28679B8EADD4B03F52D40 /* code93.c in Sources */ = {isa = PBXBuildFile; fileRef = 7EFFA2B5C3231EDA730B0164 /* code93.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		494B48887929A4A4E962EA4C /* ZBarCameraSimulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 85440C023C38C7068A75472B /* ZBarCameraSimulator.m */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		4975C834E984DC585A68479A /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFDDAA91679373AE03A0BA5 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		49F63857FD1B08B49650C224 /* DDASLLogCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7DB23BE7E425017C42E2E8 /* DDASLLogCapture.h */; };
+		4C906932240F6B7647CB7BC8 /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 04038E9193623B0E7CFD59A6 /* GCDAsyncSocket.h */; };
+		4CA648E43858CDAF851E5BC3 /* AsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 04D3D7EC1B7EBE2D2F5B8B6C /* AsyncUdpSocket.h */; };
+		4E46EE622BCDF0877766B3DD /* HTTPFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB50ECD862779F506FAFE8D /* HTTPFileResponse.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		4E48BF41A428CA8E9D03548A /* util.h in Headers */ = {isa = PBXBuildFile; fileRef = AF38286AD30AA643FB3A9E6C /* util.h */; };
+		4E844704388FD83645F25586 /* image.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3DD2EE5A785C7250478608 /* image.h */; };
+		4E90D048902BA306BF99172B /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A34D28045CCC973A1F1D76 /* DDASLLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		4F7A2445BC413E5A94FBB065 /* bch15_5.h in Headers */ = {isa = PBXBuildFile; fileRef = 5858EA3F03A514958FEADBD6 /* bch15_5.h */; };
+		4FFF3D85280AE42F5931F2E4 /* symbol.c in Sources */ = {isa = PBXBuildFile; fileRef = 0325D8B8BBC508922FD754DA /* symbol.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		5070AB2422D1384F79564487 /* DDRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C0BDE0C2180EAE05E5AE1 /* DDRange.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		51A1538254004ECEBD9B2113 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 443CB7FBF25AF2FFA1905675 /* zip.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5283F35850935F727391F4D6 /* ean.h in Headers */ = {isa = PBXBuildFile; fileRef = 14DDB0B66CD987F603A13500 /* ean.h */; };
+		53158EED8AD64BE166B90137 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FF64988DF99A324F1CE001DD /* DDTTYLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		53256562D35477637DE45876 /* x.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B7F1D29942D634EBA3B96E /* x.h */; };
+		538919911CC9B4774F5300F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7B70637A25A6CC36E0A157 /* Foundation.framework */; };
+		552564325E73DD42C6EBB2A7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 450756856B9CAD97C8514668 /* AVFoundation.framework */; };
+		56CD88D3C250895387EECECF /* qr_finder.h in Headers */ = {isa = PBXBuildFile; fileRef = D3B396A5208E09A3F23FCDCE /* qr_finder.h */; };
+		5A7AA77FD53247B3FE9D0A28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7B70637A25A6CC36E0A157 /* Foundation.framework */; };
+		5B3B492F04A190F46ABF6D0D /* mutex.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DF66CF1496EF1C3316C1D59 /* mutex.h */; };
+		5B62C4C69DC71334A57FA343 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = C5E64694788CBFBD687EB0F6 /* unzip.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5CA20CB629863AF2A209FF15 /* HTTPAsyncFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7AF8809CA7C684257728C /* HTTPAsyncFileResponse.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5F285C79CC2D8D3C75A88CF1 /* ZBarImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 217E40D8DA50EEEEFFBE4155 /* ZBarImage.h */; };
+		5F850C2BCBCAF40FC535F79A /* WebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7601795A829A9B633D963042 /* WebSocket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5FEAF022E114345D0DD47A97 /* DDMultiFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C79C818B3E00DFBD1699528 /* DDMultiFormatter.h */; };
+		619E936695443AC923AFAB0A /* i25.c in Sources */ = {isa = PBXBuildFile; fileRef = 58D7A96B5AEE12D72F2C806E /* i25.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		643016AB72E52D344BAB4772 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = C5769B8D5A4A9DA943F2DA11 /* zip.h */; };
+		660401E4FE9FF2041413FBBA /* HTTPAuthenticationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2964B6FC6C7BDB78CA977B33 /* HTTPAuthenticationRequest.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		66090F6B033BDED6C3CFE2AA /* MultipartMessageHeaderField.m in Sources */ = {isa = PBXBuildFile; fileRef = 21687697F74FADC3C5EF13EA /* MultipartMessageHeaderField.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		69657F35DE4B6B1AE876F0E8 /* i25.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C17FABC8CF6284C49D87988 /* i25.h */; };
+		69FAFF9E7C451BDA318CB35B /* HTTPRedirectResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DC88E58A4113AF8C043392D /* HTTPRedirectResponse.h */; };
+		69FE1B9E2D0728D4064822C1 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 729D96CAD9D50D17585BDB8B /* unzip.h */; };
+		6A0F3087AC1CC358CFBCC933 /* refcnt.h in Headers */ = {isa = PBXBuildFile; fileRef = 310A0F484220C86AE3DC6A86 /* refcnt.h */; };
+		6B3D215169DFF25EE0A94025 /* ZBarImageScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9E1769B2DDEAD5447EBE4F /* ZBarImageScanner.m */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		6B5091D8B093B66B54B83D7A /* DDLog+LOGV.h in Headers */ = {isa = PBXBuildFile; fileRef = 21C3EA1CEC2D36764A2EF232 /* DDLog+LOGV.h */; };
+		6CF5AF6A8AEB4643A775CE1D /* code39.c in Sources */ = {isa = PBXBuildFile; fileRef = 0BBC804D4F0B0DFE4DFB2FF8 /* code39.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		6E67BCE5205406753E72074C /* ZBarImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4308C073C683CDFD0CE3B4 /* ZBarImage.m */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		6F18AB131F9E4AC1434FC739 /* ean.c in Sources */ = {isa = PBXBuildFile; fileRef = 2728D20D07D7A72F4898C1AC /* ean.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		6F23F6BB7DF1462373D23FDD /* HTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = A5391FB7295069F432C61841 /* HTTPConnection.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6F82B9EB1DD92394264388A8 /* binarize.c in Sources */ = {isa = PBXBuildFile; fileRef = 10789DC813CEDC0A421718BC /* binarize.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		7021A0DCB2EBAE165AB28E67 /* pdf417_hash.h in Headers */ = {isa = PBXBuildFile; fileRef = 577775E01000A0CC3B290166 /* pdf417_hash.h */; };
+		71D748C06C1DC4A73A64C445 /* DAVResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E051443238793D8C71DC9E4 /* DAVResponse.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		73A136CCA96EB49025935C3C /* HTTPAsyncFileResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 734C1CA3C9812FB4015AFB9F /* HTTPAsyncFileResponse.h */; };
+		74895C9CE1BBD2876A762D76 /* databar.c in Sources */ = {isa = PBXBuildFile; fileRef = 612A87202906D6DABB10C3C3 /* databar.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		75AA23D3E9A7B20FF505C01D /* ZBarSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 2464328CBB2B464906195F6C /* ZBarSDK.h */; };
+		75D1BFF484E4C5A7213537A7 /* window.h in Headers */ = {isa = PBXBuildFile; fileRef = BD48B316F1877BCF2F8D1D5E /* window.h */; };
+		76B5855AE68825B1A3F3ACA6 /* Pods-MeeletClient-CocoaLumberjack-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DC7E5091DF54C2DBCB5635 /* Pods-MeeletClient-CocoaLumberjack-dummy.m */; };
+		76EF1032C113430BADC100CE /* MultipartMessageHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B53927A6E9BEF4759A47197B /* MultipartMessageHeader.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		776254C267AB692786183C85 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7B70637A25A6CC36E0A157 /* Foundation.framework */; };
+		776B2382274F3768C00FB777 /* ZBarCaptureReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AC56540400BABF0E91129E /* ZBarCaptureReader.m */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		78FCF72C0C5557917B7CF41D /* ZBarImageScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = F5322632C831E272C85F4CB9 /* ZBarImageScanner.h */; };
+		7A5B0B67BB9884AE3F7506BF /* ZBarReaderController.h in Headers */ = {isa = PBXBuildFile; fileRef = EBC87E6487C5ABCE8AEB0BF6 /* ZBarReaderController.h */; };
+		7C22904A503A65562BD1CA4F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABB720E5DF8FADB4B5C6AC2A /* CoreVideo.framework */; };
+		7E9FAB9054D59D5C1D59A773 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AF67741A7E180E4AB0D37FA6 /* JSONKit.h */; };
+		8398FF32DEA3282B4B4FA467 /* MultipartFormDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A2CA0F641046BA678CE924 /* MultipartFormDataParser.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		8584CF2FE9D5F0A4028F30E2 /* posix.h in Headers */ = {isa = PBXBuildFile; fileRef = 367B3AA521D553C40E643F74 /* posix.h */; };
+		85DCBE4A93B13883D7EE3EBA /* DDLogMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = F4163B518605201E49CEE985 /* DDLogMacros.h */; };
+		8861968D5627879772006483 /* img_scanner.c in Sources */ = {isa = PBXBuildFile; fileRef = 633C3EADC9F2B926138257C1 /* img_scanner.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		89DD21A7B2D2708414F901A1 /* ZBarReaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 743B344E3BD2A790B2ECC240 /* ZBarReaderView.h */; };
+		8A6B05891B5FBD7B4885C8CF /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232D07513D9194D21B8C6BB /* DDFileLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		90B0E3F591993DD187F9165C /* thread.h in Headers */ = {isa = PBXBuildFile; fileRef = E3118E65EB1FA3D5308C616B /* thread.h */; };
+		9174BC91DCC2BD6AB16D3E7A /* HTTPDynamicFileResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = FBDC43E39E0B5B2344C59561 /* HTTPDynamicFileResponse.h */; };
+		92154509DDD26EA5824C01B2 /* DELETEResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AB123204BE72E5EBD2173354 /* DELETEResponse.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		93B2BB8E1B13A06296984914 /* isaac.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B5CB1FC6892732FA5EF68F2 /* isaac.h */; };
+		944FC4C666AD40D16E772AD7 /* svg.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D82722FB6E9A78460A84ADA /* svg.h */; };
+		950CE1A4DED553F6A0CE9611 /* DDData.h in Headers */ = {isa = PBXBuildFile; fileRef = 08D5829076F718980A922774 /* DDData.h */; };
+		97D27E723B70E0908C979F38 /* binarize.h in Headers */ = {isa = PBXBuildFile; fileRef = E043E9EC6FDDCB89A3C857EB /* binarize.h */; };
+		97DD385F581BA66E978F6A61 /* DDFileLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = D7A3808F5FE5AFE5B3C16D45 /* DDFileLogger.h */; };
+		9A7008D0866B5C2DDB89BA9F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFC1E816DE2C583DF4F5297 /* Security.framework */; };
+		9E0A9631C1CB63DCC02D20BF /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FD746981864CBC701BEC3E /* DDASLLogCapture.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		9F071C59422C5018CA271742 /* Pods-MeeletClient-CocoaAsyncSocket-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E699E8418DEE6BBC21DABFBC /* Pods-MeeletClient-CocoaAsyncSocket-dummy.m */; };
+		A174A201AA54F7C8BB062A0D /* ZBarHelpController.h in Headers */ = {isa = PBXBuildFile; fileRef = E4F6F2B53F57D638DC38DC72 /* ZBarHelpController.h */; };
+		A1A218501B199B85009EE499 /* Pods-MeeletClient-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A464366C72356CE845FDF2 /* Pods-MeeletClient-dummy.m */; };
+		A2107738E8D60B52BD6BFD8C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C97E8988FB70B7353EE4100 /* CoreMedia.framework */; };
+		A2AF9DFA1172D36D466674EC /* DDNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C5B2CF3DC9E8A54E8A10FED /* DDNumber.h */; };
+		A3FC09EB9559A5CD32BABC16 /* AsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = A54649707B4FC398302F8234 /* AsyncSocket.h */; };
+		A4081DE8E497BC28A3C618FE /* qrdectxt.c in Sources */ = {isa = PBXBuildFile; fileRef = 6013F9819A6B5A7298A20E40 /* qrdectxt.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		A42925F6600AF58553CF9431 /* code128.h in Headers */ = {isa = PBXBuildFile; fileRef = F135110585EFD5A5481A2B27 /* code128.h */; };
+		A828817853F4064A3613BDE3 /* databar.h in Headers */ = {isa = PBXBuildFile; fileRef = 5060E9B44D501BC236FA04B6 /* databar.h */; };
+		B0DAE9236BAAD74CC934BCCD /* DDLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 3238F8C158D3D4FDE666ED09 /* DDLog.h */; };
+		B0F4BEFD65B96AE312D42156 /* error.h in Headers */ = {isa = PBXBuildFile; fileRef = C5673888D93B845EF20A1913 /* error.h */; };
+		B15F5BAC9470DC187E25330E /* code39.h in Headers */ = {isa = PBXBuildFile; fileRef = D7DB0183206501F956CC8F48 /* code39.h */; };
+		B1B323A9E072C4BC12EA500D /* DAVResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 49773B804BE384343BA6D7A0 /* DAVResponse.h */; };
+		B1C52BBA5AA1ED65BA99ABF6 /* ZBarCaptureReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D4538DA5B72728C6DE90523 /* ZBarCaptureReader.h */; };
+		B1D4A3DB5F7D49F0D6C3FFBF /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8B88A36A5A92FB692B33B7 /* DDMultiFormatter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		B22A997C282315B9AC25B69F /* scanner.c in Sources */ = {isa = PBXBuildFile; fileRef = 7E3398F6436DDB2F53D2B954 /* scanner.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		B328CA371B63ADC5175A4F80 /* HTTPResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA87F5E2F48743AE51BE675 /* HTTPResponse.h */; };
+		B457FD6F02833638EAA09395 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE78D1993263C4BA64697D8F /* CFNetwork.framework */; };
+		B51069F3A9E37144A67EA1A2 /* DDDispatchQueueLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 31380AE92B2788EFB7BC0F12 /* DDDispatchQueueLogFormatter.h */; };
+		B6758E9CD3F13C06F681C5AD /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD6451AFC7C4D8B8DB7DE91 /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		B8A7DCE8BE774652F4CBAB95 /* decoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BBB788F03BD1317A06B3BC5 /* decoder.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		BC9C78C377886F2F7567E8C3 /* qr_finder.c in Sources */ = {isa = PBXBuildFile; fileRef = 35BBB13BBE72E3724BFBCA41 /* qr_finder.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		BCF08E1681B6C7D5BFF0E06F /* debug.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E5F9F0DD27E4071796E1B95 /* debug.h */; };
+		BD1C025EFA929FFFF115BBCF /* HTTPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 042A5DD4134A76890DD3FC54 /* HTTPConnection.h */; };
+		BEDF2D57A59C9CE0A32EC7E6 /* HTTPRedirectResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 113BDD07F8110D72BE62CCE3 /* HTTPRedirectResponse.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C0589F19169B3718375EA51B /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A7168A3F831F78ECE08A99 /* AsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C112F420920D9B147CF1E681 /* isaac.c in Sources */ = {isa = PBXBuildFile; fileRef = 8E29B8D8CED6BB1B092B145B /* isaac.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		C132CE325A00847D2F6C56C3 /* rs.c in Sources */ = {isa = PBXBuildFile; fileRef = A4256FA26EA08D478AC04189 /* rs.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		C20AA7ABC1B29E2219117D60 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 02E333F92F0E04CB5D788DC8 /* crypt.h */; };
+		C2572E374AFAEB811787B4AC /* PUTResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B932B1810F0BA2A5F561374 /* PUTResponse.h */; };
+		C348731FE407D4D53919E48A /* MultipartMessageHeaderField.h in Headers */ = {isa = PBXBuildFile; fileRef = 2150A8F24148195AD7D7B472 /* MultipartMessageHeaderField.h */; };
+		C3DD8843F01CC8C76B32667F /* qrdec.c in Sources */ = {isa = PBXBuildFile; fileRef = B763FFE1E21E99D7CB3A1DFB /* qrdec.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		C619D9DCFDE6D449F2DA59E3 /* ZBarSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = B738BDDE360A9F07BBC93E3B /* ZBarSymbol.m */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		C67BE871A079E8E2E5F3E909 /* timer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D24B96B8DB950C715DECB79 /* timer.h */; };
+		C7B1343DBDA415C463292B58 /* codabar.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F0097E176C04FF2A3C7ED12 /* codabar.h */; };
+		C7E3873F9D7132FC142ED908 /* refcnt.c in Sources */ = {isa = PBXBuildFile; fileRef = E7D133EA4B4CCD3021FAE999 /* refcnt.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		C8B06079891BED16646317D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7B70637A25A6CC36E0A157 /* Foundation.framework */; };
+		CAC096A28381C8D576B77F1F /* HTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E06AEC9B81BF29D0D9224110 /* HTTPServer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		CB1E3FFE47ACB7005541F62A /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C953B4C932EF4938DD2EF76 /* config.h */; };
+		D24D7C1CA591339D5C3F76A8 /* Pods-MeeletClient-ZBarSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EAC5DD80F922C58471E687 /* Pods-MeeletClient-ZBarSDK-dummy.m */; };
+		D28C1BC4686F8A18F2DEBC2B /* DDAbstractDatabaseLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = DB343CFD0E3D5B6D74259483 /* DDAbstractDatabaseLogger.h */; };
+		D4243B007110550449E14B76 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = F5B912217D763E0C2EBB6804 /* Reachability.h */; };
+		D52F73BE35A5FE6A9EAD1C2E /* HTTPMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 228D4D77CF3EA817A68508DE /* HTTPMessage.h */; };
+		D6548DD04A489D3B9F0FF348 /* debug.h in Headers */ = {isa = PBXBuildFile; fileRef = 7181AA153973AA299A622B60 /* debug.h */; };
+		D7F2572C3C434354321F46B9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4161AB40EB2981815030A411 /* SystemConfiguration.framework */; };
+		DB53DEC8C7BD30C3EBDF1BB0 /* HTTPServer.h in Headers */ = {isa = PBXBuildFile; fileRef = D35EC037E0E5DA4BEBC313FF /* HTTPServer.h */; };
+		DB9093E33BB2C0CE56BF3823 /* DDNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 38772BD993E2CE6F77C63846 /* DDNumber.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		DD31F6398D1C2BF2EEF29373 /* qrdec.h in Headers */ = {isa = PBXBuildFile; fileRef = 308189F877D59DBC014805F2 /* qrdec.h */; };
+		DE7535287BB5ED4617D069D5 /* ZBarReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DCB9F238C677C26E415AC4 /* ZBarReaderView.m */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		E00DA7F8D1E2E62099C1B361 /* ZBarReaderViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C606B745DF0EFDE7C0225D1E /* ZBarReaderViewController.h */; };
+		E0EFFAE7CFEBC2C8E4CF51B5 /* DDRange.h in Headers */ = {isa = PBXBuildFile; fileRef = FC525ACA45732D0A9EE61B95 /* DDRange.h */; };
+		E2C1EABCC697EC302F24B71C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFC1E816DE2C583DF4F5297 /* Security.framework */; };
+		E35856F089FA8664704C8ED1 /* ZBarReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC37EDFF4AF6D8769BEA59A2 /* ZBarReaderViewController.m */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		E472F88A38718AFDD3E735BC /* util.c in Sources */ = {isa = PBXBuildFile; fileRef = 57B8462A9DAAEDCDFBF4C015 /* util.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		E790911A9F1CA0032464E310 /* code128.c in Sources */ = {isa = PBXBuildFile; fileRef = 97D6B7246199813DE2A81418 /* code128.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		E82F6E72A64ED981AC720CB5 /* ZBarReaderViewImpl_Capture.m in Sources */ = {isa = PBXBuildFile; fileRef = 08DE181DBF939A333D47EB25 /* ZBarReaderViewImpl_Capture.m */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		E8F7499C824C78B77BB92508 /* codabar.c in Sources */ = {isa = PBXBuildFile; fileRef = 48648989093354BB828C9093 /* codabar.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
+		EAE68B7FAF02AB8ADCCB72CB /* mztools.h in Headers */ = {isa = PBXBuildFile; fileRef = 3143CF88705F894F10D38C75 /* mztools.h */; };
+		ECD3DA21461954300813E273 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5353C8983545F99C35BC760D /* AsyncSocket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		ED56F1D5F27F2F01FB419B20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7B70637A25A6CC36E0A157 /* Foundation.framework */; };
+		ED60AF3885A4CA11817182F1 /* pdf417.h in Headers */ = {isa = PBXBuildFile; fileRef = 71EEFCF85BC5AA0B16A323EF /* pdf417.h */; };
+		EDEE7366A3DE1F0BAEC308D8 /* Pods-MeeletClient-Reachability-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 580D87E0B0AD370EFDE86751 /* Pods-MeeletClient-Reachability-dummy.m */; };
+		F47587541E844C2003AC699E /* HTTPDynamicFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBFDD4AB06138FDE0C3AFA9 /* HTTPDynamicFileResponse.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		FB3A6630858E9D5CB914541B /* DDTTYLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 88FCA8127A72F05F0856C7C1 /* DDTTYLogger.h */; };
+		FBD2B688C7A6C067C391A5E7 /* ZBarCVImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A52BF4B2F47B0F703A60A00 /* ZBarCVImage.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9B200E8B1F844EFE87689631 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E0B85CFAE25A8407D46A458 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E0763DD35F21EC4471F0AB9;
+			remoteInfo = "Pods-MeeletClient-CocoaLumberjack";
+		};
+		A1A218421B199B77009EE499 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E0B85CFAE25A8407D46A458 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3E66DD657B8AD247B063EE4C;
+			remoteInfo = "Pods-MeeletClient-CocoaAsyncSocket";
+		};
+		A1A218441B199B77009EE499 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E0B85CFAE25A8407D46A458 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B489C79E84065E6B3F12AD9F;
+			remoteInfo = "Pods-MeeletClient-CocoaHTTPServer";
+		};
+		A1A218461B199B77009EE499 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E0B85CFAE25A8407D46A458 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E0763DD35F21EC4471F0AB9;
+			remoteInfo = "Pods-MeeletClient-CocoaLumberjack";
+		};
+		A1A218481B199B77009EE499 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E0B85CFAE25A8407D46A458 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D21C4BE414E53B990224110;
+			remoteInfo = "Pods-MeeletClient-JSONKit";
+		};
+		A1A2184A1B199B77009EE499 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E0B85CFAE25A8407D46A458 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E3202B11CC66B6B05839E199;
+			remoteInfo = "Pods-MeeletClient-Reachability";
+		};
+		A1A2184C1B199B77009EE499 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E0B85CFAE25A8407D46A458 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF2B53EDEA12F0072B1951AB;
+			remoteInfo = "Pods-MeeletClient-SSZipArchive";
+		};
+		A1A2184E1B199B77009EE499 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E0B85CFAE25A8407D46A458 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1ACDB41713973DDA8D7CB2A8;
+			remoteInfo = "Pods-MeeletClient-ZBarSDK";
+		};
+		E8ED55E94FBFDC855C7A59E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E0B85CFAE25A8407D46A458 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3E66DD657B8AD247B063EE4C;
+			remoteInfo = "Pods-MeeletClient-CocoaAsyncSocket";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02E333F92F0E04CB5D788DC8 /* crypt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = crypt.h; path = SSZipArchive/minizip/crypt.h; sourceTree = "<group>"; };
+		0325D8B8BBC508922FD754DA /* symbol.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = symbol.c; path = zbar/symbol.c; sourceTree = "<group>"; };
+		04038E9193623B0E7CFD59A6 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = GCD/GCDAsyncSocket.h; sourceTree = "<group>"; };
+		042A5DD4134A76890DD3FC54 /* HTTPConnection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPConnection.h; path = Core/HTTPConnection.h; sourceTree = "<group>"; };
+		04D3D7EC1B7EBE2D2F5B8B6C /* AsyncUdpSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AsyncUdpSocket.h; path = RunLoop/AsyncUdpSocket.h; sourceTree = "<group>"; };
+		07ADA243D929471146810B0F /* MultipartMessageHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MultipartMessageHeader.h; path = Core/Mime/MultipartMessageHeader.h; sourceTree = "<group>"; };
+		0827F9AFB092E7436C163D56 /* image.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = image.c; path = zbar/image.c; sourceTree = "<group>"; };
+		08ADE4E277743E72A63D951D /* Pods-MeeletClient-CocoaAsyncSocket.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeeletClient-CocoaAsyncSocket.xcconfig"; sourceTree = "<group>"; };
+		08D5829076F718980A922774 /* DDData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDData.h; path = Core/Categories/DDData.h; sourceTree = "<group>"; };
+		08DE181DBF939A333D47EB25 /* ZBarReaderViewImpl_Capture.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZBarReaderViewImpl_Capture.m; path = iphone/ZBarReaderViewImpl_Capture.m; sourceTree = "<group>"; };
+		0BBC804D4F0B0DFE4DFB2FF8 /* code39.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = code39.c; path = zbar/decoder/code39.c; sourceTree = "<group>"; };
+		10789DC813CEDC0A421718BC /* binarize.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = binarize.c; path = zbar/qrcode/binarize.c; sourceTree = "<group>"; };
+		113BDD07F8110D72BE62CCE3 /* HTTPRedirectResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPRedirectResponse.m; path = Core/Responses/HTTPRedirectResponse.m; sourceTree = "<group>"; };
+		1232D07513D9194D21B8C6BB /* DDFileLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDFileLogger.m; path = Classes/DDFileLogger.m; sourceTree = "<group>"; };
+		14DDB0B66CD987F603A13500 /* ean.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ean.h; path = zbar/decoder/ean.h; sourceTree = "<group>"; };
+		1610B7A6414C983008A72207 /* Pods-MeeletClient-CocoaLumberjack.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeeletClient-CocoaLumberjack.xcconfig"; sourceTree = "<group>"; };
+		161CE5765D8D5FE78A3AF6D7 /* JSONKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		18A9977E4C7E12B2A57E397F /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDDispatchQueueLogFormatter.m; path = Classes/Extensions/DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
+		18F8FBC2934D62C9F8B4AFAD /* ioapi.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ioapi.c; path = SSZipArchive/minizip/ioapi.c; sourceTree = "<group>"; };
+		1A52BF4B2F47B0F703A60A00 /* ZBarCVImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZBarCVImage.h; path = iphone/ZBarCVImage.h; sourceTree = "<group>"; };
+		1C953B4C932EF4938DD2EF76 /* config.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = config.h; path = iphone/include/config.h; sourceTree = "<group>"; };
+		1D4538DA5B72728C6DE90523 /* ZBarCaptureReader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZBarCaptureReader.h; path = iphone/include/ZBarSDK/ZBarCaptureReader.h; sourceTree = "<group>"; };
+		1D82722FB6E9A78460A84ADA /* svg.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = svg.h; path = zbar/svg.h; sourceTree = "<group>"; };
+		1DBEE1713216FE5E9F5C0EF2 /* Pods-MeeletClient-CocoaLumberjack-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MeeletClient-CocoaLumberjack-prefix.pch"; sourceTree = "<group>"; };
+		200D2B05523F09AEB588E24C /* Pods-MeeletClient-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MeeletClient-acknowledgements.plist"; sourceTree = "<group>"; };
+		2150A8F24148195AD7D7B472 /* MultipartMessageHeaderField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MultipartMessageHeaderField.h; path = Core/Mime/MultipartMessageHeaderField.h; sourceTree = "<group>"; };
+		21687697F74FADC3C5EF13EA /* MultipartMessageHeaderField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MultipartMessageHeaderField.m; path = Core/Mime/MultipartMessageHeaderField.m; sourceTree = "<group>"; };
+		217E40D8DA50EEEEFFBE4155 /* ZBarImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZBarImage.h; path = iphone/include/ZBarSDK/ZBarImage.h; sourceTree = "<group>"; };
+		21C3EA1CEC2D36764A2EF232 /* DDLog+LOGV.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DDLog+LOGV.h"; path = "Classes/DDLog+LOGV.h"; sourceTree = "<group>"; };
+		228D4D77CF3EA817A68508DE /* HTTPMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPMessage.h; path = Core/HTTPMessage.h; sourceTree = "<group>"; };
+		2464328CBB2B464906195F6C /* ZBarSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZBarSDK.h; path = iphone/include/ZBarSDK/ZBarSDK.h; sourceTree = "<group>"; };
+		24DF86AC9653090C5AA40DAD /* Pods-MeeletClient-ZBarSDK-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeeletClient-ZBarSDK-Private.xcconfig"; sourceTree = "<group>"; };
+		25BB93200D4A0D6C7C4B3B3C /* MultipartFormDataParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MultipartFormDataParser.h; path = Core/Mime/MultipartFormDataParser.h; sourceTree = "<group>"; };
+		2728D20D07D7A72F4898C1AC /* ean.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ean.c; path = zbar/decoder/ean.c; sourceTree = "<group>"; };
+		27B7F1D29942D634EBA3B96E /* x.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = x.h; path = zbar/window/x.h; sourceTree = "<group>"; };
+		2964B6FC6C7BDB78CA977B33 /* HTTPAuthenticationRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPAuthenticationRequest.m; path = Core/HTTPAuthenticationRequest.m; sourceTree = "<group>"; };
+		2C1CF1D3C718B3DB99D1E861 /* DAVConnection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DAVConnection.m; path = Extensions/WebDAV/DAVConnection.m; sourceTree = "<group>"; };
+		2C750041DF19B3B872A77F29 /* ZBarHelpController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZBarHelpController.m; path = iphone/ZBarHelpController.m; sourceTree = "<group>"; };
+		2DA87F5E2F48743AE51BE675 /* HTTPResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPResponse.h; path = Core/HTTPResponse.h; sourceTree = "<group>"; };
+		2E051443238793D8C71DC9E4 /* DAVResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DAVResponse.m; path = Extensions/WebDAV/DAVResponse.m; sourceTree = "<group>"; };
+		2E1EFD47A4338A5B81788DE7 /* DDLog.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDLog.m; path = Classes/DDLog.m; sourceTree = "<group>"; };
+		308189F877D59DBC014805F2 /* qrdec.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = qrdec.h; path = zbar/qrcode/qrdec.h; sourceTree = "<group>"; };
+		310A0F484220C86AE3DC6A86 /* refcnt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = refcnt.h; path = zbar/refcnt.h; sourceTree = "<group>"; };
+		31380AE92B2788EFB7BC0F12 /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDDispatchQueueLogFormatter.h; path = Classes/Extensions/DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
+		3143CF88705F894F10D38C75 /* mztools.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mztools.h; path = SSZipArchive/minizip/mztools.h; sourceTree = "<group>"; };
+		3238F8C158D3D4FDE666ED09 /* DDLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDLog.h; path = Classes/DDLog.h; sourceTree = "<group>"; };
+		32FD746981864CBC701BEC3E /* DDASLLogCapture.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDASLLogCapture.m; path = Classes/DDASLLogCapture.m; sourceTree = "<group>"; };
+		34BF516E4D7A0FFE9CB74BB9 /* Pods-MeeletClient-CocoaHTTPServer.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeeletClient-CocoaHTTPServer.xcconfig"; sourceTree = "<group>"; };
+		353B48781F27AA94711166CD /* Pods-MeeletClient-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MeeletClient-resources.sh"; sourceTree = "<group>"; };
+		35BBB13BBE72E3724BFBCA41 /* qr_finder.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = qr_finder.c; path = zbar/decoder/qr_finder.c; sourceTree = "<group>"; };
+		35BE478B3410D5CAF57C1D9B /* processor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = processor.h; path = zbar/processor.h; sourceTree = "<group>"; };
+		367B3AA521D553C40E643F74 /* posix.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = posix.h; path = zbar/processor/posix.h; sourceTree = "<group>"; };
+		370A820E3D8C15ACAAFFE1AF /* symbol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = symbol.h; path = zbar/symbol.h; sourceTree = "<group>"; };
+		37AC057FAA36735831121C74 /* CocoaLumberjack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CocoaLumberjack.h; path = Classes/CocoaLumberjack.h; sourceTree = "<group>"; };
+		38772BD993E2CE6F77C63846 /* DDNumber.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDNumber.m; path = Core/Categories/DDNumber.m; sourceTree = "<group>"; };
+		3C5B2CF3DC9E8A54E8A10FED /* DDNumber.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDNumber.h; path = Core/Categories/DDNumber.h; sourceTree = "<group>"; };
+		3E4308C073C683CDFD0CE3B4 /* ZBarImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZBarImage.m; path = iphone/ZBarImage.m; sourceTree = "<group>"; };
+		3E5F9F0DD27E4071796E1B95 /* debug.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = debug.h; path = iphone/debug.h; sourceTree = "<group>"; };
+		3FC1CE311C769F23BF1C48E9 /* Pods-MeeletClient-SSZipArchive-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MeeletClient-SSZipArchive-dummy.m"; sourceTree = "<group>"; };
+		4161AB40EB2981815030A411 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		443CB7FBF25AF2FFA1905675 /* zip.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = zip.c; path = SSZipArchive/minizip/zip.c; sourceTree = "<group>"; };
+		450756856B9CAD97C8514668 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		4572371A5A288AA2E82D071E /* Pods-MeeletClient-Reachability.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeeletClient-Reachability.xcconfig"; sourceTree = "<group>"; };
+		48648989093354BB828C9093 /* codabar.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = codabar.c; path = zbar/decoder/codabar.c; sourceTree = "<group>"; };
+		49773B804BE384343BA6D7A0 /* DAVResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DAVResponse.h; path = Extensions/WebDAV/DAVResponse.h; sourceTree = "<group>"; };
+		4B5CB1FC6892732FA5EF68F2 /* isaac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = isaac.h; path = zbar/qrcode/isaac.h; sourceTree = "<group>"; };
+		4B932B1810F0BA2A5F561374 /* PUTResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PUTResponse.h; path = Extensions/WebDAV/PUTResponse.h; sourceTree = "<group>"; };
+		4BBFDD4AB06138FDE0C3AFA9 /* HTTPDynamicFileResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPDynamicFileResponse.m; path = Core/Responses/HTTPDynamicFileResponse.m; sourceTree = "<group>"; };
+		4DF66CF1496EF1C3316C1D59 /* mutex.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mutex.h; path = zbar/mutex.h; sourceTree = "<group>"; };
+		4E5AE13721546B7602AD4DC8 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		4FA0A2B5A0BC8C0E414CE99F /* zbar-help.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = "zbar-help.html"; path = "iphone/res/zbar-help.html"; sourceTree = "<group>"; };
+		5060E9B44D501BC236FA04B6 /* databar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = databar.h; path = zbar/decoder/databar.h; sourceTree = "<group>"; };
+		51018D782820BC3CE2823BFC /* DAVConnection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DAVConnection.h; path = Extensions/WebDAV/DAVConnection.h; sourceTree = "<group>"; };
+		520BADD6AD1813C25FAA6B88 /* Pods-MeeletClient-CocoaAsyncSocket-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeeletClient-CocoaAsyncSocket-Private.xcconfig"; sourceTree = "<group>"; };
+		5353C8983545F99C35BC760D /* AsyncSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AsyncSocket.m; path = RunLoop/AsyncSocket.m; sourceTree = "<group>"; };
+		55DE719568EAFFB3E94BC1D5 /* Pods-MeeletClient-Reachability-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MeeletClient-Reachability-prefix.pch"; sourceTree = "<group>"; };
+		577775E01000A0CC3B290166 /* pdf417_hash.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pdf417_hash.h; path = zbar/decoder/pdf417_hash.h; sourceTree = "<group>"; };
+		57B8462A9DAAEDCDFBF4C015 /* util.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = util.c; path = zbar/qrcode/util.c; sourceTree = "<group>"; };
+		580D87E0B0AD370EFDE86751 /* Pods-MeeletClient-Reachability-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MeeletClient-Reachability-dummy.m"; sourceTree = "<group>"; };
+		5858EA3F03A514958FEADBD6 /* bch15_5.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bch15_5.h; path = zbar/qrcode/bch15_5.h; sourceTree = "<group>"; };
+		58D7A96B5AEE12D72F2C806E /* i25.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = i25.c; path = zbar/decoder/i25.c; sourceTree = "<group>"; };
+		5AC3B50FDDBD65FC4DC5BBD5 /* event.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = event.h; path = zbar/event.h; sourceTree = "<group>"; };
+		5AE7AF8809CA7C684257728C /* HTTPAsyncFileResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPAsyncFileResponse.m; path = Core/Responses/HTTPAsyncFileResponse.m; sourceTree = "<group>"; };
+		5C79C818B3E00DFBD1699528 /* DDMultiFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDMultiFormatter.h; path = Classes/Extensions/DDMultiFormatter.h; sourceTree = "<group>"; };
+		5C97E8988FB70B7353EE4100 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
+		5C9C0E244199C6C47230D12E /* Pods-MeeletClient-CocoaAsyncSocket-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MeeletClient-CocoaAsyncSocket-prefix.pch"; sourceTree = "<group>"; };
+		5DA80C1E9621536049F8FEB6 /* Pods-MeeletClient-CocoaHTTPServer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MeeletClient-CocoaHTTPServer-dummy.m"; sourceTree = "<group>"; };
+		5F3DD2EE5A785C7250478608 /* image.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = image.h; path = zbar/image.h; sourceTree = "<group>"; };
+		6013F9819A6B5A7298A20E40 /* qrdectxt.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = qrdectxt.c; path = zbar/qrcode/qrdectxt.c; sourceTree = "<group>"; };
+		612A87202906D6DABB10C3C3 /* databar.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = databar.c; path = zbar/decoder/databar.c; sourceTree = "<group>"; };
+		61BE2E1E2427E3E2F9B7AE18 /* Pods-MeeletClient-SSZipArchive-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MeeletClient-SSZipArchive-prefix.pch"; sourceTree = "<group>"; };
+		622834D55D4457F3618A35D9 /* Pods-MeeletClient-ZBarSDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeeletClient-ZBarSDK.xcconfig"; sourceTree = "<group>"; };
+		633C3EADC9F2B926138257C1 /* img_scanner.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = img_scanner.c; path = zbar/img_scanner.c; sourceTree = "<group>"; };
+		64F49021A6587AAB6E6106EE /* Pods-MeeletClient-CocoaHTTPServer-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MeeletClient-CocoaHTTPServer-prefix.pch"; sourceTree = "<group>"; };
+		654AF6D0D0ED809CB24F3D25 /* qrcode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = qrcode.h; path = zbar/qrcode.h; sourceTree = "<group>"; };
+		66578274A25A025AF4531455 /* libPods-MeeletClient-SSZipArchive.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeeletClient-SSZipArchive.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		679F1CA5966C38DAD68C6A27 /* ioapi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ioapi.h; path = SSZipArchive/minizip/ioapi.h; sourceTree = "<group>"; };
+		68F507B7227E90A99BC42AD3 /* DDContextFilterLogFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDContextFilterLogFormatter.h; path = Classes/Extensions/DDContextFilterLogFormatter.h; sourceTree = "<group>"; };
+		6B3E074142901A1D49BB8060 /* error.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = error.c; path = zbar/error.c; sourceTree = "<group>"; };
+		6B9E1769B2DDEAD5447EBE4F /* ZBarImageScanner.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZBarImageScanner.m; path = iphone/ZBarImageScanner.m; sourceTree = "<group>"; };
+		6BBB788F03BD1317A06B3BC5 /* decoder.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = decoder.c; path = zbar/decoder.c; sourceTree = "<group>"; };
+		6CD6451AFC7C4D8B8DB7DE91 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncUdpSocket.m; path = GCD/GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		7181AA153973AA299A622B60 /* debug.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = debug.h; path = zbar/debug.h; sourceTree = "<group>"; };
+		71EEFCF85BC5AA0B16A323EF /* pdf417.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pdf417.h; path = zbar/decoder/pdf417.h; sourceTree = "<group>"; };
+		729D96CAD9D50D17585BDB8B /* unzip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = SSZipArchive/minizip/unzip.h; sourceTree = "<group>"; };
+		734C1CA3C9812FB4015AFB9F /* HTTPAsyncFileResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPAsyncFileResponse.h; path = Core/Responses/HTTPAsyncFileResponse.h; sourceTree = "<group>"; };
+		743B344E3BD2A790B2ECC240 /* ZBarReaderView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZBarReaderView.h; path = iphone/include/ZBarSDK/ZBarReaderView.h; sourceTree = "<group>"; };
+		7549E7977C25D2246ED53DC9 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCDAsyncUdpSocket.h; path = GCD/GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		7601795A829A9B633D963042 /* WebSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WebSocket.m; path = Core/WebSocket.m; sourceTree = "<group>"; };
+		762EF1C449A203CA66C23C0E /* decoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = decoder.h; path = zbar/decoder.h; sourceTree = "<group>"; };
+		776E218E2B2284CA59232404 /* code93.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = code93.h; path = zbar/decoder/code93.h; sourceTree = "<group>"; };
+		78EAC5DD80F922C58471E687 /* Pods-MeeletClient-ZBarSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MeeletClient-ZBarSDK-dummy.m"; sourceTree = "<group>"; };
+		7B8C0BDE0C2180EAE05E5AE1 /* DDRange.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDRange.m; path = Core/Categories/DDRange.m; sourceTree = "<group>"; };
+		7D24B96B8DB950C715DECB79 /* timer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = timer.h; path = zbar/timer.h; sourceTree = "<group>"; };
+		7E3398F6436DDB2F53D2B954 /* scanner.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = scanner.c; path = zbar/scanner.c; sourceTree = "<group>"; };
+		7EFFA2B5C3231EDA730B0164 /* code93.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = code93.c; path = zbar/decoder/code93.c; sourceTree = "<group>"; };
+		7F5FE3FA59C7F709EB54A14A /* libPods-MeeletClient-CocoaAsyncSocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeeletClient-CocoaAsyncSocket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		80C4D675571B416974708248 /* zbar-back.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "zbar-back.png"; path = "iphone/res/zbar-back.png"; sourceTree = "<group>"; };
+		82A464366C72356CE845FDF2 /* Pods-MeeletClient-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MeeletClient-dummy.m"; sourceTree = "<group>"; };
+		82AC56540400BABF0E91129E /* ZBarCaptureReader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZBarCaptureReader.m; path = iphone/ZBarCaptureReader.m; sourceTree = "<group>"; };
+		82DA911DB4DDB04F7204D4DC /* SSZipArchive.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSZipArchive.h; path = SSZipArchive/SSZipArchive.h; sourceTree = "<group>"; };
+		85440C023C38C7068A75472B /* ZBarCameraSimulator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZBarCameraSimulator.m; path = iphone/ZBarCameraSimulator.m; sourceTree = "<group>"; };
+		88200A91C55438F1D4B9EA48 /* zbar-helpicons.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "zbar-helpicons.png"; path = "iphone/res/zbar-helpicons.png"; sourceTree = "<group>"; };
+		88FCA8127A72F05F0856C7C1 /* DDTTYLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDTTYLogger.h; path = Classes/DDTTYLogger.h; sourceTree = "<group>"; };
+		893F4F8FB130E9681BBD7ECB /* libPods-MeeletClient-CocoaHTTPServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeeletClient-CocoaHTTPServer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B41FCD530257EB4A22C8518 /* img_scanner.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = img_scanner.h; path = zbar/img_scanner.h; sourceTree = "<group>"; };
+		8C17FABC8CF6284C49D87988 /* i25.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = i25.h; path = zbar/decoder/i25.h; sourceTree = "<group>"; };
+		8E29B8D8CED6BB1B092B145B /* isaac.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = isaac.c; path = zbar/qrcode/isaac.c; sourceTree = "<group>"; };
+		929BA0FEB8A4C6E8FB50289A /* zbar-samples.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "zbar-samples.png"; path = "iphone/res/zbar-samples.png"; sourceTree = "<group>"; };
+		92C5FFAEB278B4FBBF3DF92D /* Pods-MeeletClient-JSONKit-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeeletClient-JSONKit-Private.xcconfig"; sourceTree = "<group>"; };
+		9355E36EACE540DB963C6FD1 /* Pods-MeeletClient-CocoaHTTPServer-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeeletClient-CocoaHTTPServer-Private.xcconfig"; sourceTree = "<group>"; };
+		93B96BF9E90EE18BE55057F8 /* Pods-MeeletClient-JSONKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MeeletClient-JSONKit-prefix.pch"; sourceTree = "<group>"; };
+		95BFF786660BB8428A150E03 /* Pods-MeeletClient-CocoaLumberjack-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeeletClient-CocoaLumberjack-Private.xcconfig"; sourceTree = "<group>"; };
+		97D6B7246199813DE2A81418 /* code128.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = code128.c; path = zbar/decoder/code128.c; sourceTree = "<group>"; };
+		99A7168A3F831F78ECE08A99 /* AsyncUdpSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AsyncUdpSocket.m; path = RunLoop/AsyncUdpSocket.m; sourceTree = "<group>"; };
+		9B15586BE6B51E3B643F963B /* zbar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = zbar.h; path = include/zbar.h; sourceTree = "<group>"; };
+		9B7B70637A25A6CC36E0A157 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		9DC88E58A4113AF8C043392D /* HTTPRedirectResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPRedirectResponse.h; path = Core/Responses/HTTPRedirectResponse.h; sourceTree = "<group>"; };
+		9F0097E176C04FF2A3C7ED12 /* codabar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = codabar.h; path = zbar/decoder/codabar.h; sourceTree = "<group>"; };
+		9F8B88A36A5A92FB692B33B7 /* DDMultiFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDMultiFormatter.m; path = Classes/Extensions/DDMultiFormatter.m; sourceTree = "<group>"; };
+		A0C1F7B58FE26C21A32C9129 /* config.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = config.c; path = zbar/config.c; sourceTree = "<group>"; };
+		A107561D4AD1330C3FC5F673 /* HTTPDataResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPDataResponse.m; path = Core/Responses/HTTPDataResponse.m; sourceTree = "<group>"; };
+		A16FF2BE1B17151900AA9124 /* Framework.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Framework.plist; sourceTree = "<group>"; };
+		A4256FA26EA08D478AC04189 /* rs.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = rs.c; path = zbar/qrcode/rs.c; sourceTree = "<group>"; };
+		A4B61B25D86353A6C9A8F44F /* rs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rs.h; path = zbar/qrcode/rs.h; sourceTree = "<group>"; };
+		A4FC5406A83797B9F101F3B6 /* WebSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WebSocket.h; path = Core/WebSocket.h; sourceTree = "<group>"; };
+		A5391FB7295069F432C61841 /* HTTPConnection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPConnection.m; path = Core/HTTPConnection.m; sourceTree = "<group>"; };
+		A54649707B4FC398302F8234 /* AsyncSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AsyncSocket.h; path = RunLoop/AsyncSocket.h; sourceTree = "<group>"; };
+		A83E8751C1C2DF1E2D6AB367 /* Pods-MeeletClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeeletClient.debug.xcconfig"; sourceTree = "<group>"; };
+		A8BFFD69E73D4FB3CE8810CC /* ZBarCameraSimulator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZBarCameraSimulator.h; path = iphone/include/ZBarSDK/ZBarCameraSimulator.h; sourceTree = "<group>"; };
+		A9D09DF0FBEFBA02C2962913 /* video.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = video.h; path = zbar/video.h; sourceTree = "<group>"; };
+		A9FCBA5D8AA29F2134819355 /* libPods-MeeletClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeeletClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA358D2E86C67BB7DE88A17F /* HTTPLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPLogging.h; path = Core/HTTPLogging.h; sourceTree = "<group>"; };
+		AB123204BE72E5EBD2173354 /* DELETEResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DELETEResponse.m; path = Extensions/WebDAV/DELETEResponse.m; sourceTree = "<group>"; };
+		ABB720E5DF8FADB4B5C6AC2A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
+		ABC84E147D787248C39AE407 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		AE78D1993263C4BA64697D8F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
+		AEEB587AD07B4A01D55C9B9E /* ZBarReaderViewImpl_Simulator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZBarReaderViewImpl_Simulator.m; path = iphone/ZBarReaderViewImpl_Simulator.m; sourceTree = "<group>"; };
+		AF22AFFEF6325A35A1DC7DBA /* libPods-MeeletClient-JSONKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeeletClient-JSONKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF38286AD30AA643FB3A9E6C /* util.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = util.h; path = zbar/qrcode/util.h; sourceTree = "<group>"; };
+		AF67741A7E180E4AB0D37FA6 /* JSONKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		B53927A6E9BEF4759A47197B /* MultipartMessageHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MultipartMessageHeader.m; path = Core/Mime/MultipartMessageHeader.m; sourceTree = "<group>"; };
+		B5DC7E5091DF54C2DBCB5635 /* Pods-MeeletClient-CocoaLumberjack-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MeeletClient-CocoaLumberjack-dummy.m"; sourceTree = "<group>"; };
+		B738BDDE360A9F07BBC93E3B /* ZBarSymbol.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZBarSymbol.m; path = iphone/ZBarSymbol.m; sourceTree = "<group>"; };
+		B763FFE1E21E99D7CB3A1DFB /* qrdec.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = qrdec.c; path = zbar/qrcode/qrdec.c; sourceTree = "<group>"; };
+		B7D4473214E1177C8E9CE9B9 /* Pods-MeeletClient-SSZipArchive-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeeletClient-SSZipArchive-Private.xcconfig"; sourceTree = "<group>"; };
+		BA7DB23BE7E425017C42E2E8 /* DDASLLogCapture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDASLLogCapture.h; path = Classes/DDASLLogCapture.h; sourceTree = "<group>"; };
+		BD48B316F1877BCF2F8D1D5E /* window.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = window.h; path = zbar/window.h; sourceTree = "<group>"; };
+		C432513AE874B6F9A7CB2334 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDAbstractDatabaseLogger.m; path = Classes/DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
+		C5673888D93B845EF20A1913 /* error.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = error.h; path = zbar/error.h; sourceTree = "<group>"; };
+		C5769B8D5A4A9DA943F2DA11 /* zip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = zip.h; path = SSZipArchive/minizip/zip.h; sourceTree = "<group>"; };
+		C5E64694788CBFBD687EB0F6 /* unzip.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = unzip.c; path = SSZipArchive/minizip/unzip.c; sourceTree = "<group>"; };
+		C606B745DF0EFDE7C0225D1E /* ZBarReaderViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZBarReaderViewController.h; path = iphone/include/ZBarSDK/ZBarReaderViewController.h; sourceTree = "<group>"; };
+		C6B7D33B2635603AEDCD9E09 /* HTTPFileResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPFileResponse.h; path = Core/Responses/HTTPFileResponse.h; sourceTree = "<group>"; };
+		C82502D6C2E6D266ECF046D4 /* bch15_5.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = bch15_5.c; path = zbar/qrcode/bch15_5.c; sourceTree = "<group>"; };
+		C898CE6EBC633799049AC222 /* Reachability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		CC37EDFF4AF6D8769BEA59A2 /* ZBarReaderViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZBarReaderViewController.m; path = iphone/ZBarReaderViewController.m; sourceTree = "<group>"; };
+		CD667458E7B279AAE93A8022 /* libPods-MeeletClient-Reachability.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeeletClient-Reachability.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEA181721B1E2093ED915816 /* win.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = win.h; path = zbar/window/win.h; sourceTree = "<group>"; };
+		D35EC037E0E5DA4BEBC313FF /* HTTPServer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPServer.h; path = Core/HTTPServer.h; sourceTree = "<group>"; };
+		D3B396A5208E09A3F23FCDCE /* qr_finder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = qr_finder.h; path = zbar/decoder/qr_finder.h; sourceTree = "<group>"; };
+		D5510494B242DAFB6C3D3BBB /* Pods-MeeletClient-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MeeletClient-acknowledgements.markdown"; sourceTree = "<group>"; };
+		D7A3808F5FE5AFE5B3C16D45 /* DDFileLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDFileLogger.h; path = Classes/DDFileLogger.h; sourceTree = "<group>"; };
+		D7DB0183206501F956CC8F48 /* code39.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = code39.h; path = zbar/decoder/code39.h; sourceTree = "<group>"; };
+		D9A8086054F34A7F87A16C8B /* Pods-MeeletClient-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MeeletClient-environment.h"; sourceTree = "<group>"; };
+		DAFC1E816DE2C583DF4F5297 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		DB343CFD0E3D5B6D74259483 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDAbstractDatabaseLogger.h; path = Classes/DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
+		DCBE49CFDB838F4F3E8ACF4E /* Pods-MeeletClient-Reachability-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeeletClient-Reachability-Private.xcconfig"; sourceTree = "<group>"; };
+		DDDD0BCD40ED711F50297AE6 /* mztools.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mztools.c; path = SSZipArchive/minizip/mztools.c; sourceTree = "<group>"; };
+		DE199641E1CD76FE67417431 /* DDASLLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDASLLogger.h; path = Classes/DDASLLogger.h; sourceTree = "<group>"; };
+		E043E9EC6FDDCB89A3C857EB /* binarize.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = binarize.h; path = zbar/qrcode/binarize.h; sourceTree = "<group>"; };
+		E06AEC9B81BF29D0D9224110 /* HTTPServer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPServer.m; path = Core/HTTPServer.m; sourceTree = "<group>"; };
+		E3118E65EB1FA3D5308C616B /* thread.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = thread.h; path = zbar/thread.h; sourceTree = "<group>"; };
+		E3B2243C8E80BD5C5F48FA1B /* Pods-MeeletClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeeletClient.release.xcconfig"; sourceTree = "<group>"; };
+		E4F6F2B53F57D638DC38DC72 /* ZBarHelpController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZBarHelpController.h; path = iphone/include/ZBarSDK/ZBarHelpController.h; sourceTree = "<group>"; };
+		E63505D01948D18ED3B51903 /* HTTPAuthenticationRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPAuthenticationRequest.h; path = Core/HTTPAuthenticationRequest.h; sourceTree = "<group>"; };
+		E699E8418DEE6BBC21DABFBC /* Pods-MeeletClient-CocoaAsyncSocket-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MeeletClient-CocoaAsyncSocket-dummy.m"; sourceTree = "<group>"; };
+		E7D133EA4B4CCD3021FAE999 /* refcnt.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = refcnt.c; path = zbar/refcnt.c; sourceTree = "<group>"; };
+		E8215781A3C1679C582EA148 /* ZBarCVImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZBarCVImage.m; path = iphone/ZBarCVImage.m; sourceTree = "<group>"; };
+		EA032925E57FA8B1AEE93DBC /* Pods-MeeletClient-ZBarSDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MeeletClient-ZBarSDK-prefix.pch"; sourceTree = "<group>"; };
+		EA2458E8B679B2E9ABC73E6B /* DDData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDData.m; path = Core/Categories/DDData.m; sourceTree = "<group>"; };
+		EBA43BE6ED9B2EFBE622C605 /* libPods-MeeletClient-ZBarSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeeletClient-ZBarSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBC87E6487C5ABCE8AEB0BF6 /* ZBarReaderController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZBarReaderController.h; path = iphone/include/ZBarSDK/ZBarReaderController.h; sourceTree = "<group>"; };
+		EC5EA7666731BEA4F0009BB1 /* DELETEResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DELETEResponse.h; path = Extensions/WebDAV/DELETEResponse.h; sourceTree = "<group>"; };
+		EDA3E36D014AE70F7B7AC6E5 /* SSZipArchive.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSZipArchive.m; path = SSZipArchive/SSZipArchive.m; sourceTree = "<group>"; };
+		EE199DE73D8881E84BF8549B /* PUTResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PUTResponse.m; path = Extensions/WebDAV/PUTResponse.m; sourceTree = "<group>"; };
+		F073E48684267950DC5D6296 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		F0A34D28045CCC973A1F1D76 /* DDASLLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDASLLogger.m; path = Classes/DDASLLogger.m; sourceTree = "<group>"; };
+		F135110585EFD5A5481A2B27 /* code128.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = code128.h; path = zbar/decoder/code128.h; sourceTree = "<group>"; };
+		F14FB3A4F15328CFD444D89A /* ZBarSymbol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZBarSymbol.h; path = iphone/include/ZBarSDK/ZBarSymbol.h; sourceTree = "<group>"; };
+		F3A2CA0F641046BA678CE924 /* MultipartFormDataParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MultipartFormDataParser.m; path = Core/Mime/MultipartFormDataParser.m; sourceTree = "<group>"; };
+		F4163B518605201E49CEE985 /* DDLogMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDLogMacros.h; path = Classes/DDLogMacros.h; sourceTree = "<group>"; };
+		F5322632C831E272C85F4CB9 /* ZBarImageScanner.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZBarImageScanner.h; path = iphone/include/ZBarSDK/ZBarImageScanner.h; sourceTree = "<group>"; };
+		F5B513ECAB05298B62BA7425 /* DDLegacyMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDLegacyMacros.h; path = Classes/DDLegacyMacros.h; sourceTree = "<group>"; };
+		F5B912217D763E0C2EBB6804 /* Reachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		F5E90FEF5AE5F41B704CF8EC /* DDContextFilterLogFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDContextFilterLogFormatter.m; path = Classes/Extensions/DDContextFilterLogFormatter.m; sourceTree = "<group>"; };
+		F88C3B82A980A92991F1E4F9 /* Pods-MeeletClient-JSONKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeeletClient-JSONKit.xcconfig"; sourceTree = "<group>"; };
+		F8DCB9F238C677C26E415AC4 /* ZBarReaderView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZBarReaderView.m; path = iphone/ZBarReaderView.m; sourceTree = "<group>"; };
+		F936F54D0571B98F0119F139 /* Pods-MeeletClient-JSONKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MeeletClient-JSONKit-dummy.m"; sourceTree = "<group>"; };
+		F97F1D00A67CC9FF0EBA6723 /* DDAssertMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDAssertMacros.h; path = Classes/DDAssertMacros.h; sourceTree = "<group>"; };
+		FA4A7CC82F2EB84B52555014 /* HTTPDataResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPDataResponse.h; path = Core/Responses/HTTPDataResponse.h; sourceTree = "<group>"; };
+		FAFDDAA91679373AE03A0BA5 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = GCD/GCDAsyncSocket.m; sourceTree = "<group>"; };
+		FB62E58524BD6FFF2571A593 /* HTTPMessage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPMessage.m; path = Core/HTTPMessage.m; sourceTree = "<group>"; };
+		FBB50ECD862779F506FAFE8D /* HTTPFileResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPFileResponse.m; path = Core/Responses/HTTPFileResponse.m; sourceTree = "<group>"; };
+		FBDC43E39E0B5B2344C59561 /* HTTPDynamicFileResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPDynamicFileResponse.h; path = Core/Responses/HTTPDynamicFileResponse.h; sourceTree = "<group>"; };
+		FC525ACA45732D0A9EE61B95 /* DDRange.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDRange.h; path = Core/Categories/DDRange.h; sourceTree = "<group>"; };
+		FE08A64F19579AEDB199037D /* libPods-MeeletClient-CocoaLumberjack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeeletClient-CocoaLumberjack.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE3852767A15DFD759D76BA7 /* ZBarReaderController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZBarReaderController.m; path = iphone/ZBarReaderController.m; sourceTree = "<group>"; };
+		FF044DA6A16F3BE55C63FD5A /* Pods-MeeletClient-SSZipArchive.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeeletClient-SSZipArchive.xcconfig"; sourceTree = "<group>"; };
+		FF64988DF99A324F1CE001DD /* DDTTYLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDTTYLogger.m; path = Classes/DDTTYLogger.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1E0DC162B5AB255552F6F22E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8B06079891BED16646317D8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		311E92BF82DEE634D19F4E01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B457FD6F02833638EAA09395 /* CFNetwork.framework in Frameworks */,
+				0C1B4623782D9A006C216D6B /* Foundation.framework in Frameworks */,
+				9A7008D0866B5C2DDB89BA9F /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		409CC001F19E9EEDC1312A1F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED56F1D5F27F2F01FB419B20 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		834582A715AFA5EAC504DDD6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0482F18AAF7B96FA8A3923F3 /* CFNetwork.framework in Frameworks */,
+				3C5B11971D965C4372D14E65 /* Foundation.framework in Frameworks */,
+				E2C1EABCC697EC302F24B71C /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B562D3C21B4AC42F67179048 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				776254C267AB692786183C85 /* Foundation.framework in Frameworks */,
+				D7F2572C3C434354321F46B9 /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFA0431B6AB61B8D5F37A768 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				552564325E73DD42C6EBB2A7 /* AVFoundation.framework in Frameworks */,
+				01D9B4C84DB781A353906852 /* CoreGraphics.framework in Frameworks */,
+				A2107738E8D60B52BD6BFD8C /* CoreMedia.framework in Frameworks */,
+				7C22904A503A65562BD1CA4F /* CoreVideo.framework in Frameworks */,
+				538919911CC9B4774F5300F9 /* Foundation.framework in Frameworks */,
+				41FEE2E42D1ADFECC301A25D /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE0938E74DA95B93344976BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33F1D0497840D24D9F337266 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE31BE99908B1DA8DFCDAFD0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A7AA77FD53247B3FE9D0A28 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0160ADED8538118472DBC8B3 /* ZBarSDK */ = {
+			isa = PBXGroup;
+			children = (
+				1A52BF4B2F47B0F703A60A00 /* ZBarCVImage.h */,
+				E8215781A3C1679C582EA148 /* ZBarCVImage.m */,
+				A8BFFD69E73D4FB3CE8810CC /* ZBarCameraSimulator.h */,
+				85440C023C38C7068A75472B /* ZBarCameraSimulator.m */,
+				1D4538DA5B72728C6DE90523 /* ZBarCaptureReader.h */,
+				82AC56540400BABF0E91129E /* ZBarCaptureReader.m */,
+				E4F6F2B53F57D638DC38DC72 /* ZBarHelpController.h */,
+				2C750041DF19B3B872A77F29 /* ZBarHelpController.m */,
+				217E40D8DA50EEEEFFBE4155 /* ZBarImage.h */,
+				3E4308C073C683CDFD0CE3B4 /* ZBarImage.m */,
+				F5322632C831E272C85F4CB9 /* ZBarImageScanner.h */,
+				6B9E1769B2DDEAD5447EBE4F /* ZBarImageScanner.m */,
+				EBC87E6487C5ABCE8AEB0BF6 /* ZBarReaderController.h */,
+				FE3852767A15DFD759D76BA7 /* ZBarReaderController.m */,
+				743B344E3BD2A790B2ECC240 /* ZBarReaderView.h */,
+				F8DCB9F238C677C26E415AC4 /* ZBarReaderView.m */,
+				C606B745DF0EFDE7C0225D1E /* ZBarReaderViewController.h */,
+				CC37EDFF4AF6D8769BEA59A2 /* ZBarReaderViewController.m */,
+				08DE181DBF939A333D47EB25 /* ZBarReaderViewImpl_Capture.m */,
+				AEEB587AD07B4A01D55C9B9E /* ZBarReaderViewImpl_Simulator.m */,
+				2464328CBB2B464906195F6C /* ZBarSDK.h */,
+				F14FB3A4F15328CFD444D89A /* ZBarSymbol.h */,
+				B738BDDE360A9F07BBC93E3B /* ZBarSymbol.m */,
+				C82502D6C2E6D266ECF046D4 /* bch15_5.c */,
+				5858EA3F03A514958FEADBD6 /* bch15_5.h */,
+				10789DC813CEDC0A421718BC /* binarize.c */,
+				E043E9EC6FDDCB89A3C857EB /* binarize.h */,
+				48648989093354BB828C9093 /* codabar.c */,
+				9F0097E176C04FF2A3C7ED12 /* codabar.h */,
+				97D6B7246199813DE2A81418 /* code128.c */,
+				F135110585EFD5A5481A2B27 /* code128.h */,
+				0BBC804D4F0B0DFE4DFB2FF8 /* code39.c */,
+				D7DB0183206501F956CC8F48 /* code39.h */,
+				7EFFA2B5C3231EDA730B0164 /* code93.c */,
+				776E218E2B2284CA59232404 /* code93.h */,
+				A0C1F7B58FE26C21A32C9129 /* config.c */,
+				1C953B4C932EF4938DD2EF76 /* config.h */,
+				612A87202906D6DABB10C3C3 /* databar.c */,
+				5060E9B44D501BC236FA04B6 /* databar.h */,
+				7181AA153973AA299A622B60 /* debug.h */,
+				3E5F9F0DD27E4071796E1B95 /* debug.h */,
+				6BBB788F03BD1317A06B3BC5 /* decoder.c */,
+				762EF1C449A203CA66C23C0E /* decoder.h */,
+				2728D20D07D7A72F4898C1AC /* ean.c */,
+				14DDB0B66CD987F603A13500 /* ean.h */,
+				6B3E074142901A1D49BB8060 /* error.c */,
+				C5673888D93B845EF20A1913 /* error.h */,
+				5AC3B50FDDBD65FC4DC5BBD5 /* event.h */,
+				58D7A96B5AEE12D72F2C806E /* i25.c */,
+				8C17FABC8CF6284C49D87988 /* i25.h */,
+				0827F9AFB092E7436C163D56 /* image.c */,
+				5F3DD2EE5A785C7250478608 /* image.h */,
+				633C3EADC9F2B926138257C1 /* img_scanner.c */,
+				8B41FCD530257EB4A22C8518 /* img_scanner.h */,
+				8E29B8D8CED6BB1B092B145B /* isaac.c */,
+				4B5CB1FC6892732FA5EF68F2 /* isaac.h */,
+				4DF66CF1496EF1C3316C1D59 /* mutex.h */,
+				71EEFCF85BC5AA0B16A323EF /* pdf417.h */,
+				577775E01000A0CC3B290166 /* pdf417_hash.h */,
+				367B3AA521D553C40E643F74 /* posix.h */,
+				35BE478B3410D5CAF57C1D9B /* processor.h */,
+				35BBB13BBE72E3724BFBCA41 /* qr_finder.c */,
+				D3B396A5208E09A3F23FCDCE /* qr_finder.h */,
+				654AF6D0D0ED809CB24F3D25 /* qrcode.h */,
+				B763FFE1E21E99D7CB3A1DFB /* qrdec.c */,
+				308189F877D59DBC014805F2 /* qrdec.h */,
+				6013F9819A6B5A7298A20E40 /* qrdectxt.c */,
+				E7D133EA4B4CCD3021FAE999 /* refcnt.c */,
+				310A0F484220C86AE3DC6A86 /* refcnt.h */,
+				A4256FA26EA08D478AC04189 /* rs.c */,
+				A4B61B25D86353A6C9A8F44F /* rs.h */,
+				7E3398F6436DDB2F53D2B954 /* scanner.c */,
+				1D82722FB6E9A78460A84ADA /* svg.h */,
+				0325D8B8BBC508922FD754DA /* symbol.c */,
+				370A820E3D8C15ACAAFFE1AF /* symbol.h */,
+				E3118E65EB1FA3D5308C616B /* thread.h */,
+				7D24B96B8DB950C715DECB79 /* timer.h */,
+				57B8462A9DAAEDCDFBF4C015 /* util.c */,
+				AF38286AD30AA643FB3A9E6C /* util.h */,
+				A9D09DF0FBEFBA02C2962913 /* video.h */,
+				CEA181721B1E2093ED915816 /* win.h */,
+				BD48B316F1877BCF2F8D1D5E /* window.h */,
+				27B7F1D29942D634EBA3B96E /* x.h */,
+				9B15586BE6B51E3B643F963B /* zbar.h */,
+				6E22B473EB1FF460BE2A958E /* Resources */,
+				E64097F362E630DF7E66D39A /* Support Files */,
+			);
+			path = ZBarSDK;
+			sourceTree = "<group>";
+		};
+		0436EF6426C34847CB3DEC20 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				FF044DA6A16F3BE55C63FD5A /* Pods-MeeletClient-SSZipArchive.xcconfig */,
+				B7D4473214E1177C8E9CE9B9 /* Pods-MeeletClient-SSZipArchive-Private.xcconfig */,
+				3FC1CE311C769F23BF1C48E9 /* Pods-MeeletClient-SSZipArchive-dummy.m */,
+				61BE2E1E2427E3E2F9B7AE18 /* Pods-MeeletClient-SSZipArchive-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-MeeletClient-SSZipArchive";
+			sourceTree = "<group>";
+		};
+		09F263766450D5F93539D464 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A9FCBA5D8AA29F2134819355 /* libPods-MeeletClient.a */,
+				7F5FE3FA59C7F709EB54A14A /* libPods-MeeletClient-CocoaAsyncSocket.a */,
+				893F4F8FB130E9681BBD7ECB /* libPods-MeeletClient-CocoaHTTPServer.a */,
+				FE08A64F19579AEDB199037D /* libPods-MeeletClient-CocoaLumberjack.a */,
+				AF22AFFEF6325A35A1DC7DBA /* libPods-MeeletClient-JSONKit.a */,
+				CD667458E7B279AAE93A8022 /* libPods-MeeletClient-Reachability.a */,
+				66578274A25A025AF4531455 /* libPods-MeeletClient-SSZipArchive.a */,
+				EBA43BE6ED9B2EFBE622C605 /* libPods-MeeletClient-ZBarSDK.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0AEEA1CC3E8F578CA542315E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C6937F189DB42E86CDA2BF7 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0C6937F189DB42E86CDA2BF7 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				450756856B9CAD97C8514668 /* AVFoundation.framework */,
+				AE78D1993263C4BA64697D8F /* CFNetwork.framework */,
+				F073E48684267950DC5D6296 /* CoreGraphics.framework */,
+				5C97E8988FB70B7353EE4100 /* CoreMedia.framework */,
+				ABB720E5DF8FADB4B5C6AC2A /* CoreVideo.framework */,
+				9B7B70637A25A6CC36E0A157 /* Foundation.framework */,
+				ABC84E147D787248C39AE407 /* QuartzCore.framework */,
+				DAFC1E816DE2C583DF4F5297 /* Security.framework */,
+				4161AB40EB2981815030A411 /* SystemConfiguration.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		14C33C1C6E87BEDE98047749 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				F5B912217D763E0C2EBB6804 /* Reachability.h */,
+				C898CE6EBC633799049AC222 /* Reachability.m */,
+				2B1F4AFC93F8BD78144A61E4 /* Support Files */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		22FF4484BAB6283C16FE5B9E /* CocoaHTTPServer */ = {
+			isa = PBXGroup;
+			children = (
+				51018D782820BC3CE2823BFC /* DAVConnection.h */,
+				2C1CF1D3C718B3DB99D1E861 /* DAVConnection.m */,
+				49773B804BE384343BA6D7A0 /* DAVResponse.h */,
+				2E051443238793D8C71DC9E4 /* DAVResponse.m */,
+				08D5829076F718980A922774 /* DDData.h */,
+				EA2458E8B679B2E9ABC73E6B /* DDData.m */,
+				3C5B2CF3DC9E8A54E8A10FED /* DDNumber.h */,
+				38772BD993E2CE6F77C63846 /* DDNumber.m */,
+				FC525ACA45732D0A9EE61B95 /* DDRange.h */,
+				7B8C0BDE0C2180EAE05E5AE1 /* DDRange.m */,
+				EC5EA7666731BEA4F0009BB1 /* DELETEResponse.h */,
+				AB123204BE72E5EBD2173354 /* DELETEResponse.m */,
+				734C1CA3C9812FB4015AFB9F /* HTTPAsyncFileResponse.h */,
+				5AE7AF8809CA7C684257728C /* HTTPAsyncFileResponse.m */,
+				E63505D01948D18ED3B51903 /* HTTPAuthenticationRequest.h */,
+				2964B6FC6C7BDB78CA977B33 /* HTTPAuthenticationRequest.m */,
+				042A5DD4134A76890DD3FC54 /* HTTPConnection.h */,
+				A5391FB7295069F432C61841 /* HTTPConnection.m */,
+				FA4A7CC82F2EB84B52555014 /* HTTPDataResponse.h */,
+				A107561D4AD1330C3FC5F673 /* HTTPDataResponse.m */,
+				FBDC43E39E0B5B2344C59561 /* HTTPDynamicFileResponse.h */,
+				4BBFDD4AB06138FDE0C3AFA9 /* HTTPDynamicFileResponse.m */,
+				C6B7D33B2635603AEDCD9E09 /* HTTPFileResponse.h */,
+				FBB50ECD862779F506FAFE8D /* HTTPFileResponse.m */,
+				AA358D2E86C67BB7DE88A17F /* HTTPLogging.h */,
+				228D4D77CF3EA817A68508DE /* HTTPMessage.h */,
+				FB62E58524BD6FFF2571A593 /* HTTPMessage.m */,
+				9DC88E58A4113AF8C043392D /* HTTPRedirectResponse.h */,
+				113BDD07F8110D72BE62CCE3 /* HTTPRedirectResponse.m */,
+				2DA87F5E2F48743AE51BE675 /* HTTPResponse.h */,
+				D35EC037E0E5DA4BEBC313FF /* HTTPServer.h */,
+				E06AEC9B81BF29D0D9224110 /* HTTPServer.m */,
+				25BB93200D4A0D6C7C4B3B3C /* MultipartFormDataParser.h */,
+				F3A2CA0F641046BA678CE924 /* MultipartFormDataParser.m */,
+				07ADA243D929471146810B0F /* MultipartMessageHeader.h */,
+				B53927A6E9BEF4759A47197B /* MultipartMessageHeader.m */,
+				2150A8F24148195AD7D7B472 /* MultipartMessageHeaderField.h */,
+				21687697F74FADC3C5EF13EA /* MultipartMessageHeaderField.m */,
+				4B932B1810F0BA2A5F561374 /* PUTResponse.h */,
+				EE199DE73D8881E84BF8549B /* PUTResponse.m */,
+				A4FC5406A83797B9F101F3B6 /* WebSocket.h */,
+				7601795A829A9B633D963042 /* WebSocket.m */,
+				32FE57AD8D244BE4DBDE67E8 /* Support Files */,
+			);
+			path = CocoaHTTPServer;
+			sourceTree = "<group>";
+		};
+		2B1F4AFC93F8BD78144A61E4 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4572371A5A288AA2E82D071E /* Pods-MeeletClient-Reachability.xcconfig */,
+				DCBE49CFDB838F4F3E8ACF4E /* Pods-MeeletClient-Reachability-Private.xcconfig */,
+				580D87E0B0AD370EFDE86751 /* Pods-MeeletClient-Reachability-dummy.m */,
+				55DE719568EAFFB3E94BC1D5 /* Pods-MeeletClient-Reachability-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-MeeletClient-Reachability";
+			sourceTree = "<group>";
+		};
+		2F51FD5C64FD12EADD77AF0D /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8D99DD67F88E00B0EC5712BE /* Pods-MeeletClient */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		32FE57AD8D244BE4DBDE67E8 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				34BF516E4D7A0FFE9CB74BB9 /* Pods-MeeletClient-CocoaHTTPServer.xcconfig */,
+				9355E36EACE540DB963C6FD1 /* Pods-MeeletClient-CocoaHTTPServer-Private.xcconfig */,
+				5DA80C1E9621536049F8FEB6 /* Pods-MeeletClient-CocoaHTTPServer-dummy.m */,
+				64F49021A6587AAB6E6106EE /* Pods-MeeletClient-CocoaHTTPServer-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-MeeletClient-CocoaHTTPServer";
+			sourceTree = "<group>";
+		};
+		64E43F8EA73A36A105657A65 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				08ADE4E277743E72A63D951D /* Pods-MeeletClient-CocoaAsyncSocket.xcconfig */,
+				520BADD6AD1813C25FAA6B88 /* Pods-MeeletClient-CocoaAsyncSocket-Private.xcconfig */,
+				E699E8418DEE6BBC21DABFBC /* Pods-MeeletClient-CocoaAsyncSocket-dummy.m */,
+				5C9C0E244199C6C47230D12E /* Pods-MeeletClient-CocoaAsyncSocket-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-MeeletClient-CocoaAsyncSocket";
+			sourceTree = "<group>";
+		};
+		6DA03C59FB1E828CE2C7DF91 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F88C3B82A980A92991F1E4F9 /* Pods-MeeletClient-JSONKit.xcconfig */,
+				92C5FFAEB278B4FBBF3DF92D /* Pods-MeeletClient-JSONKit-Private.xcconfig */,
+				F936F54D0571B98F0119F139 /* Pods-MeeletClient-JSONKit-dummy.m */,
+				93B96BF9E90EE18BE55057F8 /* Pods-MeeletClient-JSONKit-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-MeeletClient-JSONKit";
+			sourceTree = "<group>";
+		};
+		6E22B473EB1FF460BE2A958E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				80C4D675571B416974708248 /* zbar-back.png */,
+				4FA0A2B5A0BC8C0E414CE99F /* zbar-help.html */,
+				88200A91C55438F1D4B9EA48 /* zbar-helpicons.png */,
+				929BA0FEB8A4C6E8FB50289A /* zbar-samples.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		728B3337E17E15BA2D82B46E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				BA7DB23BE7E425017C42E2E8 /* DDASLLogCapture.h */,
+				32FD746981864CBC701BEC3E /* DDASLLogCapture.m */,
+				DE199641E1CD76FE67417431 /* DDASLLogger.h */,
+				F0A34D28045CCC973A1F1D76 /* DDASLLogger.m */,
+				DB343CFD0E3D5B6D74259483 /* DDAbstractDatabaseLogger.h */,
+				C432513AE874B6F9A7CB2334 /* DDAbstractDatabaseLogger.m */,
+				F97F1D00A67CC9FF0EBA6723 /* DDAssertMacros.h */,
+				D7A3808F5FE5AFE5B3C16D45 /* DDFileLogger.h */,
+				1232D07513D9194D21B8C6BB /* DDFileLogger.m */,
+				F5B513ECAB05298B62BA7425 /* DDLegacyMacros.h */,
+				3238F8C158D3D4FDE666ED09 /* DDLog.h */,
+				2E1EFD47A4338A5B81788DE7 /* DDLog.m */,
+				21C3EA1CEC2D36764A2EF232 /* DDLog+LOGV.h */,
+				F4163B518605201E49CEE985 /* DDLogMacros.h */,
+				88FCA8127A72F05F0856C7C1 /* DDTTYLogger.h */,
+				FF64988DF99A324F1CE001DD /* DDTTYLogger.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		7F2E6AACB3B1E0629623A2CA /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				37AC057FAA36735831121C74 /* CocoaLumberjack.h */,
+			);
+			name = Default;
+			sourceTree = "<group>";
+		};
+		8D99DD67F88E00B0EC5712BE /* Pods-MeeletClient */ = {
+			isa = PBXGroup;
+			children = (
+				D5510494B242DAFB6C3D3BBB /* Pods-MeeletClient-acknowledgements.markdown */,
+				200D2B05523F09AEB588E24C /* Pods-MeeletClient-acknowledgements.plist */,
+				82A464366C72356CE845FDF2 /* Pods-MeeletClient-dummy.m */,
+				D9A8086054F34A7F87A16C8B /* Pods-MeeletClient-environment.h */,
+				353B48781F27AA94711166CD /* Pods-MeeletClient-resources.sh */,
+				A83E8751C1C2DF1E2D6AB367 /* Pods-MeeletClient.debug.xcconfig */,
+				E3B2243C8E80BD5C5F48FA1B /* Pods-MeeletClient.release.xcconfig */,
+			);
+			name = "Pods-MeeletClient";
+			path = "Target Support Files/Pods-MeeletClient";
+			sourceTree = "<group>";
+		};
+		AB1EC68331C072B73E3D02B0 /* CocoaLumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				728B3337E17E15BA2D82B46E /* Core */,
+				7F2E6AACB3B1E0629623A2CA /* Default */,
+				CD5D510FB2166D62424E6580 /* Extensions */,
+				DE6B3830A253A1FF483EB9A7 /* Support Files */,
+			);
+			path = CocoaLumberjack;
+			sourceTree = "<group>";
+		};
+		B166D3B438F0BD2867687DEE /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				AF67741A7E180E4AB0D37FA6 /* JSONKit.h */,
+				161CE5765D8D5FE78A3AF6D7 /* JSONKit.m */,
+				6DA03C59FB1E828CE2C7DF91 /* Support Files */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
+		B5E6963643BAEC5452A1538B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F789FB7A9866F9EA730D2A0C /* CocoaAsyncSocket */,
+				22FF4484BAB6283C16FE5B9E /* CocoaHTTPServer */,
+				AB1EC68331C072B73E3D02B0 /* CocoaLumberjack */,
+				B166D3B438F0BD2867687DEE /* JSONKit */,
+				14C33C1C6E87BEDE98047749 /* Reachability */,
+				FE4DC4EC7FDFCB26B59B3300 /* SSZipArchive */,
+				0160ADED8538118472DBC8B3 /* ZBarSDK */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CD5D510FB2166D62424E6580 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				68F507B7227E90A99BC42AD3 /* DDContextFilterLogFormatter.h */,
+				F5E90FEF5AE5F41B704CF8EC /* DDContextFilterLogFormatter.m */,
+				31380AE92B2788EFB7BC0F12 /* DDDispatchQueueLogFormatter.h */,
+				18A9977E4C7E12B2A57E397F /* DDDispatchQueueLogFormatter.m */,
+				5C79C818B3E00DFBD1699528 /* DDMultiFormatter.h */,
+				9F8B88A36A5A92FB692B33B7 /* DDMultiFormatter.m */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		DE6B3830A253A1FF483EB9A7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1610B7A6414C983008A72207 /* Pods-MeeletClient-CocoaLumberjack.xcconfig */,
+				95BFF786660BB8428A150E03 /* Pods-MeeletClient-CocoaLumberjack-Private.xcconfig */,
+				B5DC7E5091DF54C2DBCB5635 /* Pods-MeeletClient-CocoaLumberjack-dummy.m */,
+				1DBEE1713216FE5E9F5C0EF2 /* Pods-MeeletClient-CocoaLumberjack-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-MeeletClient-CocoaLumberjack";
+			sourceTree = "<group>";
+		};
+		E64097F362E630DF7E66D39A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				622834D55D4457F3618A35D9 /* Pods-MeeletClient-ZBarSDK.xcconfig */,
+				24DF86AC9653090C5AA40DAD /* Pods-MeeletClient-ZBarSDK-Private.xcconfig */,
+				78EAC5DD80F922C58471E687 /* Pods-MeeletClient-ZBarSDK-dummy.m */,
+				EA032925E57FA8B1AEE93DBC /* Pods-MeeletClient-ZBarSDK-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-MeeletClient-ZBarSDK";
+			sourceTree = "<group>";
+		};
+		F789FB7A9866F9EA730D2A0C /* CocoaAsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				A54649707B4FC398302F8234 /* AsyncSocket.h */,
+				5353C8983545F99C35BC760D /* AsyncSocket.m */,
+				04D3D7EC1B7EBE2D2F5B8B6C /* AsyncUdpSocket.h */,
+				99A7168A3F831F78ECE08A99 /* AsyncUdpSocket.m */,
+				04038E9193623B0E7CFD59A6 /* GCDAsyncSocket.h */,
+				FAFDDAA91679373AE03A0BA5 /* GCDAsyncSocket.m */,
+				7549E7977C25D2246ED53DC9 /* GCDAsyncUdpSocket.h */,
+				6CD6451AFC7C4D8B8DB7DE91 /* GCDAsyncUdpSocket.m */,
+				64E43F8EA73A36A105657A65 /* Support Files */,
+			);
+			path = CocoaAsyncSocket;
+			sourceTree = "<group>";
+		};
+		FD26C5BD12F82C066D607847 = {
+			isa = PBXGroup;
+			children = (
+				A16FF2BE1B17151900AA9124 /* Framework.plist */,
+				4E5AE13721546B7602AD4DC8 /* Podfile */,
+				0AEEA1CC3E8F578CA542315E /* Frameworks */,
+				B5E6963643BAEC5452A1538B /* Pods */,
+				09F263766450D5F93539D464 /* Products */,
+				2F51FD5C64FD12EADD77AF0D /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		FE4DC4EC7FDFCB26B59B3300 /* SSZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				82DA911DB4DDB04F7204D4DC /* SSZipArchive.h */,
+				EDA3E36D014AE70F7B7AC6E5 /* SSZipArchive.m */,
+				02E333F92F0E04CB5D788DC8 /* crypt.h */,
+				18F8FBC2934D62C9F8B4AFAD /* ioapi.c */,
+				679F1CA5966C38DAD68C6A27 /* ioapi.h */,
+				DDDD0BCD40ED711F50297AE6 /* mztools.c */,
+				3143CF88705F894F10D38C75 /* mztools.h */,
+				C5E64694788CBFBD687EB0F6 /* unzip.c */,
+				729D96CAD9D50D17585BDB8B /* unzip.h */,
+				443CB7FBF25AF2FFA1905675 /* zip.c */,
+				C5769B8D5A4A9DA943F2DA11 /* zip.h */,
+				0436EF6426C34847CB3DEC20 /* Support Files */,
+			);
+			path = SSZipArchive;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		120221DB79DA4DD3732F781A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08D267F05A1FE7B2C5A3AF48 /* SSZipArchive.h in Headers */,
+				C20AA7ABC1B29E2219117D60 /* crypt.h in Headers */,
+				2BFACFD48523341E68859680 /* ioapi.h in Headers */,
+				EAE68B7FAF02AB8ADCCB72CB /* mztools.h in Headers */,
+				69FE1B9E2D0728D4064822C1 /* unzip.h in Headers */,
+				643016AB72E52D344BAB4772 /* zip.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30874922407667883CB48E65 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBD2B688C7A6C067C391A5E7 /* ZBarCVImage.h in Headers */,
+				1E334337A63540E816C12A05 /* ZBarCameraSimulator.h in Headers */,
+				B1C52BBA5AA1ED65BA99ABF6 /* ZBarCaptureReader.h in Headers */,
+				A174A201AA54F7C8BB062A0D /* ZBarHelpController.h in Headers */,
+				5F285C79CC2D8D3C75A88CF1 /* ZBarImage.h in Headers */,
+				78FCF72C0C5557917B7CF41D /* ZBarImageScanner.h in Headers */,
+				7A5B0B67BB9884AE3F7506BF /* ZBarReaderController.h in Headers */,
+				89DD21A7B2D2708414F901A1 /* ZBarReaderView.h in Headers */,
+				E00DA7F8D1E2E62099C1B361 /* ZBarReaderViewController.h in Headers */,
+				75AA23D3E9A7B20FF505C01D /* ZBarSDK.h in Headers */,
+				2EB28908F3135A816380A0FB /* ZBarSymbol.h in Headers */,
+				4F7A2445BC413E5A94FBB065 /* bch15_5.h in Headers */,
+				97D27E723B70E0908C979F38 /* binarize.h in Headers */,
+				C7B1343DBDA415C463292B58 /* codabar.h in Headers */,
+				A42925F6600AF58553CF9431 /* code128.h in Headers */,
+				B15F5BAC9470DC187E25330E /* code39.h in Headers */,
+				2E06E38B51553CE648415015 /* code93.h in Headers */,
+				CB1E3FFE47ACB7005541F62A /* config.h in Headers */,
+				A828817853F4064A3613BDE3 /* databar.h in Headers */,
+				BCF08E1681B6C7D5BFF0E06F /* debug.h in Headers */,
+				D6548DD04A489D3B9F0FF348 /* debug.h in Headers */,
+				37289F987645E9F2D5BB10D2 /* decoder.h in Headers */,
+				5283F35850935F727391F4D6 /* ean.h in Headers */,
+				B0F4BEFD65B96AE312D42156 /* error.h in Headers */,
+				048F2758DE1E4E1024E7D4F3 /* event.h in Headers */,
+				69657F35DE4B6B1AE876F0E8 /* i25.h in Headers */,
+				4E844704388FD83645F25586 /* image.h in Headers */,
+				05E62FBC4104B062130C5082 /* img_scanner.h in Headers */,
+				93B2BB8E1B13A06296984914 /* isaac.h in Headers */,
+				5B3B492F04A190F46ABF6D0D /* mutex.h in Headers */,
+				ED60AF3885A4CA11817182F1 /* pdf417.h in Headers */,
+				7021A0DCB2EBAE165AB28E67 /* pdf417_hash.h in Headers */,
+				8584CF2FE9D5F0A4028F30E2 /* posix.h in Headers */,
+				297C2C4E654EA8DA9C224D16 /* processor.h in Headers */,
+				56CD88D3C250895387EECECF /* qr_finder.h in Headers */,
+				15B53C459DB09FEA48766B74 /* qrcode.h in Headers */,
+				DD31F6398D1C2BF2EEF29373 /* qrdec.h in Headers */,
+				6A0F3087AC1CC358CFBCC933 /* refcnt.h in Headers */,
+				225995EFB62B7F65FFEFC14F /* rs.h in Headers */,
+				944FC4C666AD40D16E772AD7 /* svg.h in Headers */,
+				1276B065F7E45A60341F4DF2 /* symbol.h in Headers */,
+				90B0E3F591993DD187F9165C /* thread.h in Headers */,
+				C67BE871A079E8E2E5F3E909 /* timer.h in Headers */,
+				4E48BF41A428CA8E9D03548A /* util.h in Headers */,
+				073A09CF77253B2BECFA63B3 /* video.h in Headers */,
+				0467BA7189EE5D8C4B5DAA23 /* win.h in Headers */,
+				75D1BFF484E4C5A7213537A7 /* window.h in Headers */,
+				53256562D35477637DE45876 /* x.h in Headers */,
+				200DB1C2CAAE2B483655BB34 /* zbar.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5843439711D992CDC3EE29E2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0207D60F4340C30F61B1FF44 /* CocoaLumberjack.h in Headers */,
+				49F63857FD1B08B49650C224 /* DDASLLogCapture.h in Headers */,
+				20FC35421488552602518E36 /* DDASLLogger.h in Headers */,
+				D28C1BC4686F8A18F2DEBC2B /* DDAbstractDatabaseLogger.h in Headers */,
+				3C4984ED4E3C2AB2D5CC7E52 /* DDAssertMacros.h in Headers */,
+				47B1086D3545502FC856CF88 /* DDContextFilterLogFormatter.h in Headers */,
+				B51069F3A9E37144A67EA1A2 /* DDDispatchQueueLogFormatter.h in Headers */,
+				97DD385F581BA66E978F6A61 /* DDFileLogger.h in Headers */,
+				1DCE6DE475FBEC2772FF3973 /* DDLegacyMacros.h in Headers */,
+				6B5091D8B093B66B54B83D7A /* DDLog+LOGV.h in Headers */,
+				B0DAE9236BAAD74CC934BCCD /* DDLog.h in Headers */,
+				85DCBE4A93B13883D7EE3EBA /* DDLogMacros.h in Headers */,
+				5FEAF022E114345D0DD47A97 /* DDMultiFormatter.h in Headers */,
+				FB3A6630858E9D5CB914541B /* DDTTYLogger.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B27D01E3AB3E2780EC65024 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4243B007110550449E14B76 /* Reachability.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F8FCFC93FE5028E1765615D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E9FAB9054D59D5C1D59A773 /* JSONKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C562FCEA11A2F001AC203DFC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3FC09EB9559A5CD32BABC16 /* AsyncSocket.h in Headers */,
+				4CA648E43858CDAF851E5BC3 /* AsyncUdpSocket.h in Headers */,
+				4C906932240F6B7647CB7BC8 /* GCDAsyncSocket.h in Headers */,
+				0FD69317A00F784D36AFC98E /* GCDAsyncUdpSocket.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5AF4FD4F14455C1CBF894DC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				333698C0B71A1377270AC266 /* DAVConnection.h in Headers */,
+				B1B323A9E072C4BC12EA500D /* DAVResponse.h in Headers */,
+				950CE1A4DED553F6A0CE9611 /* DDData.h in Headers */,
+				A2AF9DFA1172D36D466674EC /* DDNumber.h in Headers */,
+				E0EFFAE7CFEBC2C8E4CF51B5 /* DDRange.h in Headers */,
+				427EDB678BD208B6A59E3B4D /* DELETEResponse.h in Headers */,
+				73A136CCA96EB49025935C3C /* HTTPAsyncFileResponse.h in Headers */,
+				3DA8BBDAA868A81E5F699D57 /* HTTPAuthenticationRequest.h in Headers */,
+				BD1C025EFA929FFFF115BBCF /* HTTPConnection.h in Headers */,
+				122C989DA01675779E868DF7 /* HTTPDataResponse.h in Headers */,
+				9174BC91DCC2BD6AB16D3E7A /* HTTPDynamicFileResponse.h in Headers */,
+				2A11D032373A5F8D21A5B970 /* HTTPFileResponse.h in Headers */,
+				034D01A0C7859AB21F081C3D /* HTTPLogging.h in Headers */,
+				D52F73BE35A5FE6A9EAD1C2E /* HTTPMessage.h in Headers */,
+				69FAFF9E7C451BDA318CB35B /* HTTPRedirectResponse.h in Headers */,
+				B328CA371B63ADC5175A4F80 /* HTTPResponse.h in Headers */,
+				DB53DEC8C7BD30C3EBDF1BB0 /* HTTPServer.h in Headers */,
+				3017381555E94BA43CA0AD0D /* MultipartFormDataParser.h in Headers */,
+				1EFC92F6B5F650F5FC717962 /* MultipartMessageHeader.h in Headers */,
+				C348731FE407D4D53919E48A /* MultipartMessageHeaderField.h in Headers */,
+				C2572E374AFAEB811787B4AC /* PUTResponse.h in Headers */,
+				1C657F38C34609766F8439B0 /* WebSocket.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0E0763DD35F21EC4471F0AB9 /* Pods-MeeletClient-CocoaLumberjack */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F004E3A14D017C79D3B55A82 /* Build configuration list for PBXNativeTarget "Pods-MeeletClient-CocoaLumberjack" */;
+			buildPhases = (
+				89DDA203CBC4D9D42D4EE760 /* Sources */,
+				FE31BE99908B1DA8DFCDAFD0 /* Frameworks */,
+				5843439711D992CDC3EE29E2 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-MeeletClient-CocoaLumberjack";
+			productName = "Pods-MeeletClient-CocoaLumberjack";
+			productReference = FE08A64F19579AEDB199037D /* libPods-MeeletClient-CocoaLumberjack.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		1ACDB41713973DDA8D7CB2A8 /* Pods-MeeletClient-ZBarSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BB2E09B05104DEB3709F873 /* Build configuration list for PBXNativeTarget "Pods-MeeletClient-ZBarSDK" */;
+			buildPhases = (
+				D1D5808B43F4348816136C1F /* Sources */,
+				EFA0431B6AB61B8D5F37A768 /* Frameworks */,
+				30874922407667883CB48E65 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-MeeletClient-ZBarSDK";
+			productName = "Pods-MeeletClient-ZBarSDK";
+			productReference = EBA43BE6ED9B2EFBE622C605 /* libPods-MeeletClient-ZBarSDK.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		3E66DD657B8AD247B063EE4C /* Pods-MeeletClient-CocoaAsyncSocket */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C9B98838502CA0375CF55EC /* Build configuration list for PBXNativeTarget "Pods-MeeletClient-CocoaAsyncSocket" */;
+			buildPhases = (
+				882628005D1C1D6E0CB58111 /* Sources */,
+				311E92BF82DEE634D19F4E01 /* Frameworks */,
+				C562FCEA11A2F001AC203DFC /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-MeeletClient-CocoaAsyncSocket";
+			productName = "Pods-MeeletClient-CocoaAsyncSocket";
+			productReference = 7F5FE3FA59C7F709EB54A14A /* libPods-MeeletClient-CocoaAsyncSocket.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		4D21C4BE414E53B990224110 /* Pods-MeeletClient-JSONKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49E72869BE5D7A254434564A /* Build configuration list for PBXNativeTarget "Pods-MeeletClient-JSONKit" */;
+			buildPhases = (
+				126EC95E0FA33DAEE9523199 /* Sources */,
+				FE0938E74DA95B93344976BF /* Frameworks */,
+				7F8FCFC93FE5028E1765615D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-MeeletClient-JSONKit";
+			productName = "Pods-MeeletClient-JSONKit";
+			productReference = AF22AFFEF6325A35A1DC7DBA /* libPods-MeeletClient-JSONKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		B489C79E84065E6B3F12AD9F /* Pods-MeeletClient-CocoaHTTPServer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B6D7EAC964E030ED0CC19BF /* Build configuration list for PBXNativeTarget "Pods-MeeletClient-CocoaHTTPServer" */;
+			buildPhases = (
+				B7FF63F8FF5C27BFD059C2A7 /* Sources */,
+				834582A715AFA5EAC504DDD6 /* Frameworks */,
+				D5AF4FD4F14455C1CBF894DC /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9924F3452436ABA1053E3991 /* PBXTargetDependency */,
+				635FFCC4D3922317D509033F /* PBXTargetDependency */,
+			);
+			name = "Pods-MeeletClient-CocoaHTTPServer";
+			productName = "Pods-MeeletClient-CocoaHTTPServer";
+			productReference = 893F4F8FB130E9681BBD7ECB /* libPods-MeeletClient-CocoaHTTPServer.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E3202B11CC66B6B05839E199 /* Pods-MeeletClient-Reachability */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF41506B7F3F21477ABB0E07 /* Build configuration list for PBXNativeTarget "Pods-MeeletClient-Reachability" */;
+			buildPhases = (
+				20A876E3CB0F396D86B26EFD /* Sources */,
+				B562D3C21B4AC42F67179048 /* Frameworks */,
+				6B27D01E3AB3E2780EC65024 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-MeeletClient-Reachability";
+			productName = "Pods-MeeletClient-Reachability";
+			productReference = CD667458E7B279AAE93A8022 /* libPods-MeeletClient-Reachability.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		EA40E5BC9843278C7E7F2F97 /* Pods-MeeletClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 393E6A59BD6D985F2BF966E9 /* Build configuration list for PBXNativeTarget "Pods-MeeletClient" */;
+			buildPhases = (
+				653554D31BBB06C2044A1C6D /* Sources */,
+				409CC001F19E9EEDC1312A1F /* Frameworks */,
+				A1A218511B199C4D009EE499 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1A218431B199B77009EE499 /* PBXTargetDependency */,
+				A1A218451B199B77009EE499 /* PBXTargetDependency */,
+				A1A218471B199B77009EE499 /* PBXTargetDependency */,
+				A1A218491B199B77009EE499 /* PBXTargetDependency */,
+				A1A2184B1B199B77009EE499 /* PBXTargetDependency */,
+				A1A2184D1B199B77009EE499 /* PBXTargetDependency */,
+				A1A2184F1B199B77009EE499 /* PBXTargetDependency */,
+			);
+			name = "Pods-MeeletClient";
+			productName = "Pods-MeeletClient";
+			productReference = A9FCBA5D8AA29F2134819355 /* libPods-MeeletClient.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		EF2B53EDEA12F0072B1951AB /* Pods-MeeletClient-SSZipArchive */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2EDE9E3115173B4E8E0B9FE2 /* Build configuration list for PBXNativeTarget "Pods-MeeletClient-SSZipArchive" */;
+			buildPhases = (
+				1F8F6533BC17F95C2A44830B /* Sources */,
+				1E0DC162B5AB255552F6F22E /* Frameworks */,
+				120221DB79DA4DD3732F781A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-MeeletClient-SSZipArchive";
+			productName = "Pods-MeeletClient-SSZipArchive";
+			productReference = 66578274A25A025AF4531455 /* libPods-MeeletClient-SSZipArchive.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2E0B85CFAE25A8407D46A458 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+			};
+			buildConfigurationList = 0E1C9D6B8E807ED44202EDC6 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FD26C5BD12F82C066D607847;
+			productRefGroup = 09F263766450D5F93539D464 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EA40E5BC9843278C7E7F2F97 /* Pods-MeeletClient */,
+				3E66DD657B8AD247B063EE4C /* Pods-MeeletClient-CocoaAsyncSocket */,
+				B489C79E84065E6B3F12AD9F /* Pods-MeeletClient-CocoaHTTPServer */,
+				0E0763DD35F21EC4471F0AB9 /* Pods-MeeletClient-CocoaLumberjack */,
+				4D21C4BE414E53B990224110 /* Pods-MeeletClient-JSONKit */,
+				E3202B11CC66B6B05839E199 /* Pods-MeeletClient-Reachability */,
+				EF2B53EDEA12F0072B1951AB /* Pods-MeeletClient-SSZipArchive */,
+				1ACDB41713973DDA8D7CB2A8 /* Pods-MeeletClient-ZBarSDK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A1A218511B199C4D009EE499 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# name and build location\nFRAMEWORK_NAME=${PROJECT_NAME}\nFRAMEWORK_BUILD_PATH=\"${PROJECT_DIR}/build/Framework\"\n\n# these never change\nFRAMEWORK_VERSION=A\nFRAMEWORK_CURRENT_VERSION=1\nFRAMEWORK_COMPATIBILITY_VERSION=1\n\n# Clean any existing framework that might be there\nif [ -d \"$FRAMEWORK_BUILD_PATH\" ]\nthen\necho \"Framework: Cleaning framework...\"\nrm -rf \"$FRAMEWORK_BUILD_PATH\"\nfi\n\n# Build the canonical Framework bundle directory structure\necho \"Framework: Setting up directories...\"\nFRAMEWORK_DIR=$FRAMEWORK_BUILD_PATH/$FRAMEWORK_NAME.framework\nmkdir -p $FRAMEWORK_DIR\nmkdir -p $FRAMEWORK_DIR/Versions\nmkdir -p $FRAMEWORK_DIR/Versions/$FRAMEWORK_VERSION\nmkdir -p $FRAMEWORK_DIR/Versions/$FRAMEWORK_VERSION/Resources\nmkdir -p $FRAMEWORK_DIR/Versions/$FRAMEWORK_VERSION/Headers\n\necho \"Framework: Creating symlinks...\"\nln -s $FRAMEWORK_VERSION $FRAMEWORK_DIR/Versions/Current\nln -s Versions/Current/Headers $FRAMEWORK_DIR/Headers\nln -s Versions/Current/Resources $FRAMEWORK_DIR/Resources\nln -s Versions/Current/$FRAMEWORK_NAME $FRAMEWORK_DIR/$FRAMEWORK_NAME\n\n# combine lib files for various platforms into one\necho \"Framework: Creating library...\"\nif [ \"${CONFIGURATION}\" = \"Debug\" -a -f \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${TARGET_NAME}.a\" -a -f \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${TARGET_NAME}.a\" ]\nthen\nlibtool -static -o ${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${TARGET_NAME}.a `ls ${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${TARGET_NAME}*.a|grep -v lib${TARGET_NAME}.a`\nlibtool -static -o ${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${TARGET_NAME}.a `ls ${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${TARGET_NAME}*.a|grep -v lib${TARGET_NAME}.a`\nlipo -create \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${TARGET_NAME}.a\" -o \"$FRAMEWORK_DIR/Versions/Current/$FRAMEWORK_NAME\"\nfi\nif [ \"${CONFIGURATION}\" = \"Release\" -a -f \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${TARGET_NAME}.a\" ]\nthen\ncp -f \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${TARGET_NAME}.a\" \"$FRAMEWORK_DIR/Versions/Current/$FRAMEWORK_NAME\"\nfi\n\necho \"Framework: Copying assets into current version...\"\nfor dirname in `ls -l ${SRCROOT}/Headers/Public|grep ^d|awk '{print $9}'`\ndo\necho $dirname\ncount=`ls ${SRCROOT}/Headers/Public/$dirname/*.h|grep -c .h`\n                                             if [[ \"$count\" -gt \"0\" ]]\n                                             then\n                                             mkdir -p $FRAMEWORK_DIR/Headers/$dirname\n                                             cp ${SRCROOT}/Headers/Public/$dirname/*.h $FRAMEWORK_DIR/Headers/$dirname\n                                             fi\n                                             done\n                                             \n                                             #replace placeholder in plist with project name\n                                             cat \"${SRCROOT}/Framework.plist\" | sed 's/${PROJECT_NAME}/'\"${PROJECT_NAME}\"'/' > $FRAMEWORK_DIR/Resources/Info.plist";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		126EC95E0FA33DAEE9523199 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EABFD82BAB45ADE15C4C9C0 /* JSONKit.m in Sources */,
+				1C969203FA0A9FA0DF142024 /* Pods-MeeletClient-JSONKit-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F8F6533BC17F95C2A44830B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C9EB18C958F4EBAAC29BF03 /* Pods-MeeletClient-SSZipArchive-dummy.m in Sources */,
+				424CE5087B494FB0377850C6 /* SSZipArchive.m in Sources */,
+				2146674FE2B5F3A04C5992E0 /* ioapi.c in Sources */,
+				3153D3D9EFEA897C67ABCC74 /* mztools.c in Sources */,
+				5B62C4C69DC71334A57FA343 /* unzip.c in Sources */,
+				51A1538254004ECEBD9B2113 /* zip.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20A876E3CB0F396D86B26EFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDEE7366A3DE1F0BAEC308D8 /* Pods-MeeletClient-Reachability-dummy.m in Sources */,
+				0B678EE759AE62DB8F53FD04 /* Reachability.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653554D31BBB06C2044A1C6D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1A218501B199B85009EE499 /* Pods-MeeletClient-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		882628005D1C1D6E0CB58111 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECD3DA21461954300813E273 /* AsyncSocket.m in Sources */,
+				C0589F19169B3718375EA51B /* AsyncUdpSocket.m in Sources */,
+				4975C834E984DC585A68479A /* GCDAsyncSocket.m in Sources */,
+				B6758E9CD3F13C06F681C5AD /* GCDAsyncUdpSocket.m in Sources */,
+				9F071C59422C5018CA271742 /* Pods-MeeletClient-CocoaAsyncSocket-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89DDA203CBC4D9D42D4EE760 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E0A9631C1CB63DCC02D20BF /* DDASLLogCapture.m in Sources */,
+				4E90D048902BA306BF99172B /* DDASLLogger.m in Sources */,
+				21DC80BE3CD37956006BD59D /* DDAbstractDatabaseLogger.m in Sources */,
+				0E53E30D1635CFD706F00D9C /* DDContextFilterLogFormatter.m in Sources */,
+				2B9525A2361F56C1997EB6EE /* DDDispatchQueueLogFormatter.m in Sources */,
+				8A6B05891B5FBD7B4885C8CF /* DDFileLogger.m in Sources */,
+				4209C905D25B94E52DDB37A3 /* DDLog.m in Sources */,
+				B1D4A3DB5F7D49F0D6C3FFBF /* DDMultiFormatter.m in Sources */,
+				53158EED8AD64BE166B90137 /* DDTTYLogger.m in Sources */,
+				76B5855AE68825B1A3F3ACA6 /* Pods-MeeletClient-CocoaLumberjack-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7FF63F8FF5C27BFD059C2A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33B09C719D516120ABFE80B7 /* DAVConnection.m in Sources */,
+				71D748C06C1DC4A73A64C445 /* DAVResponse.m in Sources */,
+				3C97B08A8AF6FF864318D0F7 /* DDData.m in Sources */,
+				DB9093E33BB2C0CE56BF3823 /* DDNumber.m in Sources */,
+				5070AB2422D1384F79564487 /* DDRange.m in Sources */,
+				92154509DDD26EA5824C01B2 /* DELETEResponse.m in Sources */,
+				5CA20CB629863AF2A209FF15 /* HTTPAsyncFileResponse.m in Sources */,
+				660401E4FE9FF2041413FBBA /* HTTPAuthenticationRequest.m in Sources */,
+				6F23F6BB7DF1462373D23FDD /* HTTPConnection.m in Sources */,
+				00DD641914617A9634CF200D /* HTTPDataResponse.m in Sources */,
+				F47587541E844C2003AC699E /* HTTPDynamicFileResponse.m in Sources */,
+				4E46EE622BCDF0877766B3DD /* HTTPFileResponse.m in Sources */,
+				250C44838568A45BE681A441 /* HTTPMessage.m in Sources */,
+				BEDF2D57A59C9CE0A32EC7E6 /* HTTPRedirectResponse.m in Sources */,
+				CAC096A28381C8D576B77F1F /* HTTPServer.m in Sources */,
+				8398FF32DEA3282B4B4FA467 /* MultipartFormDataParser.m in Sources */,
+				76EF1032C113430BADC100CE /* MultipartMessageHeader.m in Sources */,
+				66090F6B033BDED6C3CFE2AA /* MultipartMessageHeaderField.m in Sources */,
+				2687770F7F3C7146D3F8DB8E /* PUTResponse.m in Sources */,
+				3E8A71FF1A5AD037A940AAB7 /* Pods-MeeletClient-CocoaHTTPServer-dummy.m in Sources */,
+				5F850C2BCBCAF40FC535F79A /* WebSocket.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1D5808B43F4348816136C1F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D24D7C1CA591339D5C3F76A8 /* Pods-MeeletClient-ZBarSDK-dummy.m in Sources */,
+				04EF71E150430EDE8F9ED2CB /* ZBarCVImage.m in Sources */,
+				494B48887929A4A4E962EA4C /* ZBarCameraSimulator.m in Sources */,
+				776B2382274F3768C00FB777 /* ZBarCaptureReader.m in Sources */,
+				033DC3EE929053A4441360DF /* ZBarHelpController.m in Sources */,
+				6E67BCE5205406753E72074C /* ZBarImage.m in Sources */,
+				6B3D215169DFF25EE0A94025 /* ZBarImageScanner.m in Sources */,
+				02E1E613923C36B783DDB138 /* ZBarReaderController.m in Sources */,
+				DE7535287BB5ED4617D069D5 /* ZBarReaderView.m in Sources */,
+				E35856F089FA8664704C8ED1 /* ZBarReaderViewController.m in Sources */,
+				E82F6E72A64ED981AC720CB5 /* ZBarReaderViewImpl_Capture.m in Sources */,
+				2F4DDD2C658C532340A00CA1 /* ZBarReaderViewImpl_Simulator.m in Sources */,
+				C619D9DCFDE6D449F2DA59E3 /* ZBarSymbol.m in Sources */,
+				2534D4D0A0645FEAF3A32394 /* bch15_5.c in Sources */,
+				6F82B9EB1DD92394264388A8 /* binarize.c in Sources */,
+				E8F7499C824C78B77BB92508 /* codabar.c in Sources */,
+				E790911A9F1CA0032464E310 /* code128.c in Sources */,
+				6CF5AF6A8AEB4643A775CE1D /* code39.c in Sources */,
+				47D28679B8EADD4B03F52D40 /* code93.c in Sources */,
+				2E16EE12894E6A82552C362B /* config.c in Sources */,
+				74895C9CE1BBD2876A762D76 /* databar.c in Sources */,
+				B8A7DCE8BE774652F4CBAB95 /* decoder.c in Sources */,
+				6F18AB131F9E4AC1434FC739 /* ean.c in Sources */,
+				19A5D0FB52A173C8040198F7 /* error.c in Sources */,
+				619E936695443AC923AFAB0A /* i25.c in Sources */,
+				21EBC9BA02AF917BE2EC5E6A /* image.c in Sources */,
+				8861968D5627879772006483 /* img_scanner.c in Sources */,
+				C112F420920D9B147CF1E681 /* isaac.c in Sources */,
+				BC9C78C377886F2F7567E8C3 /* qr_finder.c in Sources */,
+				C3DD8843F01CC8C76B32667F /* qrdec.c in Sources */,
+				A4081DE8E497BC28A3C618FE /* qrdectxt.c in Sources */,
+				C7E3873F9D7132FC142ED908 /* refcnt.c in Sources */,
+				C132CE325A00847D2F6C56C3 /* rs.c in Sources */,
+				B22A997C282315B9AC25B69F /* scanner.c in Sources */,
+				4FFF3D85280AE42F5931F2E4 /* symbol.c in Sources */,
+				E472F88A38718AFDD3E735BC /* util.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		635FFCC4D3922317D509033F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-MeeletClient-CocoaLumberjack";
+			target = 0E0763DD35F21EC4471F0AB9 /* Pods-MeeletClient-CocoaLumberjack */;
+			targetProxy = 9B200E8B1F844EFE87689631 /* PBXContainerItemProxy */;
+		};
+		9924F3452436ABA1053E3991 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-MeeletClient-CocoaAsyncSocket";
+			target = 3E66DD657B8AD247B063EE4C /* Pods-MeeletClient-CocoaAsyncSocket */;
+			targetProxy = E8ED55E94FBFDC855C7A59E9 /* PBXContainerItemProxy */;
+		};
+		A1A218431B199B77009EE499 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3E66DD657B8AD247B063EE4C /* Pods-MeeletClient-CocoaAsyncSocket */;
+			targetProxy = A1A218421B199B77009EE499 /* PBXContainerItemProxy */;
+		};
+		A1A218451B199B77009EE499 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B489C79E84065E6B3F12AD9F /* Pods-MeeletClient-CocoaHTTPServer */;
+			targetProxy = A1A218441B199B77009EE499 /* PBXContainerItemProxy */;
+		};
+		A1A218471B199B77009EE499 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0E0763DD35F21EC4471F0AB9 /* Pods-MeeletClient-CocoaLumberjack */;
+			targetProxy = A1A218461B199B77009EE499 /* PBXContainerItemProxy */;
+		};
+		A1A218491B199B77009EE499 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D21C4BE414E53B990224110 /* Pods-MeeletClient-JSONKit */;
+			targetProxy = A1A218481B199B77009EE499 /* PBXContainerItemProxy */;
+		};
+		A1A2184B1B199B77009EE499 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E3202B11CC66B6B05839E199 /* Pods-MeeletClient-Reachability */;
+			targetProxy = A1A2184A1B199B77009EE499 /* PBXContainerItemProxy */;
+		};
+		A1A2184D1B199B77009EE499 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF2B53EDEA12F0072B1951AB /* Pods-MeeletClient-SSZipArchive */;
+			targetProxy = A1A2184C1B199B77009EE499 /* PBXContainerItemProxy */;
+		};
+		A1A2184F1B199B77009EE499 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1ACDB41713973DDA8D7CB2A8 /* Pods-MeeletClient-ZBarSDK */;
+			targetProxy = A1A2184E1B199B77009EE499 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0EB9BF6BDC6331F099264B59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 520BADD6AD1813C25FAA6B88 /* Pods-MeeletClient-CocoaAsyncSocket-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MeeletClient-CocoaAsyncSocket/Pods-MeeletClient-CocoaAsyncSocket-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		1B243F10FB81C3FEFFAFAEA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A83E8751C1C2DF1E2D6AB367 /* Pods-MeeletClient.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		239F490C68757022DB3B483C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95BFF786660BB8428A150E03 /* Pods-MeeletClient-CocoaLumberjack-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MeeletClient-CocoaLumberjack/Pods-MeeletClient-CocoaLumberjack-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		35E12D0CCD0E5CD3A08D3C9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9355E36EACE540DB963C6FD1 /* Pods-MeeletClient-CocoaHTTPServer-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MeeletClient-CocoaHTTPServer/Pods-MeeletClient-CocoaHTTPServer-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		58AD898A2A9E6C106A1E3746 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		65B0489987AE375C0A1E787F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92C5FFAEB278B4FBBF3DF92D /* Pods-MeeletClient-JSONKit-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MeeletClient-JSONKit/Pods-MeeletClient-JSONKit-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6A1B7B735C4235340DA657EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3B2243C8E80BD5C5F48FA1B /* Pods-MeeletClient.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		7A22828533E68B48589FF92E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92C5FFAEB278B4FBBF3DF92D /* Pods-MeeletClient-JSONKit-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MeeletClient-JSONKit/Pods-MeeletClient-JSONKit-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		7F67E8F4956DFED6FA68413E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DF86AC9653090C5AA40DAD /* Pods-MeeletClient-ZBarSDK-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MeeletClient-ZBarSDK/Pods-MeeletClient-ZBarSDK-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		86FFB4EF9390105236AE7DE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCBE49CFDB838F4F3E8ACF4E /* Pods-MeeletClient-Reachability-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MeeletClient-Reachability/Pods-MeeletClient-Reachability-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		8E9BD3F03E8720EC778B8FA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95BFF786660BB8428A150E03 /* Pods-MeeletClient-CocoaLumberjack-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MeeletClient-CocoaLumberjack/Pods-MeeletClient-CocoaLumberjack-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A5F9766AD8A62E7016EB55F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCBE49CFDB838F4F3E8ACF4E /* Pods-MeeletClient-Reachability-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MeeletClient-Reachability/Pods-MeeletClient-Reachability-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		BAF46B6434CD2FA41AE8D627 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7D4473214E1177C8E9CE9B9 /* Pods-MeeletClient-SSZipArchive-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MeeletClient-SSZipArchive/Pods-MeeletClient-SSZipArchive-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CB2131C77D4B17788BA9BB91 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DA138C82638A2E1F926611EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7D4473214E1177C8E9CE9B9 /* Pods-MeeletClient-SSZipArchive-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MeeletClient-SSZipArchive/Pods-MeeletClient-SSZipArchive-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		E052315B47A5354981C4F453 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 520BADD6AD1813C25FAA6B88 /* Pods-MeeletClient-CocoaAsyncSocket-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MeeletClient-CocoaAsyncSocket/Pods-MeeletClient-CocoaAsyncSocket-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		E5D4BF8DD499D790A256F18C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DF86AC9653090C5AA40DAD /* Pods-MeeletClient-ZBarSDK-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MeeletClient-ZBarSDK/Pods-MeeletClient-ZBarSDK-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		EF3D7AA32C64A895A891F282 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9355E36EACE540DB963C6FD1 /* Pods-MeeletClient-CocoaHTTPServer-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MeeletClient-CocoaHTTPServer/Pods-MeeletClient-CocoaHTTPServer-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0E1C9D6B8E807ED44202EDC6 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58AD898A2A9E6C106A1E3746 /* Debug */,
+				CB2131C77D4B17788BA9BB91 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BB2E09B05104DEB3709F873 /* Build configuration list for PBXNativeTarget "Pods-MeeletClient-ZBarSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F67E8F4956DFED6FA68413E /* Debug */,
+				E5D4BF8DD499D790A256F18C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2EDE9E3115173B4E8E0B9FE2 /* Build configuration list for PBXNativeTarget "Pods-MeeletClient-SSZipArchive" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAF46B6434CD2FA41AE8D627 /* Debug */,
+				DA138C82638A2E1F926611EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		393E6A59BD6D985F2BF966E9 /* Build configuration list for PBXNativeTarget "Pods-MeeletClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B243F10FB81C3FEFFAFAEA9 /* Debug */,
+				6A1B7B735C4235340DA657EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49E72869BE5D7A254434564A /* Build configuration list for PBXNativeTarget "Pods-MeeletClient-JSONKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65B0489987AE375C0A1E787F /* Debug */,
+				7A22828533E68B48589FF92E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B6D7EAC964E030ED0CC19BF /* Build configuration list for PBXNativeTarget "Pods-MeeletClient-CocoaHTTPServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35E12D0CCD0E5CD3A08D3C9E /* Debug */,
+				EF3D7AA32C64A895A891F282 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7C9B98838502CA0375CF55EC /* Build configuration list for PBXNativeTarget "Pods-MeeletClient-CocoaAsyncSocket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EB9BF6BDC6331F099264B59 /* Debug */,
+				E052315B47A5354981C4F453 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F004E3A14D017C79D3B55A82 /* Build configuration list for PBXNativeTarget "Pods-MeeletClient-CocoaLumberjack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E9BD3F03E8720EC778B8FA3 /* Debug */,
+				239F490C68757022DB3B483C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF41506B7F3F21477ABB0E07 /* Build configuration list for PBXNativeTarget "Pods-MeeletClient-Reachability" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5F9766AD8A62E7016EB55F9 /* Debug */,
+				86FFB4EF9390105236AE7DE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2E0B85CFAE25A8407D46A458 /* Project object */;
+}
