@@ -183,9 +183,9 @@
                                                          params:@{@"projectId":projectId}
                                                      httpMethod:@"GET"];
     op.isPersistable = YES;
-    op.downloadSizePerRequest = 1024000;
+    op.downloadSizePerRequest = 512000;
     [op addHeaders:@{@"Accept-Encoding":@"application/octet-stream"}];
-    [op setFileToBeSaved:[NSURL fileURLWithPath:[Global projectPath:[projectId stringByAppendingPathExtension:@"zip"]]]];
+    [op setFileToBeSaved:[NSURL fileURLWithPath:[[Global tmpPath] stringByAppendingPathComponent:[projectId stringByAppendingPathExtension:@"zip"]]]];
     [op addCompletionHandler:codeBlock errorHandler:errorBlock];
     [op onDownloadProgressChanged:progressBlock];
 

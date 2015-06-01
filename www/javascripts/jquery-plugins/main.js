@@ -2,11 +2,13 @@ requirejs.config(
     {
         paths: {
             "icheck": JQUERY_PLUGINS_LIB_PATH + "icheck/1.0.2/icheck.min",
-            "sly": JQUERY_PLUGINS_LIB_PATH + "sly/1.2.7/sly"
+            "sly": JQUERY_PLUGINS_LIB_PATH + "sly/1.2.7/sly",
+            "knob": JQUERY_PLUGINS_LIB_PATH + "knob/1.2.11/jquery.knob"
         },
         shim: {
             "icheck": {deps: ["jquery-lib"]},
-            "sly": {deps: ["jquery-lib"]}
+            "sly": {deps: ["jquery-lib"]},
+            "knob": {deps: ["jquery-lib"]}
         },
         waitSeconds: 0
     }
@@ -14,7 +16,7 @@ requirejs.config(
 
 define(
     [
-        "icheck", "sly"
+        "icheck", "sly", "knob"
     ],
     function () {
         [

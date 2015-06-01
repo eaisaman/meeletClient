@@ -17,6 +17,7 @@
 
 + (void)initApplication;
 + (NetworkEngine*)engine;
++ (NSString*)tmpPath;
 + (NSString*)projectPath:(NSString*)projectId;
 
 + (void)setLoginUser:(NSString*)loginName plainPassword:(NSString*)plainPassword userObj:(NSDictionary*)userObj;

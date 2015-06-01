@@ -16,22 +16,32 @@
             </div>
             <div class="projectContent col-as-12">
                 <div class="fs-x-small projectItem" ng-repeat="projectItem in userDetail.projectList"
-                     ng-attr-id="{{projectItem._id}}">
+                     ng-attr-id="{{projectItem._id}}" ng-init="createProjectKnob(projectItem)"
+                     ng-attr-mode="{{projectItem.mode}}">
                     <div class="projectItemCheck fs-x-medium icon-mobile-client-before"
                          ng-class="{'icon-mobile-client-uncheck-before':!projectItem.checked, 'icon-mobile-client-check-before':projectItem.checked}"
                          ng-click="toggleCheck(projectItem, $event)" ng-show="toggleCheckMode"></div>
 
-                    <div class="projectItemDownload fs-x-medium icon-mobile-client-before"
-                         ng-class="{'icon-mobile-client-refresh-before':projectItem.exist, 'icon-mobile-client-download-before':!projectItem.exist}"
-                         ng-click="toggleCheck(projectItem, $event)"></div>
+                    <div class="projectItemDownload fs-x-medium icon-mobile-client-before icon-mobile-client-download-before"
+                         ng-click="downloadProject(projectItem, $event)"></div>
+
+                    <div class="projectItemRefresh fs-x-medium icon-mobile-client-before icon-mobile-client-refresh-before"
+                         ng-click="downloadProject(projectItem, $event)"></div>
+
+                    <div class="projectItemPause fs-x-medium icon-mobile-client-before icon-mobile-client-pause-before"
+                         ng-click="pauseDownloadProject(projectItem, $event)"></div>
 
                     <div class="projectItemInfoList col-as-12 no-padding">
-                        <div class="projectItemProgress"></div>
+                        <div class="projectItemProgress" ng-show="projectItem.progress > 1">
+                            <input class="projectItemKnob" data-width="100" data-fgColor="#2ecc71"
+                                   data-bgColor="#ecf0f1" data-readOnly=true data-thickness=.3 data-linecap=round
+                                   value="29"/>
+                        </div>
 
-                        <div class="projectItemInfo projectItemDesc">
+                        <div class="projectItemInfo projectItemDesc" ng-class="{'blur':projectItem.progress > 1}">
                             <span class="col-as-12">{{projectItem.desc}}</span>
                         </div>
-                        <div class="projectItemInfo">
+                        <div class="projectItemInfo" ng-class="{'blur':projectItem.progress > 1}">
                             <div class="infoLabel">Name</div>
 
                             <div class="infoContent"><span>{{projectItem.name}}</span>
@@ -62,16 +72,17 @@
                 <div class="projectInfo fs-x-small">
                     <div class="infoLabel">Description</div>
                     <div class="infoContent"><span>{{pickedProject.desc}}</span>
+                    </div>
                 </div>
-            </div>
-            <div class="projectModalBar fs-x-medium">
-                <div class="projectModalButton"
-                     ng-click="downloadProject(pickedProject, $event)">
-                    <span class="icon-mobile-client-before icon-mobile-client-confirm-before">Download</span>
-                </div>
-                <div class="projectModalButton"
-                     ng-click="hideProjectModal($event)">
-                    <span class="icon-mobile-client-before icon-mobile-client-cancel-before">Cancel</span>
+                <div class="projectModalBar fs-x-medium">
+                    <div class="projectModalButton"
+                         ng-click="downloadProject(pickedProject, $event)">
+                        <span class="icon-mobile-client-before icon-mobile-client-confirm-before">Download</span>
+                    </div>
+                    <div class="projectModalButton"
+                         ng-click="hideProjectModal($event)">
+                        <span class="icon-mobile-client-before icon-mobile-client-cancel-before">Cancel</span>
+                    </div>
                 </div>
             </div>
         </div>

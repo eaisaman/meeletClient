@@ -210,6 +210,10 @@ define(
             return this.cordovaPromise("downloadProject").apply(this, Array.prototype.slice.call(arguments));
         }
 
+        appService.prototype.pauseDownloadProject = function (projectId) {
+            return this.cordovaPromise("pauseDownloadProject").apply(this, Array.prototype.slice.call(arguments));
+        }
+
         return function (appModule) {
             appModule.
                 config(['$httpProvider',

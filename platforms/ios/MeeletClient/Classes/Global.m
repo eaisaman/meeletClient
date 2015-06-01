@@ -17,7 +17,9 @@
 #import <Pods/CocoaLumberjack/DDTTYLogger.h>
 #import <Pods/CocoaHTTPServer/HTTPServer.h>
 #import <Pods/CocoaHTTPServer/DAVConnection.h>
+#import <Pods/SSZipArchive/SSZipArchive.h>
 
+#define TMP_PATH @"tmp"
 #define PROJECT_PATH @"project"
 
 @implementation Global
@@ -184,8 +186,19 @@
 + (void)downloadProject:(NSString*)projectId
 {
     [[self engine] downloadProject:projectId codeBlock:^(CommonNetworkOperation *completedOperation) {
-        
         dispatch_async(dispatch_get_main_queue(), ^{
+            NSFileManager* manager = [NSFileManager defaultManager];
+            NSString* tmpPath = [[Global tmpPath] stringByAppendingPathComponent:[projectId stringByAppendingPathExtension:@"zip"]];
+            NSString* projectPath = [self projectPath:projectId];
+            
+            if ([manager fileExistsAtPath:tmpPath]) {
+                if ([manager fileExistsAtPath:projectPath]) {
+                    [manager removeItemAtPath:projectPath error:nil];
+                }
+                [SSZipArchive unzipFileAtPath:tmpPath toDestination:projectPath];
+                [manager removeItemAtPath:tmpPath error:nil];
+            }
+            
             MainViewController *viewController = [[[UIApplication sharedApplication] delegate] performSelector:@selector(viewController)];
             [viewController.commandDelegate evalJs:[NSString stringWithFormat:@"onDownloadProjectDone && onDownloadProjectDone('%@')", projectId]];
         });
@@ -269,6 +282,16 @@
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:[SecurityContext getObject].details.loginName];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path])
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:nil];
+    
+    return path;
+}
+
++(NSString*)tmpPath
+{
+    NSString *path = [[self userFilePath] stringByAppendingPathComponent:TMP_PATH];
+    
     if (![[NSFileManager defaultManager] fileExistsAtPath:path])
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:nil];
     

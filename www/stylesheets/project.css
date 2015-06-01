@@ -1,3 +1,67 @@
+#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem[mode='inProgress'] .projectItemProgress > div canvas {
+  -moz-animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -moz-animation-fill-mode: both;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-backface-visibility: none;
+  -moz-backface-visibility: none;
+  -o-backface-visibility: none;
+  backface-visibility: none;
+}
+
+#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem[mode='inProgress'] .projectItemProgress > div canvas {
+  -moz-animation-name: blinkEffect;
+  -webkit-animation-name: blinkEffect;
+  animation-name: blinkEffect;
+  -moz-animation-duration: 1.5s;
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -moz-animation-timing-function: ease-out;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -moz-animation-delay: 75ms;
+  -webkit-animation-delay: 75ms;
+  animation-delay: 75ms;
+}
+
+@-webkit-keyframes blinkEffect {
+  0% {
+    opacity: 0.7;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+@-moz-keyframes blinkEffect {
+  0% {
+    opacity: 0.7;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+@keyframes blinkEffect {
+  0% {
+    opacity: 0.7;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
 #projectContainer {
   position: relative;
   float: left;
@@ -36,6 +100,47 @@
   padding: 15px;
   box-shadow: 0 15px 10px -10px #6D6D6D, 0 1px 4px #A4A4A4, 0 0 40px #E0E0E0 inset;
 }
+#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem[mode='waitDownload'] .projectItemDownload {
+  pointer-events: auto;
+  visibility: visible;
+}
+#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem[mode='waitDownload'] .projectItemRefresh {
+  pointer-events: none;
+  visibility: hidden;
+}
+#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem[mode='waitDownload'] .projectItemPause {
+  pointer-events: none;
+  visibility: hidden;
+}
+#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem[mode='waitRefresh'] .projectItemDownload {
+  pointer-events: none;
+  visibility: hidden;
+}
+#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem[mode='waitRefresh'] .projectItemRefresh {
+  pointer-events: auto;
+  visibility: visible;
+}
+#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem[mode='waitRefresh'] .projectItemPause {
+  pointer-events: none;
+  visibility: hidden;
+}
+#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem[mode='inProgress'] .projectItemProgress > div canvas {
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem[mode='inProgress'] .projectItemDownload {
+  pointer-events: none;
+  visibility: hidden;
+}
+#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem[mode='inProgress'] .projectItemRefresh {
+  pointer-events: none;
+  visibility: hidden;
+}
+#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem[mode='inProgress'] .projectItemPause {
+  pointer-events: auto;
+  visibility: visible;
+}
 #projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem .projectItemInfoList {
   height: 5.5em;
   margin-bottom: 1em;
@@ -45,10 +150,20 @@
   position: absolute;
   width: 100%;
   height: 100%;
+  pointer-events: none;
+}
+#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem .projectItemInfoList .projectItemProgress > div {
+  position: absolute;
+  left: calc(50% - 50px);
+  top: calc(50% - 50px);
 }
 #projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem .projectItemInfoList .projectItemInfo {
   height: 1.5em;
   width: 100%;
+}
+#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem .projectItemInfoList .projectItemInfo.blur {
+  -webkit-filter: blur(1.5px);
+  filter: blur(1.5px);
 }
 #projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem .projectItemInfoList .projectItemInfo .infoLabel {
   position: relative;
@@ -125,15 +240,17 @@
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem .projectItemDownload {
+#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem .projectItemDownload, #projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem .projectItemRefresh, #projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem .projectItemPause {
   z-index: 1;
   position: absolute;
   right: -0.5em;
   bottom: -0.5em;
   width: 2em;
   height: 2em;
+  visibility: hidden;
+  pointer-events: none;
 }
-#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem .projectItemDownload:before {
+#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem .projectItemDownload:before, #projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem .projectItemRefresh:before, #projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem .projectItemPause:before {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -143,7 +260,7 @@
   background: rgba(255, 255, 255, 0.3);
   box-shadow: 0 0 10px #555;
 }
-#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem .projectItemDownload:active:before {
+#projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem .projectItemDownload:active:before, #projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem .projectItemRefresh:active:before, #projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem .projectItemPause:active:before {
   color: rgba(0, 0, 0, 0.4);
   margin-top: 1px;
   box-shadow: 0 0 5px #555;

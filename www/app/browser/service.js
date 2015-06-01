@@ -167,6 +167,8 @@ define(
 
         appService.prototype.downloadProject = appService.prototype.NOOP;
 
+        appService.prototype.pauseDownloadProject = appService.prototype.NOOP;
+
         return function (appModule) {
             appModule.
                 config(['$httpProvider',
