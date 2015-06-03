@@ -194,5 +194,25 @@
     return op;
 }
 
+-(NSDictionary*) downloadProjectInfo:(NSString *)projectId
+{
+    CommonNetworkOperation *op = [self.engine operationWithPath:@"api/public/projectFile"
+                                                         params:@{@"projectId":projectId}
+                                                     httpMethod:@"GET"];
+    return op.downloadInfo;
+}
+
+-(BOOL) downloadProjectInProgress:(NSString *)projectId
+{
+    CommonNetworkOperation *op = [self.engine operationWithPath:@"api/public/projectFile"
+                                                         params:@{@"projectId":projectId}
+                                                     httpMethod:@"GET"];
+    return [CommonNetworkEngine operationExists:op.uniqueIdentifier];
+}
+
+-(void) pauseDownloadProject:(NSString *)projectId
+{
+    [self.engine stopDownload:@"api/public/projectFile" params:@{@"projectId":projectId}];
+}
 
 @end

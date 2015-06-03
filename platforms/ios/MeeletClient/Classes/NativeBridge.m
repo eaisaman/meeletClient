@@ -68,9 +68,29 @@
     [Global scanProjectCode];
 }
 
--(void) checkProjectExist:(CDVInvokedUrlCommand *)command
+-(void) checkProjectMode:(CDVInvokedUrlCommand *)command
 {
-    
+    if (command.arguments && command.arguments.count == 1) {
+        NSString *projectIdStr = command.arguments[0];
+        NSArray *projectIdList = [projectIdStr objectFromJSONString];
+        if (projectIdList && projectIdList.count) {
+            NSMutableArray *result = [NSMutableArray array];
+            for (NSString* projectId in projectIdList) {
+                NSString *mode = [Global projectMode:projectId];
+                NSUInteger progress = [Global projectProgress:projectId];
+                [result addObject:@{@"mode":mode, @"progress":[NSNumber numberWithUnsignedInteger:progress]}];
+            }
+
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:@{@"data":@{@"result":@"OK", @"resultValue":result}}];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        } else {
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        }
+    } else {
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Incorrect argument number."];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }
 }
 
 -(void) doLogin:(CDVInvokedUrlCommand*)command
@@ -211,10 +231,40 @@
     }
 }
 
+-(void) pauseDownloadProject:(CDVInvokedUrlCommand *)command
+{
+    if (command.arguments && command.arguments.count == 1) {
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        
+        NSString *projectId = command.arguments[0];
+        [Global pauseDownloadProject:projectId];
+    } else {
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Incorrect argument number."];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }
+}
+
 -(void) getLocalProject:(CDVInvokedUrlCommand*)command
 {
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:@{@"data":@{@"result":@"OK", @"resultValue":[Global getLocalProject]}}];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
+-(void) showProject:(CDVInvokedUrlCommand *)command
+{
+    if (command.arguments && command.arguments.count == 1) {
+        NSString *projectId = command.arguments[0];
+        [Global showProject:projectId codeBlock:^{
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        } errorBlock:^(NSError *error) {
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[error localizedDescription]];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        }];
+    } else {
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Incorrect argument number."];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }
+}
 @end

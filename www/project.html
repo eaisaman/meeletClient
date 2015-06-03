@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="projectContent col-as-12">
-                <div class="fs-x-small projectItem" ng-repeat="projectItem in userDetail.projectList"
+                <div class="fs-x-small projectItem" ng-repeat="projectItem in $root.userDetail.projectList"
                      ng-attr-id="{{projectItem._id}}" ng-init="createProjectKnob(projectItem)"
                      ng-attr-mode="{{projectItem.mode}}">
                     <div class="projectItemCheck fs-x-medium icon-mobile-client-before"
@@ -32,16 +32,19 @@
                          ng-click="pauseDownloadProject(projectItem, $event)"></div>
 
                     <div class="projectItemInfoList col-as-12 no-padding">
-                        <div class="projectItemProgress" ng-show="projectItem.progress > 1">
+                        <div class="projectItemProgress"
+                             ng-show="projectItem.progress > 1 && projectItem.progress < 100">
                             <input class="projectItemKnob" data-width="100" data-fgColor="#2ecc71"
                                    data-bgColor="#ecf0f1" data-readOnly=true data-thickness=.3 data-linecap=round
-                                   value="29"/>
+                                   value="0"/>
                         </div>
 
-                        <div class="projectItemInfo projectItemDesc" ng-class="{'blur':projectItem.progress > 1}">
+                        <div class="projectItemInfo projectItemDesc"
+                             ng-class="{'blur':projectItem.progress > 1 && projectItem.progress < 100}" ng-click="showProject(projectItem, $event)">
                             <span class="col-as-12">{{projectItem.desc}}</span>
                         </div>
-                        <div class="projectItemInfo" ng-class="{'blur':projectItem.progress > 1}">
+                        <div class="projectItemInfo"
+                             ng-class="{'blur':projectItem.progress > 1 && projectItem.progress < 100}">
                             <div class="infoLabel">Name</div>
 
                             <div class="infoContent"><span>{{projectItem.name}}</span>

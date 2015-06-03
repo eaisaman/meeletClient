@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Global.h"
 #import "MainViewController.h"
+#import "ProjectViewController.h"
 #import "UserDetails.h"
 #import "SecurityContext.h"
 #import "QRCodeViewController.h"
@@ -18,6 +19,8 @@
 #import <Pods/CocoaHTTPServer/HTTPServer.h>
 #import <Pods/CocoaHTTPServer/DAVConnection.h>
 #import <Pods/SSZipArchive/SSZipArchive.h>
+
+const char* ProjectModeName[] = {"waitDownload", "waitRefresh", "inProgress"};
 
 #define TMP_PATH @"tmp"
 #define PROJECT_PATH @"project"
@@ -185,36 +188,61 @@
 
 + (void)downloadProject:(NSString*)projectId
 {
+    MainViewController *viewController = [[[UIApplication sharedApplication] delegate] performSelector:@selector(viewController)];
+    [viewController.commandDelegate evalJs:[NSString stringWithFormat:@"onDownloadProjectStart && onDownloadProjectStart('%@', '%@')", projectId, ENUM_NAME(ProjectMode, InProgress)]];//Project mode: 0.Wait Download; 1.Wait Refresh; 2. Download or Refresh in Progress
+
     [[self engine] downloadProject:projectId codeBlock:^(CommonNetworkOperation *completedOperation) {
+        ALog(@"Download complete %@", projectId);
+        
         dispatch_async(dispatch_get_main_queue(), ^{
+            MainViewController *viewController = [[[UIApplication sharedApplication] delegate] performSelector:@selector(viewController)];
+            [viewController.commandDelegate evalJs:[NSString stringWithFormat:@"onDownloadProjectDone && onDownloadProjectDone('%@', '%@')", projectId, ENUM_NAME(ProjectMode, WaitRefersh)]];
+        });
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSFileManager* manager = [NSFileManager defaultManager];
             NSString* tmpPath = [[Global tmpPath] stringByAppendingPathComponent:[projectId stringByAppendingPathExtension:@"zip"]];
+            NSString* projectTmpPath = [[Global tmpPath] stringByAppendingPathComponent:projectId];
             NSString* projectPath = [self projectPath:projectId];
-            
+
             if ([manager fileExistsAtPath:tmpPath]) {
+                if ([manager fileExistsAtPath:projectTmpPath]) {
+                    [manager removeItemAtPath:projectTmpPath error:nil];
+                }
+                [SSZipArchive unzipFileAtPath:tmpPath toDestination:projectTmpPath];
+
                 if ([manager fileExistsAtPath:projectPath]) {
                     [manager removeItemAtPath:projectPath error:nil];
                 }
-                [SSZipArchive unzipFileAtPath:tmpPath toDestination:projectPath];
-                [manager removeItemAtPath:tmpPath error:nil];
+                [manager moveItemAtPath:projectTmpPath toPath:projectPath error:nil];
             }
-            
-            MainViewController *viewController = [[[UIApplication sharedApplication] delegate] performSelector:@selector(viewController)];
-            [viewController.commandDelegate evalJs:[NSString stringWithFormat:@"onDownloadProjectDone && onDownloadProjectDone('%@')", projectId]];
         });
     } onError:^(CommonNetworkOperation *completedOperation, NSString *prevResponsePath, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            NSUInteger prevProgress = [self projectProgress:projectId];
+            NSString* mode = [self projectMode:projectId];
             MainViewController *viewController = [[[UIApplication sharedApplication] delegate] performSelector:@selector(viewController)];
-            [viewController.commandDelegate evalJs:[NSString stringWithFormat:@"onDownloadProjectError && onDownloadProjectError('%@', '%@')", projectId, [error localizedDescription]]];
+            [viewController.commandDelegate evalJs:[NSString stringWithFormat:@"onDownloadProjectError && onDownloadProjectError('%@', '%@', %lu, '%@')", projectId, mode, prevProgress, [error localizedDescription]]];
         });
     } progressBlock:^(double progress) {
         DLog(@"Download in progress %.2f", progress);
         
         dispatch_async(dispatch_get_main_queue(), ^{
             MainViewController *viewController = [[[UIApplication sharedApplication] delegate] performSelector:@selector(viewController)];
-            [viewController.commandDelegate evalJs:[NSString stringWithFormat:@"onDownloadProjectProgress && onDownloadProjectProgress('%@', %.2f)", projectId, progress]];
+            [viewController.commandDelegate evalJs:[NSString stringWithFormat:@"onDownloadProjectProgress && onDownloadProjectProgress('%@', %lu)", projectId, (unsigned long)(ceilf(progress * 100))]];
         });
     }];
+}
+
++ (void)pauseDownloadProject:(NSString *)projectId
+{
+    [[self engine] pauseDownloadProject:projectId];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSString* mode = [self projectMode:projectId];
+        MainViewController *viewController = [[[UIApplication sharedApplication] delegate] performSelector:@selector(viewController)];
+        [viewController.commandDelegate evalJs:[NSString stringWithFormat:@"onDownloadProjectStop && onDownloadProjectStop('%@', '%@')", projectId, mode]];
+    });
 }
 
 + (BOOL)isValidObjectId:(NSString*)idStr
@@ -278,6 +306,32 @@
     [viewController presentViewController:ctrl animated:YES completion:nil];
 }
 
++ (void)showProject:(NSString *)projectId codeBlock:(ReponseBlock)codeBlock errorBlock:(ErrorBlock)errorBlock
+{
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSString* projectPath = [self projectPath:projectId];
+    NSString* indexPath = [projectPath stringByAppendingPathComponent:@"index.html"];
+
+    if ([manager fileExistsAtPath:projectPath] && [manager fileExistsAtPath:indexPath]) {
+        if (codeBlock) {
+            codeBlock();
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            ProjectViewController* ctrl = [[ProjectViewController alloc] init];
+            ctrl.wwwFolderName = [[NSURL fileURLWithPath:projectPath] absoluteString];
+            ctrl.startPage = @"index.html";
+
+            MainViewController *viewController = [[[UIApplication sharedApplication] delegate] performSelector:@selector(viewController)];
+            [viewController presentViewController:ctrl animated:YES completion:nil];
+        });
+    } else {
+        if (errorBlock) {
+            errorBlock([NSError errorWithDomain:APP_ERROR_DOMAIN code:APP_ERROR_OPEN_FILE_CODE userInfo:@{@"error":@"Directory not found."}]);
+        }
+    }
+}
+
 +(NSString*)userFilePath
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -311,6 +365,35 @@
 +(NSString*)projectPath:(NSString*)projectId
 {
     return [[self projectsPath] stringByAppendingPathComponent:projectId];
+}
+
+//Project mode: 0.Wait Download; 1.Wait Refresh; 2. Download or Refresh in Progress
++(NSString*)projectMode:(NSString*)projectId
+{
+    if ([[self engine] downloadProjectInProgress:projectId]) {
+        return ENUM_NAME(ProjectMode, InProgress);
+    } else {
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[self projectPath:projectId]]) {
+            return ENUM_NAME(ProjectMode, WaitRefersh);
+        } else {
+            return ENUM_NAME(ProjectMode, WaitDownload);
+        }
+    }
+}
+
++(NSUInteger)projectProgress:(NSString*)projectId
+{
+    NSDictionary* downloadInfo = [[self engine] downloadProjectInfo:projectId];
+    if (downloadInfo) {
+        NSNumber *unitCompleted = [downloadInfo objectForKey:@"unitCompleted"];
+        NSNumber *unitTotal = [downloadInfo objectForKey:@"unitTotal"];
+        if (unitCompleted && unitTotal) {
+            float progress = [unitCompleted floatValue] / [unitTotal floatValue];
+            return (NSUInteger)ceilf(progress * 100);
+        }
+    }
+    
+    return 0;
 }
 
 @end

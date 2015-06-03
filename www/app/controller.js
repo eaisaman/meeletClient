@@ -16,14 +16,25 @@ define(
                         });
                     }
 
-                    window.onDownloadProjectDone = function (projectId) {
-                        $rootScope.$broadcast(angularEventTypes.downloadProjectDoneEvent, {projectId: projectId});
+                    window.onDownloadProjectStop = function (projectId, mode) {
+                        $rootScope.$broadcast(angularEventTypes.downloadProjectStopEvent, {
+                            projectId: projectId,
+                            mode: mode
+                        });
                     }
 
-                    window.onDownloadProjectError = function (projectId, mode, err) {
+                    window.onDownloadProjectDone = function (projectId, mode) {
+                        $rootScope.$broadcast(angularEventTypes.downloadProjectDoneEvent, {
+                            projectId: projectId,
+                            mode: mode
+                        });
+                    }
+
+                    window.onDownloadProjectError = function (projectId, mode, progress, err) {
                         $rootScope.$broadcast(angularEventTypes.downloadProjectErrorEvent, {
                             projectId: projectId,
                             mode: mode,
+                            progress: progress,
                             err: err
                         });
                     }
@@ -67,12 +78,9 @@ define(
                                 arr.push(function () {
                                     return appService.getUserDetail({"loginName": "wangxinyun28"}).then(
                                         function (result) {
-                                            result && result.data.result == "OK" && _.extend($rootScope.userDetail, result.data.resultValue[0]);
-
-                                            $rootScope.userDetail.projectList[0].mode = "waitDownload";
-                                            $rootScope.userDetail.projectList[0].progress = 15;
-                                            $rootScope.userDetail.projectList[1].mode = "inProgress";
-                                            $rootScope.userDetail.projectList[1].progress = 25;
+                                            if (result && result.data.result == "OK") {
+                                                Array.prototype.splice.apply($rootScope.userDetail.projectList, Array.prototype.concat.apply(Array.prototype, [0, 0, result.data.resultValue[0].projectList]));
+                                            }
 
                                             return uiUtilService.getResolveDefer();
                                         },
@@ -84,13 +92,51 @@ define(
 
                                 arr.push(function () {
                                     return appService.getLocalProject().then(function (result) {
-                                            result && result.data.result == "OK" && Array.prototype.splice.apply($rootScope.userDetail.projectList, Array.prototype.concat.apply(Array.prototype, [0, 0, result.data.resultValue]));
+                                            if (result && result.data.result == "OK" && result.data.resultValue.length) {
+                                                for (var i = 0; i < $rootScope.userDetail.projectList.length; i++) {
+                                                    var _id = $rootScope.userDetail.projectList[i]._id;
+                                                    if (result.data.resultValue.length) {
+                                                        var index;
+                                                        if (!result.data.resultValue.every(function (projectItem, i) {
+                                                            if (projectItem._id === _id) {
+                                                                index = i;
+                                                                return false;
+                                                            }
+
+                                                            return true;
+                                                        })) {
+                                                            result.data.resultValue.splice(index, 1);
+                                                        }
+                                                    } else {
+                                                        break;
+                                                    }
+                                                }
+                                            }
 
                                             return uiUtilService.getResolveDefer();
                                         },
                                         function (err) {
                                             return uiUtilService.getRejectDefer(err);
                                         });
+                                });
+
+                                arr.push(function () {
+                                    return appService.checkProjectMode(_.pluck($rootScope.userDetail.projectList, "_id")).then(
+                                        function (result) {
+                                            if (result && result.data.result == "OK") {
+                                                result.data.resultValue.forEach(function (data, i) {
+                                                    $rootScope.userDetail.projectList[i].mode = data.mode;
+                                                    if (data.progress < 100)
+                                                        $rootScope.userDetail.projectList[i].progress = data.progress;
+                                                });
+                                            }
+
+                                            return uiUtilService.getResolveDefer();
+                                        },
+                                        function (err) {
+                                            return uiUtilService.getRejectDefer(err);
+                                        }
+                                    );
                                 });
 
                                 return uiUtilService.chain(arr).then(
@@ -109,12 +155,9 @@ define(
                     });
                 }
 
-                initMaster().then(
-                    function () {
-                        urlService.firstPage();
-                    }
-                    //TODO Redirect to default error.html
-                );
+                initMaster().then(function () {
+                    urlService.firstPage();
+                });
             }
 
             function ProjectController($scope, $rootScope, $timeout, $q, angularConstants, angularEventTypes, appService, uiService, urlService, uiUtilService) {
@@ -157,7 +200,7 @@ define(
                     $el.toggleClass("select");
                     $scope.toggleCheckMode = $el.hasClass("select");
 
-                    $scope.userDetail.projectList.forEach(function (projectItem) {
+                    $rootScope.userDetail.projectList.forEach(function (projectItem) {
                         projectItem.checked = false;
                     });
                 }
@@ -187,7 +230,9 @@ define(
                         },
                         function (err) {
                             if (!err) {
-                                $("#{0} .projectItemProgress input.projectItemKnob".format(projectItem._id)).knob({});
+                                var $input = $("#{0} .projectItemProgress input.projectItemKnob".format(projectItem._id));
+                                $input.knob({});
+                                projectItem.progress && $input.data("knob").val(projectItem.progress);
                             }
                         },
                         angularConstants.checkInterval,
@@ -209,12 +254,18 @@ define(
                     appService.pauseDownloadProject(projectItem._id);
                 }
 
+                $scope.showProject = function (projectItem, event) {
+                    event && event.stopPropagation && event.stopPropagation();
+
+                    appService.showProject(projectItem._id);
+                }
+
                 function initMaster() {
                     $scope.$on(angularEventTypes.projectScanEvent, function (event, data) {
                         $timeout(function () {
                             $scope.displayProjectModal();
 
-                            if ($scope.userDetail.projectList.every(function (projectItem) {
+                            if ($rootScope.userDetail.projectList.every(function (projectItem) {
                                     if (projectItem._id === data.projectId) {
                                         $scope.pickedProject = projectItem;
                                         return false;
@@ -239,7 +290,22 @@ define(
 
                     $scope.$on(angularEventTypes.downloadProjectStartEvent, function (event, data) {
                         $timeout(function () {
-                            $scope.userDetail.projectList.every(function (projectItem) {
+                            $rootScope.userDetail.projectList.every(function (projectItem) {
+                                if (projectItem._id === data.projectId) {
+                                    projectItem.mode = data.mode;
+                                    return false;
+                                }
+
+                                return true;
+                            });
+                        });
+
+                        $scope.$apply();
+                    });
+
+                    $scope.$on(angularEventTypes.downloadProjectStopEvent, function (event, data) {
+                        $timeout(function () {
+                            $rootScope.userDetail.projectList.every(function (projectItem) {
                                 if (projectItem._id === data.projectId) {
                                     projectItem.mode = data.mode;
                                     return false;
@@ -253,39 +319,24 @@ define(
                     });
 
                     $scope.$on(angularEventTypes.downloadProjectDoneEvent, function (event, data) {
-                        $timeout(function () {
-                            $scope.userDetail.projectList.every(function (projectItem) {
+                            $rootScope.userDetail.projectList.every(function (projectItem) {
                                 if (projectItem._id === data.projectId) {
-                                    projectItem.mode = "waitRefresh";
+                                    projectItem.mode = data.mode;
+                                    projectItem.progress = 100;
                                     return false;
                                 }
 
                                 return true;
                             });
-                        });
 
-                        $scope.$apply();
+                        $rootScope.$apply();
                     });
 
                     $scope.$on(angularEventTypes.downloadProjectErrorEvent, function (event, data) {
                         $timeout(function () {
-                            $scope.userDetail.projectList.every(function (projectItem) {
+                            $rootScope.userDetail.projectList.every(function (projectItem) {
                                 if (projectItem._id === data.projectId) {
                                     projectItem.mode = data.mode;
-                                    return false;
-                                }
-
-                                return true;
-                            });
-                        });
-
-                        $scope.$apply();
-                    });
-
-                    $scope.$on(angularEventTypes.downloadProjectProgressEvent, function (event, data) {
-                        $timeout(function () {
-                            $scope.userDetail.projectList.every(function (projectItem) {
-                                if (projectItem._id === data.projectId) {
                                     projectItem.progress = data.progress;
                                     return false;
                                 }
@@ -297,20 +348,26 @@ define(
                         $scope.$apply();
                     });
 
-                    return $q.all([appService.checkProjectExist(_.pluck($scope.userDetail.projectList, "_id"))]).then(
-                        function (result) {
-                            if (result[0] && result[0].data.result == "OK") {
-                                result[0].data.resultValue.forEach(function (mode, i) {
-                                    $scope.userDetail.projectList[i].mode = mode;
-                                });
-                            }
-
-                            return uiUtilService.getResolveDefer();
-                        },
-                        function (err) {
-                            return uiUtilService.getRejectDefer(err);
+                    $scope.$on(angularEventTypes.downloadProjectProgressEvent, function (event, data) {
+                        var $input = $("#{0} .projectItemProgress input.projectItemKnob".format(data.projectId));
+                        if ($input.length) {
+                            $input.knob({});
+                            data.progress && $input.data("knob").val(data.progress);
                         }
-                    );
+
+                        $timeout(function () {
+                            $rootScope.userDetail.projectList.every(function (projectItem) {
+                                if (projectItem._id === data.projectId) {
+                                    projectItem.progress = data.progress;
+                                    return false;
+                                }
+
+                                return true;
+                            });
+                        });
+
+                        $scope.$apply();
+                    });
                 }
 
                 initMaster();

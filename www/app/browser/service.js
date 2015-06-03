@@ -152,7 +152,7 @@ define(
 
         appService.prototype.getLocalProject = appService.prototype.NOOP;
 
-        appService.prototype.checkProjectExist = appService.prototype.NOOP;
+        appService.prototype.checkProjectMode = appService.prototype.NOOP;
 
         appService.prototype.scanProjectCode = appService.prototype.NOOP;
 
@@ -168,6 +168,8 @@ define(
         appService.prototype.downloadProject = appService.prototype.NOOP;
 
         appService.prototype.pauseDownloadProject = appService.prototype.NOOP;
+
+        appService.prototype.showProject = appService.prototype.NOOP;
 
         return function (appModule) {
             appModule.

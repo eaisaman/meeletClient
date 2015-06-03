@@ -31,6 +31,9 @@ typedef void (^DownloadProgressBlock)(double progress);
 -(CommonNetworkOperation*) getUserDetails:(NSString*)userFilter codeBlock:(StringResponseBlock) codeBlock onError:(NKErrorBlock) errorBlock;
 -(CommonNetworkOperation*) getProject:(NSString*)userFilter codeBlock:(StringResponseBlock) codeBlock onError:(NKErrorBlock) errorBlock;
 -(CommonNetworkOperation*) downloadProject:(NSString*)projectId codeBlock:(NKResponseBlock) codeBlock onError:(NKErrorBlock) errorBlock progressBlock:(DownloadProgressBlock)progressBlock;
+-(NSDictionary*) downloadProjectInfo:(NSString*)projectId;
+-(BOOL) downloadProjectInProgress:(NSString *)projectId;
+-(void) pauseDownloadProject:(NSString*)projectId;
 
 @end
 

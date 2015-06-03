@@ -79,6 +79,7 @@
 
                     &[mode='inProgress'] {
                         .projectItemProgress {
+
                             > div canvas {
                                 @include animation-iteration-count(infinite);
                                 @extend %blinkEffect;

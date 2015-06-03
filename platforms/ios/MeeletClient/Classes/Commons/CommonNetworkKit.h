@@ -408,6 +408,8 @@ typedef enum {
 
 -(NSString*)getCachedItem:(CommonNetworkOperation*)operation;
 
+- (void) stopDownload:(NSString *)path params:(NSDictionary*) body;
+
 - (void) freezeOperations;
 
 - (void) checkAndRestoreFrozenOperations;

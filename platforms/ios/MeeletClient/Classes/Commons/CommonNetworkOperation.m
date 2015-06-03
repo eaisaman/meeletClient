@@ -189,6 +189,25 @@ static NSURL* downloadTempDirectory;
     return downloadTempDirectory;
 }
 
++(NSString*) formatDateString:(NSDate*) date
+{
+    static NSDateFormatter* formatter = nil;
+    static NSRegularExpression *regex = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"];
+
+        regex = [NSRegularExpression regularExpressionWithPattern:@"GMT([-|+][0-9]{2})[:]?([0-9]{2})$" options:NSRegularExpressionCaseInsensitive error:nil];
+    });
+    
+    NSString* timeStr = [formatter stringFromDate:date];
+    timeStr = [[regex stringByReplacingMatchesInString:timeStr options:0 range:NSMakeRange(0, timeStr.length) withTemplate:@"$1:$2"] mutableCopy];
+    
+    return timeStr;
+}
+
 - (OperationRecord*) operationRecord {
     OperationRecord* record = [[OperationRecord alloc] init];
     
@@ -718,10 +737,20 @@ static NSURL* downloadTempDirectory;
     
     [[self handlersForKey:self.filesToBeSaved key:self.beneficiary] removeAllObjects];
     [[self handlersForKey:self.filesToBeSaved key:self.beneficiary] addObject:fileUrl];
-    
+
+    NSFileManager *manger = [NSFileManager defaultManager];
+    if ([manger fileExistsAtPath:[fileUrl path]]) {
+        NSDictionary* attrs = [manger attributesOfItemAtPath:[fileUrl path] error:nil];
+        if (attrs != nil) {
+            NSDate *downloadTime = (NSDate*)[attrs objectForKey: NSFileCreationDate];
+            
+            [self addHeaders:@{@"if-modified-since":[CommonNetworkOperation formatDateString:downloadTime]}];
+        }
+    }
+
     NSURL* infoUrl = [NSURL fileURLWithPathComponents:[NSArray arrayWithObjects:[[CommonNetworkOperation getDownloadTempDirectory] path], [NSString stringWithFormat:@"%@.download", [self uniqueIdentifier]], nil]];
     
-    if ([[NSFileManager defaultManager] fileExistsAtPath:[infoUrl path]]) {
+    if ([manger fileExistsAtPath:[infoUrl path]]) {
         NSDictionary* infoDict = [NSDictionary dictionaryWithContentsOfFile:[infoUrl path]];
         
         if (infoDict) {
@@ -1046,7 +1075,7 @@ static NSURL* downloadTempDirectory;
         }
     }
     
-    return @{};
+    return nil;
 }
 
 #pragma mark -

@@ -198,8 +198,8 @@ define(
             return this.cordovaPromise("scanProjectCode").apply(this, Array.prototype.slice.call(arguments));
         }
 
-        appService.prototype.checkProjectExist = function (projectIdList) {
-            return this.cordovaPromise("checkProjectExist").apply(this, [JSON.stringify(projectIdList || [])]);
+        appService.prototype.checkProjectMode = function (projectIdList) {
+            return this.cordovaPromise("checkProjectMode").apply(this, [JSON.stringify(projectIdList || [])]);
         }
 
         appService.prototype.getProject = function (projectFilter) {
@@ -212,6 +212,10 @@ define(
 
         appService.prototype.pauseDownloadProject = function (projectId) {
             return this.cordovaPromise("pauseDownloadProject").apply(this, Array.prototype.slice.call(arguments));
+        }
+
+        appService.prototype.showProject = function (projectId) {
+            return this.cordovaPromise("showProject").apply(this, Array.prototype.slice.call(arguments));
         }
 
         return function (appModule) {

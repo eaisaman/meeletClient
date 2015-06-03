@@ -521,6 +521,17 @@ typedef NS_ENUM(NSUInteger, OperationCacheUpdateOptions) {
     return nil;
 }
 
+- (void) stopDownload:(NSString *)path params:(NSDictionary*) body
+{
+    CommonNetworkOperation *operation = [self operationWithPath:path params:body httpMethod:@"GET"];
+    
+    for(CommonNetworkOperation *op in _sharedNetworkQueue.operations) {
+        if ([op isEqual:operation]) {
+            [op stop];
+        }
+    }
+}
+
 #pragma mark -
 #pragma mark Memory Mangement
 
