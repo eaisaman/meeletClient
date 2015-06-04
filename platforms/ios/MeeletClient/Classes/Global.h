@@ -36,6 +36,7 @@ extern const char* ProjectModeName[];
 + (NetworkEngine*)engine;
 + (NSString*)tmpPath;
 + (NSString*)projectPath:(NSString*)projectId;
++ (NSString*)projectInfoPath:(NSString*)projectId;
 
 + (void)setLoginUser:(NSString*)loginName plainPassword:(NSString*)plainPassword userObj:(NSDictionary*)userObj;
 + (void)setLoginUser:(NSDictionary*)userObj;

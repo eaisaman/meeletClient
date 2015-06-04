@@ -41,6 +41,8 @@
 		7E7966E71810823500FA85AD /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DD1810823500FA85AD /* icon-small@2x.png */; };
 		A151C13A1B15616200F52806 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A151C1381B15616200F52806 /* QRCodeViewController.m */; };
 		A151C13B1B15616200F52806 /* QRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A151C1391B15616200F52806 /* QRCodeViewController.xib */; };
+		A154BC6B1B1F58EA00A0721B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A154BC6A1B1F58EA00A0721B /* QuartzCore.framework */; };
+		A154BC6D1B1F58EF00A0721B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A154BC6C1B1F58EF00A0721B /* Accelerate.framework */; };
 		A1762F311B11AD3000E5B61F /* NetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = A1762F301B11AD3000E5B61F /* NetworkEngine.m */; };
 		A1762F351B11AFD100E5B61F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A1762F341B11AFD100E5B61F /* Settings.bundle */; };
 		A17682C41B13152C008B4D18 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A17682C21B13152C008B4D18 /* Localizable.strings */; };
@@ -60,6 +62,9 @@
 		A1BB4BC61B12F6BA00018AE9 /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BB4BC51B12F6BA00018AE9 /* Global.m */; };
 		A1BB4BDC1B130DF100018AE9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BB4BDB1B130DF100018AE9 /* Pods.framework */; };
 		A1BB4BE21B13136D00018AE9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1BB4BE41B13136D00018AE9 /* Localizable.strings */; };
+		A1CFBA341B1ECD1500E92D05 /* ProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CFBA331B1ECD1500E92D05 /* ProjectViewController.m */; };
+		A1CFBA371B1EDC0000E92D05 /* QRCodeOutlineBox.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CFBA361B1EDC0000E92D05 /* QRCodeOutlineBox.m */; };
+		A1CFBA3B1B1EF08F00E92D05 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1CFBA3A1B1EF08F00E92D05 /* images.xcassets */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +127,8 @@
 		A151C1371B15616200F52806 /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
 		A151C1381B15616200F52806 /* QRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
 		A151C1391B15616200F52806 /* QRCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeViewController.xib; sourceTree = "<group>"; };
+		A154BC6A1B1F58EA00A0721B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A154BC6C1B1F58EF00A0721B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		A1762F301B11AD3000E5B61F /* NetworkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkEngine.m; sourceTree = "<group>"; };
 		A1762F321B11AD3F00E5B61F /* NetworkEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkEngine.h; sourceTree = "<group>"; };
 		A1762F331B11ADAD00E5B61F /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
@@ -158,6 +165,11 @@
 		A1BB4BDB1B130DF100018AE9 /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = Pods/build/Framework/Pods.framework; sourceTree = "<group>"; };
 		A1BB4BDD1B130DFE00018AE9 /* libCordova.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCordova.a; path = "../../../../../Library/Developer/Xcode/DerivedData/MeeletClient-ekataqskrnuoeaanmfmhnvsrxyyx/Build/Products/Debug-iphoneos/libCordova.a"; sourceTree = "<group>"; };
 		A1BB4BE31B13136D00018AE9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A1CFBA321B1ECD1500E92D05 /* ProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectViewController.h; sourceTree = "<group>"; };
+		A1CFBA331B1ECD1500E92D05 /* ProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectViewController.m; sourceTree = "<group>"; };
+		A1CFBA351B1EDC0000E92D05 /* QRCodeOutlineBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeOutlineBox.h; sourceTree = "<group>"; };
+		A1CFBA361B1EDC0000E92D05 /* QRCodeOutlineBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeOutlineBox.m; sourceTree = "<group>"; };
+		A1CFBA3A1B1EF08F00E92D05 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 		C80BB30EF01D83EDF826D44B /* Pods-MeeletClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeeletClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeeletClient/Pods-MeeletClient.release.xcconfig"; sourceTree = "<group>"; };
 		CD6D95740BA30966095B2ECF /* Pods-MeeletClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeeletClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeeletClient/Pods-MeeletClient.debug.xcconfig"; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
@@ -172,11 +184,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1BB4BDC1B130DF100018AE9 /* Pods.framework in Frameworks */,
+				A154BC6D1B1F58EF00A0721B /* Accelerate.framework in Frameworks */,
 				5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */,
 				A1BB4BBF1B12F09C00018AE9 /* CoreData.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
+				A1BB4BDC1B130DF100018AE9 /* Pods.framework in Frameworks */,
+				A154BC6B1B1F58EA00A0721B /* QuartzCore.framework in Frameworks */,
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,9 +213,13 @@
 				A1BB4BC51B12F6BA00018AE9 /* Global.m */,
 				A17682C61B1316A5008B4D18 /* NativeBridge.h */,
 				A17682C71B1316A5008B4D18 /* NativeBridge.m */,
+				A1CFBA351B1EDC0000E92D05 /* QRCodeOutlineBox.h */,
+				A1CFBA361B1EDC0000E92D05 /* QRCodeOutlineBox.m */,
 				A151C1371B15616200F52806 /* QRCodeViewController.h */,
 				A151C1381B15616200F52806 /* QRCodeViewController.m */,
 				A151C1391B15616200F52806 /* QRCodeViewController.xib */,
+				A1CFBA321B1ECD1500E92D05 /* ProjectViewController.h */,
+				A1CFBA331B1ECD1500E92D05 /* ProjectViewController.m */,
 			);
 			name = Classes;
 			path = MeeletClient/Classes;
@@ -254,6 +272,7 @@
 				8D1107310486CEB800E47090 /* MeeletClient-Info.plist */,
 				A1762F341B11AFD100E5B61F /* Settings.bundle */,
 				A1BB4BE41B13136D00018AE9 /* Localizable.strings */,
+				A1CFBA3A1B1EF08F00E92D05 /* images.xcassets */,
 			);
 			name = Resources;
 			path = MeeletClient/Resources;
@@ -262,6 +281,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A154BC6C1B1F58EF00A0721B /* Accelerate.framework */,
+				A154BC6A1B1F58EA00A0721B /* QuartzCore.framework */,
 				A1BB4BDB1B130DF100018AE9 /* Pods.framework */,
 				A1BB4BBE1B12F09C00018AE9 /* CoreData.framework */,
 				5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */,
@@ -482,6 +503,7 @@
 				7E7966E01810823500FA85AD /* icon-50.png in Resources */,
 				7E7966E31810823500FA85AD /* icon-60@2x.png in Resources */,
 				7E7966E61810823500FA85AD /* icon-small.png in Resources */,
+				A1CFBA3B1B1EF08F00E92D05 /* images.xcassets in Resources */,
 				3088BBBD154F3926009F9C59 /* Default-Landscape@2x~ipad.png in Resources */,
 				3088BBBE154F3926009F9C59 /* Default-Landscape~ipad.png in Resources */,
 				3088BBBF154F3926009F9C59 /* Default-Portrait@2x~ipad.png in Resources */,
@@ -563,6 +585,8 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				A1BB4BAE1B12EE1000018AE9 /* NSDictionary+RequestEncoding.m in Sources */,
 				A1BB4BB91B12EFB600018AE9 /* UserDetails.m in Sources */,
+				A1CFBA341B1ECD1500E92D05 /* ProjectViewController.m in Sources */,
+				A1CFBA371B1EDC0000E92D05 /* QRCodeOutlineBox.m in Sources */,
 				A1BB4B9E1B12EC9D00018AE9 /* CommonNetworkEngine.m in Sources */,
 				A1BB4BC61B12F6BA00018AE9 /* Global.m in Sources */,
 				A1BB4BBD1B12F02800018AE9 /* ResubmittableRecordStore.m in Sources */,

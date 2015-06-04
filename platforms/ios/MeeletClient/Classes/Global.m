@@ -24,6 +24,8 @@ const char* ProjectModeName[] = {"waitDownload", "waitRefresh", "inProgress"};
 
 #define TMP_PATH @"tmp"
 #define PROJECT_PATH @"project"
+#define PROJECT_INFO_PATH @"info"
+#define PROJECT_CONTENT_PATH @"content"
 
 @implementation Global
 
@@ -168,7 +170,7 @@ const char* ProjectModeName[] = {"waitDownload", "waitRefresh", "inProgress"};
 {
     NSMutableArray* result = [NSMutableArray array];
     NSFileManager* fileManager = [NSFileManager defaultManager];
-    NSDirectoryEnumerator* directoryEnumerator =[fileManager enumeratorAtURL:[NSURL fileURLWithPath:[self projectsPath] isDirectory:YES] includingPropertiesForKeys:[NSArray arrayWithObjects:NSURLFileResourceTypeKey, nil] options:NSDirectoryEnumerationSkipsSubdirectoryDescendants errorHandler:nil];
+    NSDirectoryEnumerator* directoryEnumerator =[fileManager enumeratorAtURL:[NSURL fileURLWithPath:[self projectsInfoPath] isDirectory:YES] includingPropertiesForKeys:[NSArray arrayWithObjects:NSURLFileResourceTypeKey, nil] options:NSDirectoryEnumerationSkipsSubdirectoryDescendants errorHandler:nil];
 
     for (NSURL* subDirectory in directoryEnumerator) {
         NSString* dirType = nil;
@@ -188,6 +190,37 @@ const char* ProjectModeName[] = {"waitDownload", "waitRefresh", "inProgress"};
 
 + (void)downloadProject:(NSString*)projectId
 {
+    NSString *infoPath = [self projectInfoPath:projectId];
+    NSString *projectJsonPath = [infoPath stringByAppendingPathComponent:@"project.json"];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    
+    if (![manager fileExistsAtPath:infoPath]) {
+        [manager createDirectoryAtPath:infoPath withIntermediateDirectories:NO attributes:nil error:nil];
+    }
+    
+    if (![manager fileExistsAtPath:projectJsonPath]) {
+        [[Global engine] getProject:[@{@"_id":projectId} JSONString] codeBlock:^(NSString *record) {
+            NSMutableDictionary *recordDict = [@{} mutableCopy];
+            [recordDict addEntriesFromDictionary:[record objectFromJSONString]];
+            NSArray *arr = [recordDict objectForKey:@"resultValue"];
+            
+            if(arr.count) {
+                NSDictionary *dict = arr[0];
+                [[dict JSONString] writeToFile:projectJsonPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MainViewController *viewController = [[[UIApplication sharedApplication] delegate] performSelector:@selector(viewController)];
+                    [viewController.commandDelegate evalJs:[NSString stringWithFormat:@"onGetProjectError && onGetProjectError('%@', '%@')", projectId, @"Project record cannot be found."]];
+                });
+            }
+        } onError:^(CommonNetworkOperation *completedOperation, NSString *prevResponsePath, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MainViewController *viewController = [[[UIApplication sharedApplication] delegate] performSelector:@selector(viewController)];
+                [viewController.commandDelegate evalJs:[NSString stringWithFormat:@"onGetProjectError && onGetProjectError('%@', '%@')", projectId, [error localizedDescription]]];
+            });
+        }];
+    }
+    
     MainViewController *viewController = [[[UIApplication sharedApplication] delegate] performSelector:@selector(viewController)];
     [viewController.commandDelegate evalJs:[NSString stringWithFormat:@"onDownloadProjectStart && onDownloadProjectStart('%@', '%@')", projectId, ENUM_NAME(ProjectMode, InProgress)]];//Project mode: 0.Wait Download; 1.Wait Refresh; 2. Download or Refresh in Progress
 
@@ -362,9 +395,34 @@ const char* ProjectModeName[] = {"waitDownload", "waitRefresh", "inProgress"};
     return path;
 }
 
++(NSString*)projectsInfoPath
+{
+    NSString *path = [[self projectsPath] stringByAppendingPathComponent:PROJECT_INFO_PATH];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path])
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:nil];
+    
+    return path;
+}
+
++(NSString*)projectsContentPath
+{
+    NSString *path = [[self projectsPath] stringByAppendingPathComponent:PROJECT_CONTENT_PATH];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path])
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:nil];
+    
+    return path;
+}
+
 +(NSString*)projectPath:(NSString*)projectId
 {
-    return [[self projectsPath] stringByAppendingPathComponent:projectId];
+    return [[self projectsContentPath] stringByAppendingPathComponent:projectId];
+}
+
++(NSString*)projectInfoPath:(NSString*)projectId
+{
+    return [[self projectsInfoPath] stringByAppendingPathComponent:projectId];
 }
 
 //Project mode: 0.Wait Download; 1.Wait Refresh; 2. Download or Refresh in Progress

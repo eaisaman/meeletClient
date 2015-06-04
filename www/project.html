@@ -79,7 +79,7 @@
                 </div>
                 <div class="projectModalBar fs-x-medium">
                     <div class="projectModalButton"
-                         ng-click="downloadProject(pickedProject, $event)">
+                         ng-click="downloadProject(pickedProject, $event) && hideProjectModal($event)">
                         <span class="icon-mobile-client-before icon-mobile-client-confirm-before">Download</span>
                     </div>
                     <div class="projectModalButton"

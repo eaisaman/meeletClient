@@ -9,6 +9,13 @@ define(
                         $rootScope.$broadcast(angularEventTypes.projectScanEvent, {projectId: projectId});
                     }
 
+                    window.onGetProjectError = function (projectId, err) {
+                        $rootScope.$broadcast(angularEventTypes.getProjectErrorEvent, {
+                            projectId: projectId,
+                            err: err
+                        });
+                    }
+
                     window.onDownloadProjectStart = function (projectId, mode) {
                         $rootScope.$broadcast(angularEventTypes.downloadProjectStartEvent, {
                             projectId: projectId,
@@ -58,7 +65,7 @@ define(
                                 if (!$rootScope.loginUser._id) {
                                     arr.push(
                                         function () {
-                                            return appService.doLogin("wangxinyun28", "*").then(
+                                            return appService.doLogin("xujingkai27", "*").then(
                                                 function (result) {
                                                     if (result && result.data.result == "OK") {
                                                         var userObj = result.data.resultValue[0];
@@ -76,10 +83,10 @@ define(
                                 }
 
                                 arr.push(function () {
-                                    return appService.getUserDetail({"loginName": "wangxinyun28"}).then(
+                                    return appService.getUserDetail({"loginName": "xujingkai27"}).then(
                                         function (result) {
                                             if (result && result.data.result == "OK") {
-                                                Array.prototype.splice.apply($rootScope.userDetail.projectList, Array.prototype.concat.apply(Array.prototype, [0, 0, result.data.resultValue[0].projectList]));
+                                                Array.prototype.splice.apply($rootScope.userDetail.projectList, Array.prototype.concat.apply(Array.prototype, [$rootScope.userDetail.projectList.length, 0, result.data.resultValue[0].projectList]));
                                             }
 
                                             return uiUtilService.getResolveDefer();
@@ -98,19 +105,21 @@ define(
                                                     if (result.data.resultValue.length) {
                                                         var index;
                                                         if (!result.data.resultValue.every(function (projectItem, i) {
-                                                            if (projectItem._id === _id) {
-                                                                index = i;
-                                                                return false;
-                                                            }
+                                                                if (projectItem._id === _id) {
+                                                                    index = i;
+                                                                    return false;
+                                                                }
 
-                                                            return true;
-                                                        })) {
+                                                                return true;
+                                                            })) {
                                                             result.data.resultValue.splice(index, 1);
                                                         }
                                                     } else {
                                                         break;
                                                     }
                                                 }
+
+                                                Array.prototype.splice.apply($rootScope.userDetail.projectList, Array.prototype.concat.apply(Array.prototype, [$rootScope.userDetail.projectList.length, 0, result.data.resultValue]));
                                             }
 
                                             return uiUtilService.getResolveDefer();
@@ -184,6 +193,8 @@ define(
 
                     var scope = angular.element($("#projectContainer > .modalWindowContainer .md-modal")).scope();
                     scope.toggleModalWindow();
+
+                    return true;
                 }
 
                 $scope.scanProjectCode = function (event) {
@@ -245,7 +256,19 @@ define(
                 $scope.downloadProject = function (projectItem, event) {
                     event && event.stopPropagation && event.stopPropagation();
 
+                    if ($rootScope.userDetail.projectList.every(function (item) {
+                            if (item._id === projectItem._id) {
+                                return false;
+                            }
+
+                            return true;
+                        })) {
+                        $rootScope.userDetail.projectList.splice($rootScope.userDetail.projectList.length, 0, projectItem);
+                    }
+
                     appService.downloadProject(projectItem._id);
+
+                    return true;
                 }
 
                 $scope.pauseDownloadProject = function (projectItem, event) {
@@ -319,15 +342,15 @@ define(
                     });
 
                     $scope.$on(angularEventTypes.downloadProjectDoneEvent, function (event, data) {
-                            $rootScope.userDetail.projectList.every(function (projectItem) {
-                                if (projectItem._id === data.projectId) {
-                                    projectItem.mode = data.mode;
-                                    projectItem.progress = 100;
-                                    return false;
-                                }
+                        $rootScope.userDetail.projectList.every(function (projectItem) {
+                            if (projectItem._id === data.projectId) {
+                                projectItem.mode = data.mode;
+                                projectItem.progress = 100;
+                                return false;
+                            }
 
-                                return true;
-                            });
+                            return true;
+                        });
 
                         $rootScope.$apply();
                     });
