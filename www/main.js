@@ -70,6 +70,7 @@ requirejs(["jquery-lib", "jquery-plugins-lib", "hammer-lib", "jquery-ui-lib", "j
         //Used by Mobile App
         projectScanEvent: "projectScan",
         getProjectErrorEvent: "getProjectError",
+        deleteLocalProjectEvent: "deleteLocalProject",
         downloadProjectStartEvent: "downloadProjectStart",
         downloadProjectStopEvent: "downloadProjectStop",
         downloadProjectDoneEvent: "downloadProjectDone",

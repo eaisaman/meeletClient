@@ -152,6 +152,8 @@ define(
 
         appService.prototype.getLocalProject = appService.prototype.NOOP;
 
+        appService.prototype.deleteLocalProject = appService.prototype.NOOP;
+
         appService.prototype.checkProjectMode = appService.prototype.NOOP;
 
         appService.prototype.scanProjectCode = appService.prototype.NOOP;

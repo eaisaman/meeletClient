@@ -194,6 +194,10 @@ define(
             return this.cordovaPromise("getLocalProject").apply(this, Array.prototype.slice.call(arguments));
         }
 
+        appService.prototype.deleteLocalProject = function (projectIdList) {
+            return this.cordovaPromise("deleteLocalProject").apply(this, [JSON.stringify(projectIdList || [])]);
+        }
+
         appService.prototype.scanProjectCode = function () {
             return this.cordovaPromise("scanProjectCode").apply(this, Array.prototype.slice.call(arguments));
         }

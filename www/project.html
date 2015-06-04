@@ -19,6 +19,7 @@
                      ng-attr-id="{{projectItem._id}}" ng-init="createProjectKnob(projectItem)"
                      ng-attr-mode="{{projectItem.mode}}">
                     <div class="projectItemCheck fs-x-medium icon-mobile-client-before"
+                         ng-if="projectItem.mode === 'waitRefresh'"
                          ng-class="{'icon-mobile-client-uncheck-before':!projectItem.checked, 'icon-mobile-client-check-before':projectItem.checked}"
                          ng-click="toggleCheck(projectItem, $event)" ng-show="toggleCheckMode"></div>
 

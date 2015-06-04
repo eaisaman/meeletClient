@@ -16,6 +16,12 @@ define(
                         });
                     }
 
+                    window.onDeleteLocalProject = function (projectIdList) {
+                        $rootScope.$broadcast(angularEventTypes.deleteLocalProjectEvent, {
+                            projectIdList: projectIdList
+                        });
+                    }
+
                     window.onDownloadProjectStart = function (projectId, mode) {
                         $rootScope.$broadcast(angularEventTypes.downloadProjectStartEvent, {
                             projectId: projectId,
@@ -210,6 +216,14 @@ define(
                     !$el.hasClass("select") && $(".topbarToggleButton.select").removeClass("select");
                     $el.toggleClass("select");
                     $scope.toggleCheckMode = $el.hasClass("select");
+                    if ($scope.toggleCheckMode) {
+                        $scope.projectAction = {
+                            name: $el.attr("action"), callback: function () {
+                                $scope.toggleCheckMode = false;
+                                $el.removeClass("select");
+                            }
+                        }
+                    }
 
                     $rootScope.userDetail.projectList.forEach(function (projectItem) {
                         projectItem.checked = false;
@@ -225,10 +239,29 @@ define(
 
                 $scope.confirmProjectAction = function (event) {
                     event && event.stopPropagation && event.stopPropagation();
+
+                    if ($scope.projectAction) {
+                        if ($scope.projectAction.name === "delete") {
+                            var projectIdList = [];
+
+                            $rootScope.userDetail.projectList.forEach(function (projectItem) {
+                                projectItem.checked && projectIdList.push(projectItem._id);
+                            });
+
+                            projectIdList.length && appService.deleteLocalProject(projectIdList);
+                        }
+                        $scope.projectAction.callback && $scope.projectAction.callback();
+                        delete $scope.projectAction;
+                    }
                 }
 
                 $scope.cancelProjectAction = function (event) {
                     event && event.stopPropagation && event.stopPropagation();
+
+                    if ($scope.projectAction) {
+                        $scope.projectAction.callback && $scope.projectAction.callback();
+                        delete $scope.projectAction;
+                    }
                 }
 
                 $scope.createProjectKnob = function (projectItem) {
@@ -306,6 +339,31 @@ define(
                                     }
                                 );
                             }
+                        });
+
+                        $scope.$apply();
+                    });
+
+                    $scope.$on(angularEventTypes.deleteLocalProjectEvent, function (event, data) {
+                        $timeout(function () {
+                            var projectIdList = data.projectIdList,
+                                iArray = [];
+
+                            $rootScope.userDetail.projectList.forEach(function (projectItem, i) {
+                                var dIndex = _.indexOf(projectIdList, projectItem._id);
+
+                                if (dIndex >= 0) {
+                                    if (projectItem.userId === $rootScope.loginUser._id) {
+                                        projectItem.mode = "waitDownload";
+                                    } else {
+                                        iArray.splice(0, 0, i);
+                                    }
+                                }
+                            });
+
+                            iArray.forEach(function (index) {
+                                $rootScope.userDetail.projectList.splice(index, 1);
+                            });
                         });
 
                         $scope.$apply();
