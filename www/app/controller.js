@@ -59,6 +59,32 @@ define(
                         });
                     }
 
+                    window.onGetProjectModulesError = function (err) {
+                        $rootScope.$broadcast(angularEventTypes.getProjectModulesErrorEvent, {
+                            err: err
+                        });
+                    }
+
+                    window.onDownloadProjectModulesStart = function () {
+                        $rootScope.$broadcast(angularEventTypes.downloadProjectModulesStartEvent, {});
+                    }
+
+                    window.onDownloadProjectModulesDone = function () {
+                        $rootScope.$broadcast(angularEventTypes.downloadProjectModulesDoneEvent, {});
+                    }
+
+                    window.onDownloadProjectModulesError = function (err) {
+                        $rootScope.$broadcast(angularEventTypes.downloadProjectModulesErrorEvent, {
+                            err: err
+                        });
+                    }
+
+                    window.onDownloadProjectModulesProgress = function (progress) {
+                        $rootScope.$broadcast(angularEventTypes.downloadProjectModulesProgressEvent, {
+                            progress: progress
+                        });
+                    }
+
                     $rootScope.userDetail = {projectList: []};
 
                     return appService.getServerUrl().then(function (serverUrl) {
@@ -175,7 +201,33 @@ define(
                 });
             }
 
-            function ProjectController($scope, $rootScope, $timeout, $q, angularConstants, angularEventTypes, appService, uiService, urlService, uiUtilService) {
+            function PreloadController($scope, $rootScope, $timeout, $q, angularConstants, angularEventTypes, appService, urlService, uiUtilService) {
+                function initMaster() {
+                    var defer = $q.defer();
+
+                    appService.downloadModules();
+
+                    $scope.$on(angularEventTypes.downloadProjectModulesDoneEvent, function (event) {
+                        $timeout(function () {
+                            defer.resolve();
+                        }, 2000);
+                    });
+
+                    $scope.$on(angularEventTypes.downloadProjectModulesErrorEvent, function (event) {
+                        $timeout(function () {
+                            defer.resolve();
+                        }, 2000);
+                    });
+
+                    return defer.promise;
+                }
+
+                initMaster().then(function () {
+                    urlService.project();
+                });
+            }
+
+            function ProjectController($scope, $rootScope, $timeout, $q, angularConstants, angularEventTypes, appService, urlService, uiUtilService) {
                 extension && extension.attach && extension.attach($scope, {
                     "$timeout": $timeout,
                     "$q": $q,
@@ -456,7 +508,8 @@ define(
 
             appModule.
                 controller('RootController', ["$scope", "$rootScope", "$q", "angularConstants", "angularEventTypes", "appService", "urlService", "uiUtilService", RootController]).
-                controller('ProjectController', ["$scope", "$rootScope", "$timeout", "$q", "angularConstants", "angularEventTypes", "appService", "uiService", "urlService", "uiUtilService", ProjectController]);
+                controller('PreloadController', ["$scope", "$rootScope", "$timeout", "$q", "angularConstants", "angularEventTypes", "appService", "urlService", "uiUtilService", PreloadController]).
+                controller('ProjectController', ["$scope", "$rootScope", "$timeout", "$q", "angularConstants", "angularEventTypes", "appService", "urlService", "uiUtilService", ProjectController]);
         }
     }
 );

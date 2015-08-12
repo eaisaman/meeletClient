@@ -26,6 +26,7 @@ const char* ProjectModeName[] = {"waitDownload", "waitRefresh", "inProgress"};
 #define PROJECT_PATH @"project"
 #define PROJECT_INFO_PATH @"info"
 #define PROJECT_CONTENT_PATH @"content"
+#define PROJECT_MODULES_PATH @".modules"
 
 @implementation Global
 
@@ -188,6 +189,50 @@ const char* ProjectModeName[] = {"waitDownload", "waitRefresh", "inProgress"};
     return result;
 }
 
++ (void)downloadModules
+{
+    [[self engine] downloadModules:^(CommonNetworkOperation *completedOperation) {
+        DLog(@"Download modules complete");
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MainViewController *viewController = [[[UIApplication sharedApplication] delegate] performSelector:@selector(viewController)];
+            [viewController.commandDelegate evalJs:@"onDownloadProjectModulesDone && onDownloadProjectModulesDone()"];
+        });
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSFileManager* manager = [NSFileManager defaultManager];
+            NSString* tmpPath = [[Global tmpPath] stringByAppendingPathComponent:@"modules.zip"];
+            NSString* moduleFolderTmpPath = [[Global tmpPath] stringByAppendingPathComponent:@"modules"];
+            NSString* projectModulesPath = [self projectsModulesPath];
+            
+            if ([manager fileExistsAtPath:tmpPath]) {
+                DLog(@"Start unzip...");
+                if ([manager fileExistsAtPath:moduleFolderTmpPath]) {
+                    [manager removeItemAtPath:moduleFolderTmpPath error:nil];
+                }
+                [SSZipArchive unzipFileAtPath:tmpPath toDestination:moduleFolderTmpPath];
+                
+                if ([manager fileExistsAtPath:projectModulesPath]) {
+                    [manager removeItemAtPath:projectModulesPath error:nil];
+                }
+                [manager moveItemAtPath:moduleFolderTmpPath toPath:projectModulesPath error:nil];
+            }
+        });
+    } onError:^(CommonNetworkOperation *completedOperation, NSString *prevResponsePath, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MainViewController *viewController = [[[UIApplication sharedApplication] delegate] performSelector:@selector(viewController)];
+            [viewController.commandDelegate evalJs:[NSString stringWithFormat:@"onDownloadProjectModulesError && onDownloadProjectModulesError('%@')", [error localizedDescription]]];
+        });
+    } progressBlock:^(double progress) {
+        DLog(@"Download in progress %.2f", progress);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MainViewController *viewController = [[[UIApplication sharedApplication] delegate] performSelector:@selector(viewController)];
+            [viewController.commandDelegate evalJs:[NSString stringWithFormat:@"onDownloadProjectModulesProgress && onDownloadProjectModulesProgress(%lu)", (unsigned long)(ceilf(progress * 100))]];
+        });
+    }];
+}
+
 + (void)downloadProject:(NSString*)projectId
 {
     NSString *infoPath = [self projectInfoPath:projectId];
@@ -236,7 +281,7 @@ const char* ProjectModeName[] = {"waitDownload", "waitRefresh", "inProgress"};
             NSFileManager* manager = [NSFileManager defaultManager];
             NSString* tmpPath = [[Global tmpPath] stringByAppendingPathComponent:[projectId stringByAppendingPathExtension:@"zip"]];
             NSString* projectTmpPath = [[Global tmpPath] stringByAppendingPathComponent:projectId];
-            NSString* projectPath = [self projectPath:projectId];
+            NSString* projectPath = [self projectContentPath:projectId];
 
             if ([manager fileExistsAtPath:tmpPath]) {
                 if ([manager fileExistsAtPath:projectTmpPath]) {
@@ -339,13 +384,43 @@ const char* ProjectModeName[] = {"waitDownload", "waitRefresh", "inProgress"};
     [viewController presentViewController:ctrl animated:YES completion:nil];
 }
 
++ (void)deleteLocalProject:(NSString *)projectId
+{
+    NSFileManager *manager = [NSFileManager defaultManager];
+
+    NSString* projectPath = [self projectContentPath:projectId];
+    if ([manager fileExistsAtPath:projectPath]) {
+        [manager removeItemAtPath:projectPath error:nil];
+    }
+    
+    NSString* tmpPath = [[Global tmpPath] stringByAppendingPathComponent:[projectId stringByAppendingPathExtension:@"zip"]];
+    if ([manager fileExistsAtPath:tmpPath]) {
+        [manager removeItemAtPath:tmpPath error:nil];
+    }
+    
+    NSString* projectInfoPath = [self projectInfoPath:projectId];
+    if ([manager fileExistsAtPath:projectInfoPath]) {
+        [manager removeItemAtPath:projectInfoPath error:nil];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MainViewController *viewController = [[[UIApplication sharedApplication] delegate] performSelector:@selector(viewController)];
+            [viewController.commandDelegate evalJs:[NSString stringWithFormat:@"onDeleteLocalProject && onDeleteLocalProject(['%@'])", projectId]];
+        });
+    }
+}
+
 + (void)showProject:(NSString *)projectId codeBlock:(ReponseBlock)codeBlock errorBlock:(ErrorBlock)errorBlock
 {
     NSFileManager *manager = [NSFileManager defaultManager];
-    NSString* projectPath = [self projectPath:projectId];
+    NSString* projectPath = [self projectContentPath:projectId];
+    NSString* projectModulePath = [projectPath stringByAppendingPathComponent:@".modules"];
     NSString* indexPath = [projectPath stringByAppendingPathComponent:@"index.html"];
 
     if ([manager fileExistsAtPath:projectPath] && [manager fileExistsAtPath:indexPath]) {
+        if (![manager fileExistsAtPath:projectModulePath]) {
+            [manager createSymbolicLinkAtPath:projectModulePath withDestinationPath:[self projectsModulesPath] error:nil];
+        }
+        
         if (codeBlock) {
             codeBlock();
         }
@@ -415,7 +490,17 @@ const char* ProjectModeName[] = {"waitDownload", "waitRefresh", "inProgress"};
     return path;
 }
 
-+(NSString*)projectPath:(NSString*)projectId
++(NSString*)projectsModulesPath
+{
+    NSString *path = [[self projectsContentPath] stringByAppendingPathComponent:PROJECT_MODULES_PATH];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path])
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:nil];
+    
+    return path;
+}
+
++(NSString*)projectContentPath:(NSString*)projectId
 {
     return [[self projectsContentPath] stringByAppendingPathComponent:projectId];
 }
@@ -431,7 +516,7 @@ const char* ProjectModeName[] = {"waitDownload", "waitRefresh", "inProgress"};
     if ([[self engine] downloadProjectInProgress:projectId]) {
         return ENUM_NAME(ProjectMode, InProgress);
     } else {
-        if ([[NSFileManager defaultManager] fileExistsAtPath:[self projectPath:projectId]]) {
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[self projectContentPath:projectId]]) {
             return ENUM_NAME(ProjectMode, WaitRefersh);
         } else {
             return ENUM_NAME(ProjectMode, WaitDownload);

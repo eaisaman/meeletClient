@@ -7570,3 +7570,25 @@ button.close {
 *:not(input), *:not(textarea) {
   -webkit-user-select: none;
 }
+
+#rootBody #bg #loader.pageload-overlay {
+  z-index: 1000;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+}
+#rootBody #bg #loader.show {
+  visibility: visible;
+}
+#rootBody #bg #loader svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+#rootBody #bg #loader svg path {
+  fill: #669933;
+}

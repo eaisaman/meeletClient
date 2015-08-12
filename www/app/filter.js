@@ -20,6 +20,26 @@ define(
                 return function (timestamp) {
                     return timestamp == null ? "" : timestamp.toString("yyyy-MM-dd");
                 };
+            }).filter("timeFilter", function () {
+                return function (timestamp) {
+                    return timestamp == null ? "" : timestamp.toString("HH:mm");
+                };
+            }).filter("shortTimeFilter", function () {
+                return function (seconds) {
+                    if (seconds == null) {
+                        return "";
+                    } else {
+                        var minutes = Math.trunc(seconds / 60),
+                            remainSeconds = seconds - minutes * 60,
+                            milliSeconds = remainSeconds - Math.trunc(remainSeconds);
+
+                        return "%02d:%02d.%03d".sprintf(minutes, Math.trunc(remainSeconds), Math.trunc(milliSeconds * 1000));
+                    }
+                };
+            }).filter("percentFilter", function () {
+                return function (num) {
+                    return num == null ? "" : "{0}%".format(num * 100);
+                };
             }).filter("in", function () {
                 return function (item, arr) {
                     if (arr && toString.call(arr) === '[object Array]') {

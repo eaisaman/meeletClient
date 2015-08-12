@@ -23,5 +23,32 @@
     #bg {
         #main {
         }
+
+        #loader {
+            &.pageload-overlay {
+                z-index: 1000;
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                visibility: hidden;
+            }
+
+            &.show {
+                visibility: visible;
+            }
+
+            svg {
+                position: absolute;
+                top: 0;
+                left: 0;
+                pointer-events: none;
+            }
+
+            svg path {
+                fill: $activeColor;
+            }
+        }
     }
 }

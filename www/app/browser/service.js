@@ -167,6 +167,8 @@ define(
 
         }
 
+        appService.prototype.downloadModules = appService.prototype.NOOP;
+
         appService.prototype.downloadProject = appService.prototype.NOOP;
 
         appService.prototype.pauseDownloadProject = appService.prototype.NOOP;

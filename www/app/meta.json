@@ -1,3 +1,3 @@
 {
-  "locations": ["project"]
+  "locations": ["preload", "project"]
 }

@@ -177,6 +177,23 @@
     return op;
 }
 
+-(CommonNetworkOperation*) downloadModules:(NKResponseBlock)codeBlock onError:(NKErrorBlock)errorBlock progressBlock:(DownloadProgressBlock)progressBlock
+{
+    CommonNetworkOperation *op = [self.engine operationWithPath:@"api/public/moduleFile"
+                                                         params:@{}
+                                                     httpMethod:@"GET"];
+    op.isPersistable = YES;
+    op.downloadSizePerRequest = 512000;
+    [op addHeaders:@{@"Accept-Encoding":@"application/octet-stream"}];
+    [op setFileToBeSaved:[NSURL fileURLWithPath:[[Global tmpPath] stringByAppendingPathComponent:@"modules.zip"]]];
+    [op addCompletionHandler:codeBlock errorHandler:errorBlock];
+    [op onDownloadProgressChanged:progressBlock];
+    
+    [self.engine enqueueOperation:op forceReload:NO];
+    
+    return op;
+}
+
 -(CommonNetworkOperation*) downloadProject:(NSString*)projectId codeBlock:(NKResponseBlock) codeBlock onError:(NKErrorBlock) errorBlock progressBlock:(DownloadProgressBlock)progressBlock
 {
     CommonNetworkOperation *op = [self.engine operationWithPath:@"api/public/projectFile"

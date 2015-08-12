@@ -20,9 +20,11 @@
 -(void) refreshUser:(CDVInvokedUrlCommand*)command;
 -(void) restoreUserFromStorage:(CDVInvokedUrlCommand*)command;
 -(void) getProject:(CDVInvokedUrlCommand*)command;
+-(void) downloadModules:(CDVInvokedUrlCommand*)command;
 -(void) downloadProject:(CDVInvokedUrlCommand*)command;
 -(void) pauseDownloadProject:(CDVInvokedUrlCommand*)command;
 -(void) getLocalProject:(CDVInvokedUrlCommand*)command;
+-(void) deleteLocalProject:(CDVInvokedUrlCommand*)command;
 -(void) showProject:(CDVInvokedUrlCommand*)command;
 
 @end

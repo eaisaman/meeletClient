@@ -4,15 +4,23 @@ define(
         return function (appModule, locations) {
             var needGoBack = true;
 
-            var urlService = function ($location, $rootScope) {
+            var urlService = function ($location, $rootScope, $timeout, uiSVGService) {
                 this.$location = $location;
                 this.$rootScope = $rootScope;
+                this.$timeout = $timeout;
+                this.uiSVGService = uiSVGService;
                 this.$rootScope.urlStack = [];
                 this.locations = [];
                 this.addLocation(locations);
+
+                this.$rootScope.$on("$routeChangeStart", function (next, current) {
+                    $('#loader').hasClass("show") && uiSVGService.hide("#loader").then(function () {
+                        $('#loader').removeClass("show");
+                    });
+                });
             };
 
-            urlService.$inject = ["$location", "$rootScope"];
+            urlService.$inject = ["$location", "$rootScope", "$timeout", "uiSVGService"];
 
             urlService.prototype.currentLocation = function () {
                 if (this.$rootScope.urlStack.length) {
@@ -52,23 +60,31 @@ define(
                 self.$rootScope.urlStack.splice(self.$rootScope.urlStack.length - depth, depth);
             }
             urlService.prototype.route = function (location, skipUrlTrack, urlParams) {
-                this.$rootScope.step = location;
-                this.$rootScope.urlParams = this.$rootScope.urlParams || {};
+                var self = this;
+
+                self.$rootScope.step = location;
+                self.$rootScope.urlParams = self.$rootScope.urlParams || {};
                 urlParams = urlParams || {};
-                if (urlParams !== this.$rootScope.urlParams[location])
-                    this.$rootScope.urlParams[location] = _.clone(urlParams);
+                if (urlParams !== self.$rootScope.urlParams[location])
+                    self.$rootScope.urlParams[location] = _.clone(urlParams);
                 if (needGoBack && (skipUrlTrack == null || !skipUrlTrack)) {
                     var locationAlreadyExists = false;
 
-                    if (this.$rootScope.urlStack.length) {
-                        var urlObj = this.$rootScope.urlStack[this.$rootScope.urlStack.length - 1];
+                    if (self.$rootScope.urlStack.length) {
+                        var urlObj = self.$rootScope.urlStack[self.$rootScope.urlStack.length - 1];
                         locationAlreadyExists = urlObj.location === location;
                     }
 
-                    !locationAlreadyExists && this.$rootScope.urlStack.push({fn: arguments.callee, location: location});
+                    !locationAlreadyExists && self.$rootScope.urlStack.push({fn: arguments.callee, location: location});
                 }
 
-                this.$location.path(location);
+                $('#loader').addClass("show");
+                self.uiSVGService.show("#loader", {
+                    speedIn: 300,
+                    easingIn: mina.easeinout
+                }, ["M -18 -26.90625 L -18 86.90625 L 98 86.90625 L 98 -26.90625 L -18 -26.90625 Z M 40 29.96875 C 40.01804 29.96875 40.03125 29.98196 40.03125 30 C 40.03125 30.01804 40.01804 30.03125 40 30.03125 C 39.98196 30.03125 39.96875 30.01804 39.96875 30 C 39.96875 29.98196 39.98196 29.96875 40 29.96875 Z"]).then(function () {
+                    self.$location.path(location);
+                });
             }
             urlService.prototype.addLocation = function (location) {
                 var self = this,
@@ -101,7 +117,7 @@ define(
                     $provide.service('urlService', urlService);
                 }]).
                 config(["$routeProvider", function ($routeProvider) {
-                    locations && locations.forEach(function (loc) {
+                    locations.forEach(function (loc) {
                         $routeProvider.when("/" + loc, {templateUrl: loc + ".html"});
                     });
                     return $routeProvider.otherwise({redirectTo: "/"});

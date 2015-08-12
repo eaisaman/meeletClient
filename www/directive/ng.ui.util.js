@@ -1,5 +1,5 @@
 define(
-    ["angular", "jquery"],
+    ["angular-lib", "jquery-lib"],
     function () {
         var Util = function ($log, $parse, $timeout, $q, $exceptionHandler, angularConstants) {
             this.$log = $log;
@@ -399,41 +399,49 @@ define(
                 }, function () {
                     scope.$root.$broadcast(eventName, boundObj);
                 }, self.angularConstants.checkInterval,
-                "uiUtilService.broadcast.{0}-{1}".format(eventName, new Date().getTime()))
+                "uiUtilService.broadcast.{0}-{1}".format(eventName, _.now()))
         }
 
-        Util.prototype.timeout = function (callback, timeout) {
-            var self = this,
-                defer = self.$q.defer();
+        Util.prototype.timeout = function (callback, timeoutId, timeout) {
+            var self = this;
 
-            if (callback) {
-                var t = timeout > 0 && self.$timeout(function () {
-                        defer.reject("TIMEOUT");
-                    }, timeout) || null;
+            timeoutId = timeoutId || "timeout_" + _.now();
+            self.timeoutMap = self.timeoutMap || {};
+            self.timeoutMap[timeoutId] = self.timeoutMap[timeoutId] || {}
+            self.timeoutMap[timeoutId].defer = self.timeoutMap[timeoutId].defer || self.$q.defer();
 
-                callback().then(function () {
-                    var args = Array.prototype.slice.call(arguments);
+            var t = timeout > 0 && self.$timeout(function () {
+                    if (self.timeoutMap[timeoutId]) {
+                        try {
+                            callback && callback("TIMEOUT");
+                        } catch (e) {
+                            self.$exceptionHandler(e);
+                        }
 
-                    t && self.$timeout.cancel(t);
-                    defer.resolve.apply(defer, args);
-                }, function () {
-                    var args = Array.prototype.slice.call(arguments);
+                        self.timeoutMap[timeoutId].defer.resolve("TIMEOUT");
+                        delete self.timeoutMap[timeoutId];
 
-                    defer.reject.apply(defer, args);
-                });
-            } else {
-                self.$timeout(function () {
-                    defer.resolve();
-                });
-            }
+                        self.angularConstants.VERBOSE && self.$log.debug("TIMEOUT occurred on timeoutId " + timeoutId);
+                    }
+                }, timeout) || null;
 
-            return defer.promise;
+            callback().then(function (result) {
+                t && self.$timeout.cancel(t);
+                self.timeoutMap[timeoutId].defer.resolve();
+                delete self.timeoutMap[timeoutId];
+            }, function (err) {
+                t && self.$timeout.cancel(t);
+                self.timeoutMap[timeoutId].defer.resolve(err);
+                delete self.timeoutMap[timeoutId];
+            });
+
+            return self.timeoutMap[timeoutId].defer.promise;
         }
 
         Util.prototype.whilst = function (test, iterator, callback, interval, whilstId, timeout) {
             var self = this;
 
-            whilstId = whilstId || "whilst_" + new Date().getTime();
+            whilstId = whilstId || "whilst_" + _.now();
             self.whilstMap = self.whilstMap || {};
             self.whilstMap[whilstId] = self.whilstMap[whilstId] || {}
             self.whilstMap[whilstId].defer = self.whilstMap[whilstId].defer || self.$q.defer();
@@ -486,57 +494,101 @@ define(
             return self.whilstMap[whilstId].defer.promise;
         }
 
-        Util.prototype.chain = function (arr, chainId, timeout) {
+        Util.prototype.chain = function (arr, chainId, timeout, stopOnEach) {
             var self = this;
 
-            chainId = chainId || "chain_" + new Date().getTime();
-            self.chainMap = self.chainMap || {};
-            self.chainMap[chainId] = self.chainMap[chainId] || {}
-            self.chainMap[chainId].defer = self.chainMap[chainId].defer || self.$q.defer();
-            var t = timeout > 0 && self.$timeout(function () {
-                    if (self.chainMap[chainId]) {
-                        self.chainMap[chainId].defer.resolve("TIMEOUT");
-                        delete self.chainMap[chainId];
+            function chainHandler() {
+                var eachDefer = stopOnEach && self.$q.defer();
 
-                        self.angularConstants.VERBOSE && self.$log.debug("TIMEOUT occurred on chainId " + chainId);
-                    }
-                }, timeout) || null;
-
-
-            function chainHandler(currentIndex) {
                 if (self.chainMap[chainId]) {
-                    if (currentIndex < arr.length) {
-                        var fn = arr[currentIndex];
+                    if (self.chainMap[chainId].currentIndex < self.chainMap[chainId].arr.length) {
+                        var fn = self.chainMap[chainId].arr[self.chainMap[chainId].currentIndex];
 
                         fn().then(
                             function () {
+                                eachDefer && eachDefer.resolve();
+
                                 if (self.chainMap[chainId]) {
-                                    self.$timeout(function () {
-                                        chainHandler(currentIndex + 1);
+                                    self.chainMap[chainId].currentIndex++;
+                                    !stopOnEach && self.$timeout(function () {
+                                        chainHandler();
                                     });
                                 }
                             },
                             function (err) {
                                 if (self.chainMap[chainId]) {
-                                    t && self.$timeout.cancel(t);
+                                    self.chainMap[chainId].t && self.$timeout.cancel(self.chainMap[chainId].t);
 
                                     self.chainMap[chainId].defer.resolve(err);
                                     delete self.chainMap[chainId];
                                 }
+
+                                eachDefer && eachDefer.resolve(err);
                             }
                         );
                     } else {
-                        t && self.$timeout.cancel(t);
+                        self.chainMap[chainId].t && self.$timeout.cancel(self.chainMap[chainId].t);
 
                         self.chainMap[chainId].defer.resolve();
                         delete self.chainMap[chainId];
+
+                        eachDefer && eachDefer.resolve("ENOENT");
                     }
+                } else {
+                    eachDefer && eachDefer.resolve("ENOENT");
                 }
+
+                return eachDefer && eachDefer.promise;
             }
 
-            chainHandler(0);
+            chainId = chainId || "chain_" + _.now();
+            self.chainMap = self.chainMap || {};
+            if (!self.chainMap[chainId]) {
+                self.chainMap[chainId] = {}
+                self.chainMap[chainId].defer = self.chainMap[chainId].defer || self.$q.defer();
+                self.chainMap[chainId].currentIndex = 0;
+                self.chainMap[chainId].arr = arr;
+                self.chainMap[chainId].t = timeout > 0 && !stopOnEach && self.$timeout(function () {
+                        if (self.chainMap[chainId]) {
+                            self.chainMap[chainId].defer.resolve("TIMEOUT");
+                            delete self.chainMap[chainId];
 
-            return self.chainMap[chainId].defer.promise;
+                            self.angularConstants.VERBOSE && self.$log.debug("TIMEOUT occurred on chainId " + chainId);
+                        }
+                    }, timeout) || null;
+
+                !stopOnEach && chainHandler();
+            }
+
+            return stopOnEach && {
+                    next: function () {
+                        return chainHandler();
+                    },
+                    cancel: function () {
+                        if (self.chainMap[chainId]) {
+                            self.chainMap[chainId].t && self.$timeout.cancel(self.chainMap[chainId].t);
+
+                            self.chainMap[chainId].defer.resolve("CANCEL");
+                            delete self.chainMap[chainId];
+                        }
+                    },
+                    isComplete: function () {
+                        return !self.chainMap[chainId];
+                    },
+                    promise: self.chainMap[chainId].defer.promise
+                } || _.extend(self.chainMap[chainId].defer.promise, {
+                    cancel: function () {
+                        if (self.chainMap[chainId]) {
+                            self.chainMap[chainId].t && self.$timeout.cancel(self.chainMap[chainId].t);
+
+                            self.chainMap[chainId].defer.resolve("CANCEL");
+                            delete self.chainMap[chainId];
+                        }
+                    },
+                    isComplete: function () {
+                        return !self.chainMap[chainId];
+                    }
+                });
         }
 
         Util.prototype.once = function (fn, callback, interval, onceId) {
@@ -636,7 +688,7 @@ define(
                 self.latestOnceMap[onceId] = self.latestOnceMap[onceId] || {isExecuted: false};
                 self.latestOnceMap[onceId].fn = fn;
                 self.latestOnceMap[onceId].callback = callback;
-                self.latestOnceMap[onceId].timestamp = new Date().getTime();
+                self.latestOnceMap[onceId].timestamp = _.now();
                 self.latestOnceMap[onceId].args = args;
 
                 if (!self.latestOnceMap[onceId].isExecuted) {
@@ -798,7 +850,9 @@ define(
                     styleObj[styleName] = self.rgba(styleValue);
                 }
             } else {
-                styleObj[styleName] = styleValue || "";
+                if (styleValue == null)
+                    styleValue = "";
+                styleObj[styleName] = styleValue;
             }
 
             return styleObj;
@@ -949,6 +1003,32 @@ define(
             });
 
             return errorDefer.promise;
+        }
+
+        Util.prototype.uniqueIdGen = function (prefix, uid) {
+            uid = uid || ['0', '0', '0'];
+
+            return function () {
+                var index = uid.length;
+                var digit;
+
+                while (index) {
+                    index--;
+                    digit = uid[index].charCodeAt(0);
+                    if (digit == 57 /*'9'*/) {
+                        uid[index] = 'A';
+                        return uid.join('');
+                    }
+                    if (digit == 90  /*'Z'*/) {
+                        uid[index] = '0';
+                    } else {
+                        uid[index] = String.fromCharCode(digit + 1);
+                        return [prefix || "", "-", uid.join('')].join("");
+                    }
+                }
+                uid.unshift('0');
+                return [prefix || "", "-", uid.join('')].join("");
+            }
         }
 
         return function (appModule) {

@@ -210,6 +210,10 @@ define(
             return this.cordovaPromise("getProject").apply(this, [JSON.stringify(projectFilter)]);
         }
 
+        appService.prototype.downloadModules = function () {
+            return this.cordovaPromise("downloadModules").apply(this, Array.prototype.slice.call(arguments));
+        }
+
         appService.prototype.downloadProject = function (projectId) {
             return this.cordovaPromise("downloadProject").apply(this, Array.prototype.slice.call(arguments));
         }

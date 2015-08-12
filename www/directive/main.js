@@ -2,7 +2,7 @@ requirejs.config(
     {
         paths: {
             "ng.ui.util": DIRECTIVE_LIB_PATH + "ng.ui.util",
-            "ng.ui.service": DIRECTIVE_LIB_PATH + "ng.ui.service",
+            "ng.ui.svg": DIRECTIVE_LIB_PATH + "ng.ui.svg",
             "ng.ui.extension": DIRECTIVE_LIB_PATH + "ng.ui.extension",
             "ng.ui.hammer-gestures": DIRECTIVE_LIB_PATH + "ng.ui.hammer-gestures",
             "ng.ui.draggable": DIRECTIVE_LIB_PATH + "ng.ui.draggable",
@@ -17,7 +17,7 @@ requirejs.config(
 
 define([
         "ng.ui.util",
-        "ng.ui.service",
+        "ng.ui.svg",
         "ng.ui.extension",
         "ng.ui.hammer-gestures",
         "ng.ui.draggable",
@@ -28,14 +28,14 @@ define([
     ],
     function () {
         var utilConfig = arguments[0],
-            serviceConfig = arguments[1],
+            svgConfig = arguments[1],
             extension = arguments[2],
             directiveConfigs = Array.prototype.slice.call(arguments, 3);
 
         return function (appModule) {
             utilConfig(appModule);
 
-            serviceConfig(appModule);
+            svgConfig(appModule);
 
             //Hammer gestures
             directiveConfigs[0](appModule);

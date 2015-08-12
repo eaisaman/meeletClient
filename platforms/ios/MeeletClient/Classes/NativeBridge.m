@@ -217,6 +217,13 @@
     }
 }
 
+-(void) downloadModules:(CDVInvokedUrlCommand*)command
+{
+    [Global downloadModules];
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
 -(void) downloadProject:(CDVInvokedUrlCommand*)command
 {
     if (command.arguments && command.arguments.count == 1) {
@@ -249,6 +256,30 @@
 {
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:@{@"data":@{@"result":@"OK", @"resultValue":[Global getLocalProject]}}];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+-(void) deleteLocalProject:(CDVInvokedUrlCommand*)command
+{
+    if (command.arguments && command.arguments.count == 1) {
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+
+        NSString *projectIdStr = command.arguments[0];
+        NSArray *projectIdList = [projectIdStr objectFromJSONString];
+        if (projectIdList && projectIdList.count) {
+            NSString *checkMode = ENUM_NAME(ProjectMode, WaitRefersh);
+            for (NSString* projectId in projectIdList) {
+                NSString *mode = [Global projectMode:projectId];
+                if ([mode isEqualToString:checkMode]) {
+                    [Global deleteLocalProject:projectId];
+                }
+            }
+        }
+
+    } else {
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Incorrect argument number."];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }
 }
 
 -(void) showProject:(CDVInvokedUrlCommand *)command

@@ -35,16 +35,19 @@ extern const char* ProjectModeName[];
 + (void)initApplication;
 + (NetworkEngine*)engine;
 + (NSString*)tmpPath;
-+ (NSString*)projectPath:(NSString*)projectId;
++ (NSString*)projectContentPath:(NSString*)projectId;
 + (NSString*)projectInfoPath:(NSString*)projectId;
++ (NSString*)projectsModulesPath;
 
 + (void)setLoginUser:(NSString*)loginName plainPassword:(NSString*)plainPassword userObj:(NSDictionary*)userObj;
 + (void)setLoginUser:(NSDictionary*)userObj;
 + (NSDictionary*)getLoginUser;
 + (NSArray*)getLocalProject;
++ (void)downloadModules;
 + (void)downloadProject:(NSString*)projectId;
 + (void)pauseDownloadProject:(NSString*)projectId;
 + (void)scanProjectCode;
++ (void)deleteLocalProject:(NSString*)projectId;
 + (void)showProject:(NSString*)projectId codeBlock:(ReponseBlock)codeBlock errorBlock:(ErrorBlock)errorBlock;
 
 + (BOOL)isValidObjectId:(NSString*)idStr;
