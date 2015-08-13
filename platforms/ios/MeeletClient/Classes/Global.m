@@ -26,7 +26,9 @@ const char* ProjectModeName[] = {"waitDownload", "waitRefresh", "inProgress"};
 #define PROJECT_PATH @"project"
 #define PROJECT_INFO_PATH @"info"
 #define PROJECT_CONTENT_PATH @"content"
-#define PROJECT_MODULES_PATH @".modules"
+#define PROJECT_MODULES_PATH @"modules"
+
+static ProjectViewController* currentController;
 
 @implementation Global
 
@@ -187,6 +189,14 @@ const char* ProjectModeName[] = {"waitDownload", "waitRefresh", "inProgress"};
     }
     
     return result;
+}
+
++ (void)exitPage
+{
+    if (currentController) {
+        [currentController dismissViewControllerAnimated:YES completion:nil];
+        currentController = NULL;
+    }
 }
 
 + (void)downloadModules
@@ -413,12 +423,17 @@ const char* ProjectModeName[] = {"waitDownload", "waitRefresh", "inProgress"};
 {
     NSFileManager *manager = [NSFileManager defaultManager];
     NSString* projectPath = [self projectContentPath:projectId];
-    NSString* projectModulePath = [projectPath stringByAppendingPathComponent:@".modules"];
+    NSString* projectModulePath = [projectPath stringByAppendingPathComponent:@"modules"];//common javascript modules
+    NSString* projectEmbeddedPath = [projectPath stringByAppendingPathComponent:@"embedded"];//cordova.js
     NSString* indexPath = [projectPath stringByAppendingPathComponent:@"index.html"];
-
+    
     if ([manager fileExistsAtPath:projectPath] && [manager fileExistsAtPath:indexPath]) {
         if (![manager fileExistsAtPath:projectModulePath]) {
             [manager createSymbolicLinkAtPath:projectModulePath withDestinationPath:[self projectsModulesPath] error:nil];
+        }
+        
+        if (![manager fileExistsAtPath:projectEmbeddedPath]) {
+            [manager createSymbolicLinkAtPath:projectEmbeddedPath withDestinationPath:[self embeddedPath] error:nil];
         }
         
         if (codeBlock) {
@@ -429,6 +444,7 @@ const char* ProjectModeName[] = {"waitDownload", "waitRefresh", "inProgress"};
             ProjectViewController* ctrl = [[ProjectViewController alloc] init];
             ctrl.wwwFolderName = [[NSURL fileURLWithPath:projectPath] absoluteString];
             ctrl.startPage = @"index.html";
+            currentController = ctrl;
 
             MainViewController *viewController = [[[UIApplication sharedApplication] delegate] performSelector:@selector(viewController)];
             [viewController presentViewController:ctrl animated:YES completion:nil];
@@ -498,6 +514,11 @@ const char* ProjectModeName[] = {"waitDownload", "waitRefresh", "inProgress"};
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:nil];
     
     return path;
+}
+
++ (NSString*)embeddedPath
+{
+    return [[NSBundle mainBundle] pathForResource:@"www" ofType:@""];
 }
 
 +(NSString*)projectContentPath:(NSString*)projectId

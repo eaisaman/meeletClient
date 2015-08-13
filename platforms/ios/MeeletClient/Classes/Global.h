@@ -38,11 +38,13 @@ extern const char* ProjectModeName[];
 + (NSString*)projectContentPath:(NSString*)projectId;
 + (NSString*)projectInfoPath:(NSString*)projectId;
 + (NSString*)projectsModulesPath;
++ (NSString*)embeddedPath;
 
 + (void)setLoginUser:(NSString*)loginName plainPassword:(NSString*)plainPassword userObj:(NSDictionary*)userObj;
 + (void)setLoginUser:(NSDictionary*)userObj;
 + (NSDictionary*)getLoginUser;
 + (NSArray*)getLocalProject;
++ (void)exitPage;
 + (void)downloadModules;
 + (void)downloadProject:(NSString*)projectId;
 + (void)pauseDownloadProject:(NSString*)projectId;

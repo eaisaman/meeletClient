@@ -20,6 +20,7 @@
 -(void) refreshUser:(CDVInvokedUrlCommand*)command;
 -(void) restoreUserFromStorage:(CDVInvokedUrlCommand*)command;
 -(void) getProject:(CDVInvokedUrlCommand*)command;
+-(void) exitPage:(CDVInvokedUrlCommand*)command;
 -(void) downloadModules:(CDVInvokedUrlCommand*)command;
 -(void) downloadProject:(CDVInvokedUrlCommand*)command;
 -(void) pauseDownloadProject:(CDVInvokedUrlCommand*)command;

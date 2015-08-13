@@ -217,6 +217,14 @@
     }
 }
 
+-(void) exitPage:(CDVInvokedUrlCommand*)command
+{
+    [Global exitPage];
+    
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
 -(void) downloadModules:(CDVInvokedUrlCommand*)command
 {
     [Global downloadModules];
