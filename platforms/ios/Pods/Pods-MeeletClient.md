@@ -1,5 +1,6 @@
 ## Steps necessary to perform after updating pods
 - Add Framework.plist to project Pods
+- Change Key 'CFBundleIdentifier' to correspondent workspace name
 - Append 'Run Script' to Build Phases
 <pre><code>
 `` # name and build location

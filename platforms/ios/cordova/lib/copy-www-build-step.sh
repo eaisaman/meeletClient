@@ -23,8 +23,7 @@
 #   This script should not be called directly.
 #   It is called as a build step from Xcode.
 
-SRC_DIR="$SRCROOT/../../www/"
-PLUGINS_DIR="$SRCROOT/../../plugins/"
+SRC_DIR="www/"
 DST_DIR="$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/www"
 COPY_HIDDEN=
 ORIG_IFS=$IFS
@@ -42,10 +41,8 @@ fi
 # Use full path to find to avoid conflict with macports find (CB-6383).
 if [[ -n $COPY_HIDDEN ]]; then
   alias do_find='/usr/bin/find "$SRC_DIR"'
-  alias do_find_plugins='/usr/bin/find "$PLUGINS_DIR"'
 else
   alias do_find='/usr/bin/find -L "$SRC_DIR" -name ".*" -prune -o'
-  alias do_find_plugins='/usr/bin/find -L "$PLUGINS_DIR" -name ".*" -prune -o'
 fi
 
 time (
@@ -82,25 +79,8 @@ for p in $(do_find -type f -print); do
   fi
 done
 
-# Plugins
-for p in $(do_find_plugins -type d -print|grep www); do
-  subpath="${p#$PLUGINS_DIR}"
-  mkdir -p "${DST_DIR}/plugins${subpath}" || exit 1
-done
-
-for p in $(do_find_plugins -type f -print|grep www); do
-  subpath="${p#$PLUGINS_DIR}"
-  if ! ln "$PLUGINS_DIR$subpath" "${DST_DIR}/plugins${subpath}" 2>/dev/null; then
-    rsync -a "$PLUGINS_DIR$subpath" "${DST_DIR}/plugins${subpath}" || exit 4
-  fi
-done
-
 # Copy the config.xml file.
 cp -f "${PROJECT_FILE_PATH%.xcodeproj}/config.xml" "$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME"
-
-# Copy cordova.js, cordova_plugins.js files.
-cp -f "${PROJECT_FILE_PATH%.xcodeproj}/../www/cordova.js" "$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/www"
-cp -f "${PROJECT_FILE_PATH%.xcodeproj}/../www/cordova_plugins.js" "$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/www"
 
 )
 IFS=$ORIG_IFS
