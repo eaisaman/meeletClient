@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EA40E5BC9843278C7E7F2F97"
+               BlueprintIdentifier = "9092172A7C01460064FB8EAF"
                BuildableName = "libPods-MeeletClient.a"
                BlueprintName = "Pods-MeeletClient"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EA40E5BC9843278C7E7F2F97"
+            BlueprintIdentifier = "9092172A7C01460064FB8EAF"
             BuildableName = "libPods-MeeletClient.a"
             BlueprintName = "Pods-MeeletClient"
             ReferencedContainer = "container:Pods.xcodeproj">

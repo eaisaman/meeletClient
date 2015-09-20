@@ -306,4 +306,62 @@
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }
 }
+
+-(void) playSound:(CDVInvokedUrlCommand *)command
+{
+    if (command.arguments && command.arguments.count >= 2) {
+        NSString *projectId = command.arguments[0];
+        NSString *path = command.arguments[1];
+        BOOL playLoop = NO;
+        
+        if (command.arguments.count >= 2) {
+            playLoop = [command.arguments[2] boolValue];
+        }
+        
+        path = [[Global projectContentPath:projectId] stringByAppendingPathComponent:path];
+        
+        NSURL* url = [NSURL fileURLWithPath:path];
+
+        [Global playSound:url playLoop:playLoop];
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    } else {
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Incorrect argument number."];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }
+}
+
+-(void) stopPlaySound:(CDVInvokedUrlCommand *)command
+{
+    [Global stopPlaySound];
+
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+-(void) isPlayingSound:(CDVInvokedUrlCommand *)command
+{
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:@{@"data":@{@"result":@"OK", @"resultValue":[Global isPlayingSound]?@"true":@"false"}}];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+
+-(void) saveAvatar:(CDVInvokedUrlCommand *)command
+{
+    if (command.arguments && command.arguments.count == 2) {
+        NSString* projectId = command.arguments[0];
+        NSString* path = command.arguments[1];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+            NSString* returnPath = [Global saveAvatar:projectId filePath:path];
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:@{@"data":@{@"result":@"OK", @"resultValue":returnPath}}];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        } else {
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[NSString stringWithFormat:@"Cannot find file at path %@", path]];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        }
+    } else {
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Incorrect argument number."];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }
+}
 @end

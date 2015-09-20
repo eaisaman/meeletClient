@@ -19,9 +19,11 @@
 #import <Pods/CocoaHTTPServer/HTTPServer.h>
 #import <Pods/CocoaHTTPServer/DAVConnection.h>
 #import <Pods/SSZipArchive/SSZipArchive.h>
+#import <Pods/FreeStreamer/FSAudioController.h>
 
 const char* ProjectModeName[] = {"waitDownload", "waitRefresh", "inProgress"};
 
+#define AVATAR_PATH @"avatar"
 #define TMP_PATH @"tmp"
 #define PROJECT_PATH @"project"
 #define PROJECT_INFO_PATH @"info"
@@ -72,6 +74,18 @@ static ProjectViewController* currentController;
     return server;
 }
 
++(FSAudioController*) audioController
+{
+    static FSAudioController* controller = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        controller = [[FSAudioController alloc] init];
+    });
+    
+    return controller;
+}
+
 +(void)initApplication
 {
     static dispatch_once_t onceToken;
@@ -80,16 +94,17 @@ static ProjectViewController* currentController;
         [[self engine] initEngine];
 
 #warning Launch HTTP server to browse application files for debug. Should disable this feature in the phase of release.
-        NSError *error;
-        HTTPServer* httpServer = [self httpServer];
-        if([httpServer start:&error])
-        {
-            ALog(@"Started HTTP Server on port %hu, document root %@", [httpServer listeningPort], [httpServer documentRoot]);
-        }
-        else
-        {
-            ALog(@"Error starting HTTP Server: %@", error);
-        }
+#warning May cause app crash. Remove temporarily.
+//        NSError *error;
+//        HTTPServer* httpServer = [self httpServer];
+//        if([httpServer start:&error])
+//        {
+//            ALog(@"Started HTTP Server on port %hu, document root %@", [httpServer listeningPort], [httpServer documentRoot]);
+//        }
+//        else
+//        {
+//            ALog(@"Error starting HTTP Server: %@", error);
+//        }
     });
 }
 
@@ -426,21 +441,21 @@ static ProjectViewController* currentController;
     NSString* projectModulePath = [projectPath stringByAppendingPathComponent:@"modules"];//common javascript modules
     NSString* projectEmbeddedPath = [projectPath stringByAppendingPathComponent:@"embedded"];//cordova.js
     NSString* indexPath = [projectPath stringByAppendingPathComponent:@"index.html"];
+    BOOL exists = [manager fileExistsAtPath:[self projectsModulesPath]];
+    exists = [manager fileExistsAtPath:[self embeddedPath]];
     
     if ([manager fileExistsAtPath:projectPath] && [manager fileExistsAtPath:indexPath]) {
-        if (![manager fileExistsAtPath:projectModulePath]) {
-            [manager createSymbolicLinkAtPath:projectModulePath withDestinationPath:[self projectsModulesPath] error:nil];
-        }
-        
-        if (![manager fileExistsAtPath:projectEmbeddedPath]) {
-            [manager createSymbolicLinkAtPath:projectEmbeddedPath withDestinationPath:[self embeddedPath] error:nil];
-        }
-        
         if (codeBlock) {
             codeBlock();
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            [manager removeItemAtPath:projectModulePath error:nil];
+            [manager createSymbolicLinkAtPath:projectModulePath withDestinationPath:[self projectsModulesPath] error:nil];
+            
+            [manager removeItemAtPath:projectEmbeddedPath error:nil];
+            [manager createSymbolicLinkAtPath:projectEmbeddedPath withDestinationPath:[self embeddedPath] error:nil];
+
             ProjectViewController* ctrl = [[ProjectViewController alloc] init];
             ctrl.wwwFolderName = [[NSURL fileURLWithPath:projectPath] absoluteString];
             ctrl.startPage = @"index.html";
@@ -456,10 +471,91 @@ static ProjectViewController* currentController;
     }
 }
 
++(NSString*) saveAvatar:(NSString*)projectId filePath:(NSString*)filePath
+{
+    NSFileManager* manager = [NSFileManager defaultManager];
+    NSString* returnPath = @"";
+    
+    if ([manager fileExistsAtPath:filePath]) {
+        NSString* fileName = [filePath lastPathComponent];
+        NSString* extension = [fileName pathExtension];
+        NSString* name = [fileName substringToIndex:fileName.length - extension.length];
+        
+        //Avatar picture file is named after pattern ***-character.[extension]
+        fileName = [NSString stringWithFormat:@"character-%@.%@", name, extension];
+
+        //Save to user's avatar folder
+        returnPath = [[self avatarPath] stringByAppendingPathComponent:fileName];
+        [manager copyItemAtPath:filePath toPath:returnPath error:nil];
+        
+        if (projectId && projectId.length) {
+            //Save to user project's image resource folder
+            NSString* projectPath = [self projectContentPath:projectId];
+            
+            if ([manager fileExistsAtPath:projectPath]) {
+                NSString* imagePath = [projectPath stringByAppendingPathComponent:@"resource/image"];
+                if (![manager fileExistsAtPath:imagePath]) {
+                    [manager createDirectoryAtPath:imagePath withIntermediateDirectories:YES attributes:nil error:nil];
+                }
+                returnPath = [imagePath stringByAppendingPathComponent:fileName];
+                [manager copyItemAtPath:filePath toPath:returnPath error:nil];
+            }
+        }
+        
+#warning Upload to user folder hosting on server
+    }
+    
+    return returnPath;
+}
+
++(void) playSound:(NSURL *)url playLoop:(BOOL)playLoop
+{
+    if ([self audioController].isPlaying && [url isEqual:[self audioController].activeStream.url]) {
+        return;
+    }
+         
+    if (playLoop) {
+        [self audioController].onStateChange = ^(FSAudioStreamState state) {
+            if (state == kFsAudioStreamPlaybackCompleted) {
+                [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(playSoundWithLoop:) userInfo:url repeats:NO];
+            }
+        };
+    }
+    
+    [[self audioController] playFromURL:url];
+}
+
++(void) playSoundWithLoop:(NSTimer*)timer
+{
+    NSURL* url = (NSURL*)timer.userInfo;
+    
+    [self playSound:url playLoop:YES];
+}
+
++(void) stopPlaySound
+{
+    [[self audioController] stop];
+}
+
++(BOOL) isPlayingSound
+{
+    return [self audioController].isPlaying;
+}
+
 +(NSString*)userFilePath
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:[SecurityContext getObject].details.loginName];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path])
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:nil];
+    
+    return path;
+}
+
++(NSString*)avatarPath
+{
+    NSString *path = [[self userFilePath] stringByAppendingPathComponent:AVATAR_PATH];
+    
     if (![[NSFileManager defaultManager] fileExistsAtPath:path])
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:nil];
     
@@ -509,9 +605,6 @@ static ProjectViewController* currentController;
 +(NSString*)projectsModulesPath
 {
     NSString *path = [[self projectsContentPath] stringByAppendingPathComponent:PROJECT_MODULES_PATH];
-    
-    if (![[NSFileManager defaultManager] fileExistsAtPath:path])
-        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:nil];
     
     return path;
 }

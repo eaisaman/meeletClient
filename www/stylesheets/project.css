@@ -95,8 +95,9 @@
 #projectContainer .modalWindowContainer .projectMainContent .projectContent .projectItem {
   position: relative;
   float: left;
-  width: 18em;
+  width: 360px;
   margin-right: 1em;
+  margin-bottom: 15px;
   padding: 15px;
   box-shadow: 0 15px 10px -10px #6D6D6D, 0 1px 4px #A4A4A4, 0 0 40px #E0E0E0 inset;
 }

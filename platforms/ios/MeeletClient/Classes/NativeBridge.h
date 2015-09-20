@@ -27,5 +27,9 @@
 -(void) getLocalProject:(CDVInvokedUrlCommand*)command;
 -(void) deleteLocalProject:(CDVInvokedUrlCommand*)command;
 -(void) showProject:(CDVInvokedUrlCommand*)command;
+-(void) playSound:(CDVInvokedUrlCommand*)command;
+-(void) stopPlaySound:(CDVInvokedUrlCommand*)command;
+-(void) isPlayingSound:(CDVInvokedUrlCommand*)command;
+-(void) saveAvatar:(CDVInvokedUrlCommand*)command;
 
 @end

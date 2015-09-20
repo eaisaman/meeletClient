@@ -170,6 +170,7 @@
 		A1CFBA351B1EDC0000E92D05 /* QRCodeOutlineBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeOutlineBox.h; sourceTree = "<group>"; };
 		A1CFBA361B1EDC0000E92D05 /* QRCodeOutlineBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeOutlineBox.m; sourceTree = "<group>"; };
 		A1CFBA3A1B1EF08F00E92D05 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
+		A1EEED4D1B83DC0600BBB794 /* MeeletClient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = MeeletClient.entitlements; path = MeeletClient/MeeletClient.entitlements; sourceTree = "<group>"; };
 		C80BB30EF01D83EDF826D44B /* Pods-MeeletClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeeletClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeeletClient/Pods-MeeletClient.release.xcconfig"; sourceTree = "<group>"; };
 		CD6D95740BA30966095B2ECF /* Pods-MeeletClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeeletClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeeletClient/Pods-MeeletClient.debug.xcconfig"; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
@@ -236,6 +237,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A1EEED4D1B83DC0600BBB794 /* MeeletClient.entitlements */,
 				EB87FDF41871DAF40020F90C /* config.xml */,
 				EB87FDF31871DA8E0020F90C /* www */,
 				EB87FDF21871DA7A0020F90C /* merges */,
@@ -444,7 +446,12 @@
 				LastUpgradeCheck = 510;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = YWN86R58L5;
+						DevelopmentTeam = WLDT4A7K64;
+						SystemCapabilities = {
+							com.apple.HomeKit = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -651,6 +658,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMMONS_LIBRARY_LDFLAGS = "-ObjC -fobjc-arc -lxml2 -framework MapKit -framework Security -framework SystemConfiguration -framework CoreGraphics -framework CFNetwork -framework CoreData";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -694,8 +702,9 @@
 					"${PODS_LIBRARY_LDFLAGS}",
 					"-lz",
 				);
-				PODS_LIBRARY_LDFLAGS = "-framework AVFoundation -framework CoreGraphics -framework CoreMedia -framework CoreVideo -framework QuartzCore -liconv";
+				PODS_LIBRARY_LDFLAGS = "-framework AVFoundation -framework CoreGraphics -framework CoreMedia -framework CoreVideo -framework QuartzCore -liconv  -lstdc++";
 				PRODUCT_NAME = MeeletClient;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -708,6 +717,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMMONS_LIBRARY_LDFLAGS = "-ObjC -fobjc-arc -lxml2 -framework MapKit -framework Security -framework SystemConfiguration -framework CoreGraphics -framework CFNetwork -framework CoreData";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -748,8 +758,9 @@
 					"${PODS_LIBRARY_LDFLAGS}",
 					"-lz",
 				);
-				PODS_LIBRARY_LDFLAGS = "-framework AVFoundation -framework CoreGraphics -framework CoreMedia -framework CoreVideo -framework QuartzCore -liconv";
+				PODS_LIBRARY_LDFLAGS = "-framework AVFoundation -framework CoreGraphics -framework CoreMedia -framework CoreVideo -framework QuartzCore -liconv  -lstdc++";
 				PRODUCT_NAME = MeeletClient;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "";
 			};

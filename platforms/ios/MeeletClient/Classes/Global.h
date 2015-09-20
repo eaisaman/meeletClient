@@ -14,6 +14,7 @@
 #define APP_URL_SCHEME @"meeletClient"
 #define APP_ERROR_DOMAIN @"meeletClientErrorDomain"
 #define APP_ERROR_OPEN_FILE_CODE -1
+#define APP_ERROR_PLAY_SOUND_CODE -2
 
 #define SETTINGS_BUNDLE_serverUrl_IDENTIFIER @"server_url"
 
@@ -51,12 +52,16 @@ extern const char* ProjectModeName[];
 + (void)scanProjectCode;
 + (void)deleteLocalProject:(NSString*)projectId;
 + (void)showProject:(NSString*)projectId codeBlock:(ReponseBlock)codeBlock errorBlock:(ErrorBlock)errorBlock;
++ (NSString*)saveAvatar:(NSString*)projectId filePath:(NSString*)filePath;
 
 + (BOOL)isValidObjectId:(NSString*)idStr;
 + (NSDate*)parseDateString:(NSString*)dateString;
 + (NSDictionary*)restoreJSONDate:(NSDictionary*)dict;
 + (NSString*)projectMode:(NSString*)projectId;
 + (NSUInteger)projectProgress:(NSString*)projectId;
++ (void)playSound:(NSURL*)url playLoop:(BOOL)playLoop;
++ (void)stopPlaySound;
++ (BOOL) isPlayingSound;
 
 @end
 
